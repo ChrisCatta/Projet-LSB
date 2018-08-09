@@ -1,0 +1,75 @@
+<?php
+session_start();
+ include('../modeles/enteteAdmin.php'); ?>
+ <table width="1350" border="0" cellpadding="100" cellspacing="10"  bgcolor="#ABAD68">
+  <tr >
+    <td height="350" valign="top">
+<!--div class="row">
+  <div class="col-xs-offset-2 col-xs-8">
+      <h3>Système de gestion des stages</h3>
+      </div>
+    </div-->
+    <div class="row">
+      <div class="col-xs-2">
+      
+
+    <?php
+   include('../scripts/connexionDB.php');
+    $c=connexion();
+   if($c==1)
+   {
+    include('../modeles/bar_menu.php'); 
+    bar_administration(3);
+    echo ' </div> ';
+   foreach($_POST as $key => $value)
+   {
+    $varname="_".$key;
+    $$varname=$value;
+   }
+  
+     $sqlquery1="select count(*) as 'n' from COMMANDE WHERE LOGIN='$_supprimerUti'";
+     $result1=mysqli_query($sqlquery1);
+     $row1=mysqli_fetch_array($result1,MYSQLI_ASSOC);
+     $sqlquery2="select count(*) as 'n' from BON_COM WHERE LOGIN='$_supprimerUti'";
+     $result2=mysqli_query($sqlquery2);
+     $row2=mysqli_fetch_array($result2,MYSQLI_ASSOC);
+
+     
+
+     echo '<div class="col-xs-8">';
+     if($row1['n']!=0 || $row2['n']!=0 )
+     {
+          if($row2['n']!=0)
+          {
+             panel('panel-info','Information concernant la suppression','<p> <img src="../images/info.PNG" width="100" heigth="100">L\'employé  ne peut pas être supprimer.<br/>Cet employé est responsable de '.$row2['n'].' commandes Fournisseur.<br/>Vous devez supprimer ces commandes pour pouvoir le supprimer</p>');
+          }
+          elseif($row1['n']!=0)
+          {
+            panel('panel-info','Information concernant la suppression','<p> <img src="../images/info.PNG" width="100" heigth="100">L\'employé  ne peut pas être supprimer.<br/>Cet employé est responsable de '.$row1['n'].' commandes Client.<br/>Vous devez supprimer ces commandes pour pouvoir le supprimer</p>');
+          }
+     }
+     else
+     {
+     $sqlquery="delete from UTILISATEUR WHERE LOGIN='$_supprimerUti'";
+    $result=mysqli_query($sqlquery) or die(panel('panel-danger','Erreur de Suppression','<p> <img src="../images/ERREUR.gif"><strong>Echec de la Suppression.</strong></p>'));
+    panel('panel-success','Suppression réussie','<p> <img src="../images/ok.PNG">L\'employé  a été supprimer correctement.</p>');
+     }
+     echo '</div>';
+   }
+      
+   
+    ?> 
+
+
+
+</div>
+ </td>
+
+  </tr>
+
+  
+
+</table>
+<?php 
+include('../modeles/deconnexion.php');
+include('../modeles/pied.php'); ?>

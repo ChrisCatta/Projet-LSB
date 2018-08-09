@@ -1,0 +1,73 @@
+<?php
+session_start();
+ include('../modeles/enteteAdmin.php'); ?>
+ <table width="1350" border="0" cellpadding="100" cellspacing="10"  bgcolor="#ABAD68">
+  <tr >
+    <td height="350" valign="top">
+<!--div class="row">
+  <div class="col-xs-offset-2 col-xs-8">
+      <h3>Système de gestion des stages</h3>
+      </div>
+    </div>-->
+    <div class="row">
+      <div class="col-xs-2">
+      
+
+    <?php
+   include('../scripts/connexionDB.php');
+    $c=connexion();
+  
+    include('../modeles/bar_menu.php'); 
+    bar_stock(2);
+    echo ' </div> ';
+   foreach($_POST as $key => $value)
+   {
+    $varname="_".$key;
+    $$varname=$value;
+   }
+   
+    echo '<div class="col-xs-8">';
+  if($_article==1)
+  {
+    $uploaddir = '../images/';
+    $uploadfile = $uploaddir . basename($_FILES['CHEMIN_IMG']['name']);
+    
+    if (move_uploaded_file($_FILES['CHEMIN_IMG']['tmp_name'], $uploadfile)) { }
+      else {$uploadfile=NULL;}
+     $sqlquery="insert into ARTICLE (DESIGNATION, FAMILLE, PRIX_U, QTE_STO, QTE_MIN, CHEMIN_IMG) values ('$_DESIGNATION', '$_FAMILLE', $_PRIX_U, $_QTE_STO, $_QTE_MIN,'$uploadfile')";
+     $result=mysql_query($sqlquery) or die(panel('panel-danger','Erreur d\'enregistrement 1','<p> <img src="../images/ERREUR.gif"><strong>Echec de l\'enregistrement</strong></p>'));
+     
+     $sqlquery1="select ID_A from ARTICLE ORDER BY ID_A DESC LIMIT 1";
+     $result1=mysql_query($sqlquery1);
+     $row=mysqli_fetch_array($result1,MYSQLI_ASSOC);
+     $ID=$row['ID_A'];
+     $sqlquery2="insert into FOURNIR (ID_F, ID_A) values ($_ID_F, $ID)";
+      $result2=mysql_query($sqlquery2) or die(panel('panel-danger','Erreur d\'enregistrement 2','<p> <img src="../images/ERREUR.gif"><strong>Echec de l\'enregistrement</strong></p>'));
+     panel('panel-success','Enregistrement réussi','<p> <img src="../images/ok.PNG">L\'Article <strong>'.$_DESIGNATION.'</strong>  a été enregistré correctement.</p>');
+  }
+  else
+  {
+     $sqlquery="update ARTICLE set QTE_STO= QTE_STO + $_QTE_STO WHERE ID_A = $_ID_A";
+     $result=mysql_query($sqlquery) or die(panel('panel-danger','Erreur d\'Ajout ','<p> <img src="../images/ERREUR.gif"><strong>Echec de l\'Ajout</strong></p>'));
+     panel('panel-success','Ajout réussi','<p> <img src="../images/ok.PNG">La quantité  a été ajouté correctement.</p>');
+  }
+   
+   echo '</div>';
+     
+   
+      
+    ?> 
+
+
+
+</div>
+ </td>
+
+  </tr>
+
+  
+
+</table>
+<?php 
+include('../modeles/deconnexion.php');
+include('../modeles/pied.php'); ?>

@@ -1,0 +1,159 @@
+<?php
+session_start();
+ include('../modeles/enteteAdmin.php'); ?>
+ <table width="1350" border="0" cellpadding="100" cellspacing="10"  bgcolor="#ABAD68">
+  <tr >
+    <td height="350" valign="top">
+<!--div class="row">
+  <div class="col-xs-offset-2 col-xs-8">
+      <h3>Système de gestion des stages</h3>
+      </div>
+    </div-->
+    <div class="row">
+      <div class="col-xs-2">
+      
+
+    <?php
+  include('../scripts/connexionDB.php');
+    $retour=connexion();
+//$c=$retour[0];
+$link=$retour[0];
+  
+    include('../modeles/bar_menu.php'); 
+    bar_fournisseur(4);
+    echo ' </div> 
+
+    <div class="col-xs-8  ">'; 
+
+    foreach($_POST as $key => $value)
+   {
+    $varname="_".$key;
+    $$varname=$value;
+   }
+    $sqlquery="select ID_F, RAISSOCF, ADRESSE_F, TEL_F, FAX_F, EMAIL_F FROM FOURNISSEUR WHERE ID_F='$_modifour'";
+    $result=mysqli_query($sqlquery);
+    $row=mysqli_fetch_array($result,MYSQLI_ASSOC);
+      ?> 
+  
+  
+ 
+      <form name="form1" method="post" action="modificationFour2.php" class="well1" onSubmit="return verification()">
+        
+        <p>
+           <div class="row">
+            <div class="col-xs-1">
+              <img src="../images/modifFour.PNG" class="img-circle" width="100" heigth="100">
+            </div>
+            <div class="col-xs-offset-1 col-xs-10">
+            <legend><h1>Modification d'un utilisateur<h1></legend>
+          </div>
+           </div>
+            
+    <fieldset>
+      <div class="row">
+    <div class="form-group">
+      <label for="texte" class="col-xs-2">Raison Sociale / Nom</label>
+      <div class="col-xs-4">
+      <?php echo '<input pattern=".{3,30}" required title="La raison sociale contient minimum 3 caractères et maximum 30 caractères." name="RAISSOCF" id="texte" class="form-control" maxlength="30" value="'.$row['RAISSOCF'].'">';?>
+      </div>
+      <label for="texte" class="col-xs-2">Tél.</label>
+      <div class="col-xs-4">
+      <?php echo '<input pattern=".{10,10}" required title="Le numéro de téléphone contient 10 numéros" name="TEL_F" id="texte" class="form-control " maxlength="10" value="'.$row['TEL_F'].'">';?>
+      </div>
+    </div>
+    </div>
+    <div class="row">
+    <div class="form-group">
+
+      <label for="texte" class="col-xs-2">E-mail</label>
+      <div class="col-xs-4">
+      <?php echo '<input type="email" name="EMAIL_F" id="texte" class="form-control " value="'.$row['EMAIL_F'].'"  maxlength="30">';?>
+      </div>
+    <label for="texte" class="col-xs-2">Fax.</label>
+      <div class="col-xs-4">
+      <?php echo '<input pattern=".{10,10}" required title="Le Fax contient 10 numéros" name="FAX_F" id="texte" class="form-control " maxlength="10" value="'.$row['FAX_F'].'">';?>
+      </div>
+     </div>
+    </div>
+        <div class="row">
+       <div class="form-group">
+        <label for="textarea" class="col-xs-2">Adresse</label>
+      <div class="col-xs-6">
+      <?php echo '<textarea  id="textarea" name="ADRESSE_F" class="form-control" cols="50" rows="4" maxlength="100" >'.$row['ADRESSE_F'].'</textarea>';?>
+      </div>
+
+    </div>
+    </div>
+
+<div class="row">
+           
+            <div class="col-xs-12">
+            <legend></legend>
+          </div>
+           </div>
+
+
+    <div class="row">
+       <div class="form-group">
+          
+     
+      <div class="col-xs-1">
+      <?php echo '<input type="hidden" name="ID_F" id="texte" class="form-control" maxlength="30" value="'.$row['ID_F'].'">';?>
+      </div>
+     
+       </div>
+    </div>
+   
+    <div class="form-group">
+      <div class="col-xs-2">
+       <a href="modificationFour.php"><button class="btn btn-primary" type="button">Retour</button></a>
+    </div>
+      <input type="submit" name="Submit" value="Modifier" class=" pull-right btn btn-primary">
+    </div>
+    </fieldset>
+        
+        </p>
+        <script language="javascript" type="text/javascript">
+                            function verification()
+                            {
+                             
+                                if(document.forms["form1"].elements["EMAIL_F"].value=="")
+                                {
+                                  alert("Vous avez laissez le champs de l'e-mail vide");
+                                  return false;
+
+                                }
+                                if(document.forms["form1"].elements["ADRESSE_F"].value=="")
+                                {
+                                  alert("Vous avez laissez le champs de l'Adresse vide");
+                                  return false;
+
+                                }
+                                else 
+                                {
+                                  return true;
+                                }
+                            }
+                          </script>
+      </form>
+       </div>
+     </div>
+
+    
+      
+   
+  
+
+
+
+
+ </td>
+
+  </tr>
+
+  
+
+</table>
+<?php 
+include('../modeles/deconnexion.php');
+include('../modeles/pied.php'); ?>

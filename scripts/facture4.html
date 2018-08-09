@@ -1,0 +1,198 @@
+   <!DOCTYPE html>
+        <html>
+              <head>
+              <meta charset="utf-8">
+                <title>test Pdf</title>
+<style>
+               table.info td , table.info th{
+                border: 1px solid #3a3a3a;
+               }
+               .facture{
+                border: 1px solid #3a3a3a;
+                margin-bottom: 20px;
+                margin-top: 20px;
+               }
+               table{
+            margin-bottom: 50px;
+            border-collapse: collapse;
+               }
+            .adresse{
+              border:1px solid black;
+              border-radius:10px;
+              width: 40%;
+            }
+            input {
+              display: inline;
+              white-space: nowrap;
+              border: 1px solid #999;
+            }
+          input:before {
+            content: attr(value);
+          }
+.footer {
+    width: 100%;
+    text-align: center;
+    position: fixed;
+  position: fixed; left: 0px; 
+  bottom: 0px; 
+  right: 0px; 
+  height: 80px; 
+}
+.pied{
+  font-size: 10px;
+}
+.pagenum:before {
+    content: counter(page);
+}
+</style>
+              </head>
+        <body>
+    
+   <div class="col-xs-10 well3 ">
+    
+      <table class="display" width="100%">
+        <tr>
+            <td class="adresse">
+                 <p><img src="../images/logo-lsb.png" width="200px" ></p>
+              <div class="pied">   tél : +261 20 75 522 44 / 032 03 421 03<br>
+                 Mail : lsb@moov.mg<br>
+                  B.P. 1140 <br>301-Fianarantsoa <br>Madagascar</div>
+            </td>
+            <td width="60%"><p style="text-align: right; top:0px;">Fianarantsoa le : 26/08/2017</p><br>
+              <h2 style="text-align: center;"><strong>Devis</strong></h2>
+            </td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td width="60%">&nbsp;</td>
+        </tr>                    
+        <tr>
+          <td style="text-align: left;">
+           Devis N°:  <em class="ligneCommande">4<br>Intitulé :test2 </em>
+           </td> 
+           <td  width="60%" style="text-align: right;">
+           Nom client  :<em class="ligneCommande">ste Sambatex<br>Rue du commerce <br><br></em>
+          </td>
+         </tr>
+       </table>
+                      
+ <table class="info" width="100%">
+       <thead>
+             <tr class="info">
+                <th><strong>Désignation</strong></th>
+                <th><strong>Long</strong></th>
+                <th><strong>Larg</strong></th>
+                <th><strong>Ep</strong></th>
+                <th><strong>Quantité</strong></th>
+                <th><strong>M3</strong></th>
+                <th><strong>Prix_Vente</strong></th>
+                <th><strong>Montant</strong></th>
+             </tr>
+       </thead>
+     <tbody>
+       <tr>     
+           <td> Ba/2x100x32</td>
+           <td>2.00</td>
+           <td>100</td>
+           <td>32</td>
+           <td>10</td>
+           <td style="text-align:right"> 0,064</td>
+           <td style="text-align:right">300000.00</td>
+           <td style="text-align:right">19 200</td>
+       </tr>
+       <tr>
+    <tbody>
+       <tr>     
+           <td> Ma/4x175x50</td>
+           <td>4.00</td>
+           <td>175</td>
+           <td>50</td>
+           <td>10</td>
+           <td style="text-align:right"> 0,350</td>
+           <td style="text-align:right">315000.00</td>
+           <td style="text-align:right">110 250</td>
+       </tr>
+       <tr>
+    <tbody>
+       <tr>     
+           <td> Pl/2,5x175x25</td>
+           <td>2.50</td>
+           <td>175</td>
+           <td>25</td>
+           <td>10</td>
+           <td style="text-align:right"> 0,109</td>
+           <td style="text-align:right">315000.00</td>
+           <td style="text-align:right">34 461</td>
+       </tr>
+       <tr>
+    <tbody>
+       <tr>     
+           <td> Pl/2x175x25</td>
+           <td>2.00</td>
+           <td>175</td>
+           <td>25</td>
+           <td>15</td>
+           <td style="text-align:right"> 0,131</td>
+           <td style="text-align:right">315000.00</td>
+           <td style="text-align:right">41 344</td>
+       </tr>
+       <tr>
+                <td colspan="5" class="success"><strong>VOLUME ET Total HT</strong></td>
+              <td class="" style="text-align:right"><strong>0,65</strong></td>
+              <td></td>
+              <td class="" style="text-align:right"><strong>205 255 Ar</strong></td>
+          </tr>
+         </tbody>
+      </table>
+      <hr>
+   <table>
+          <tr>
+              <td width="420px"><strong>Volume et Montant hors Taxe</strong></td>
+              <td width="70px" style="text-align:right"><strong>1,487</strong></td>
+              <td width="100px">&nbsp;</td>
+              <td style="text-align:right"><strong>417 814</strong></td>
+          </tr>
+          <tr>
+                <td colspan="8" class="success"><strong>Montant TVA</strong></td>
+                <td class=""><strong>83 563</strong></td>
+          </tr>
+          <tr>
+              <td colspan="8" class="success"><strong>Montant TTC</strong></td>
+              <td class=""><strong>501 377</strong></td>
+          </tr>
+         
+       </table>
+       <div >Le montant du présent devis est arreté a la somme de : <h4> Cinq Cent Un Mille Trois Cent Soixante-Dix-sept Ariary (501 377Ar)</h4></div>
+       <div> coucou</div> 
+       <div> </div> 
+       <div  style="text-align:center; width:70%">Signature </div>
+ </div>
+  <div class=" footer" >
+     <h4 style="text-align: center">Les scieries du Betsileo SURL</h4>
+    <p  class="pied " >Statistique : 16101 21 1998 0 00030 - 
+        NIF : 2000024240 - 
+        RC : 2012 B 00010 - 
+        CIF : 0060660/DGI-E du 29/05/2017<br>
+        Comptes banquaires :<br>
+        Fianarantsoa BNI N° : 00005 00052 473 313 7 010 0 15 - 
+        Antananarivo BNI N° : 00005 00001 473 313 7 010 0 04<br>
+        Skype : lesscieriesdubetsileo<br>
+      <a  href="http://scieries-madagascar.com/">Site internet : http://scieries-madagascar.com/</a><br>
+      <a  href="https://www.facebook.com/scieries.madagascar/timeline">Facebook : https://www.facebook.com/scieries.madagascar/timeline</a><br>
+    </p>
+  </div>  
+   <script type="text/javascript" src="../jquery/js/jquery-3.2.1.min.js"></script>
+                 <script type="text/javascript"  src="../jquery/js/jquery-ui.js"></script>
+                 <script type="text/javascript"  src="../jquery/js/jspdf.js"></script>
+                 <script  type="text/javascript" src="../jquery/js/pdfFromHTML.js"></script>
+                 <script type="text/javascript"  src="../DataTables/jquery.dataTables.min.js"></script>
+           <script type="text/javascript" src="../bootstrap/dist/js/bootstrap.min.js"></script>
+           <script type="text/javascript" src="../bootstrap/dist/js/bootstrap-select.js"></script>
+                 <script type="text/javascript" src="test-ajax.js"></script>
+                <script> $(document).ready(function() {
+  $('.selectpicker').selectpicker();
+});
+</script>
+
+</body>
+</html>

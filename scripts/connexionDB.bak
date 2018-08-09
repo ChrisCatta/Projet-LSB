@@ -1,0 +1,117 @@
+<script  type="text/javascript">
+function horaire()
+{
+if (document.getElementById)
+    {
+    dix++; 
+    if ( dix == 10 ) { dix= 0 ;sc++; }
+    if ( sc ==60 ) { sc= 0 ;mn++; }
+    if ( mn== 60 ) { mn=0 ;hh++; }
+    if (hh==24 ) {hh=0; }
+    if (hh==0) { haff="00:"; }
+    else if (9>hh>=1) {haff="0"+hh+":";}
+    else if (hh > 9) { haff=hh+":"; }
+    if (mn==0) {mnaff="00:";}
+    else if (9>mn>=1) {mnaff="0"+mn+":";}
+    else if (mn > 9){ mnaff=mn+":";}
+    if (sc==0) {scaff="00";}
+    else if (9>sc>=1) {scaff="0"+sc+"";}
+    else if (sc > 9) {scaff=sc+"";}
+    time=haff+mnaff+scaff;
+    document.getElementById("horaire1").innerHTML=time;
+    }
+    temporebour = setTimeout("horaire()", 100)
+}
+</script>
+<?php
+include('../modeles/panels.php');
+   function connexion()
+   {
+   // recuperation de la session
+    $c=$_SESSION['categorie'];
+    if($c==1) { $t='ADMINISTRATION';}
+   
+    else { $t='EMPLOYE';}
+
+    // connection a phpmyadmin
+    $link=mysqli_connect('localhost','root','','projet');
+    if(!$link) { die('<p>Connection Impossible : '.mysql_error().'</p>');}
+    //connection a la base de données
+    $db=mysqli_select_db($link,'projet');
+    if(!$db) { die('<p>Impossible de se connecter à la base de données : '.mysql_error().'</p>');}
+    // prendre le login 
+    $login=$_SESSION['LOGIN'];
+    // requete sql
+    $sqlquery="select NOM, PRENOM, LOGIN, PW from UTILISATEUR where LOGIN='$login' and SERVICE='$t'";
+    //resultat de la requette sql
+    $result=mysqli_query($link,$sqlquery);
+    $row=mysqli_fetch_array($result,MYSQLI_ASSOC);
+    echo '<div class="panel panel-default logo">
+     <!-- Default panel contents -->
+    <div class="panel-heading"><h5 class="text-center"><strong>
+
+     <div class="row">
+       <div class="col-xs-2">
+       <img src="../images/hor.PNG" width="40" heigth="40"> 
+       </div>
+       <div class="col-xs-8">
+          
+        
+        <div id="horaire1">
+            <script type="text/javascript">
+             var dix= 0;var sc='.date('s').';
+             var mn= '.date('i').';
+             var hh= '.date('H').';
+             horaire();
+            </script>        
+              <noscript>
+                 00:00:00
+               </noscript>
+        </div>
+       
+          
+            '.date('d').' / '.date('m').' / '.date('Y').'  
+                 
+            
+    
+
+
+       </div>
+       
+       </div>
+       <legend></legend>
+      <p>
+
+  
+    Session de<br/>  <strong>'.$row['NOM'].' '.$row['PRENOM'].'<span color="green">  ( Connecter ) </span></strong></p>
+    </strong></h5></div>
+     </div>';
+   
+    return array( $c,$link);
+}
+
+
+//////// fonction Pour savoir le login de la personne qui  est connecter ///
+/*function log()
+{
+     // recuperation de la session
+    $c=$_SESSION['categorie'];
+    if($c==1) { $t='ADMINISTRATION';}
+   
+    else { $t='EMPLOYE';}
+
+    // connection a phpmyadmin
+    $link=mysql_connect('localhost','root','driss_bouchra');
+    if(!$link) { die('<p>Connection Impossible : '.mysql_error().'</p>');}
+    //connection a la base de données
+    $db=mysql_select_db('projet',$link);
+    if(!$db) { die('<p>Impossible de se connecter à la base de données : '.mysql_error().'</p>');}
+    // prendre le login 
+    $login=$_SESSION['LOGIN'];
+    // requete sql
+    $sqlquery="select NOM, PRENOM, LOGIN, PW from UTILISATEUR where LOGIN='$login' and SERVICE='$t'";
+    //resultat de la requette sql
+    $result=mysqli_query($sqlquery);
+    $row=mysqli_fetch_array($result,MYSQLI_ASSOC);
+}*/
+    ?>

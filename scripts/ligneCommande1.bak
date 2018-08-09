@@ -1,0 +1,104 @@
+<?php
+session_start();
+ include('../modeles/enteteAdmin.php'); ?>
+ <table width="1350" border="0" cellpadding="100" cellspacing="10"  bgcolor="#ABAD68">
+  <tr >
+    <td height="350" valign="top">
+<!--div class="row">
+  <div class="col-xs-offset-2 col-xs-8">
+      <h3>Listes des Articles</h3>
+      </div>
+    </div-->
+    <div class="row">
+      <div class="col-xs-2">
+      
+    
+    <?php
+   include('../scripts/connexionDB.php');
+    $retour=connexion();
+//$c=$retour[0];
+$link=$retour[0];
+    
+    include('../modeles/bar_menu.php'); 
+    bar_entree(2);
+    echo ' </div> 
+
+    <div class="col-xs-8 ">';
+   $ID_BONC=$_POST['ID_BONC'];
+   $sqlquery="select distinct A.ID_A, A.DESIGNATION, A.FAMILLE, C.QTE_BON
+              FROM BON_COM B, FOURNISSEUR F, FOURNIR FO, ARTICLE A, CONTENIR_BON C
+              WHERE B.ID_BONC=$ID_BONC AND B.ID_BONC=C.ID_BONC AND C.ID_A=A.ID_A AND A.ID_A=FO.ID_A AND FO.ID_F=F.ID_F";
+     
+   $result=mysqli_query($sqlquery);
+
+   $sqlquery1="select B.ID_BONC, B.REFERENCE,  F.ID_F, F.RAISSOCF
+              FROM BON_COM B, FOURNISSEUR F
+              WHERE B.ID_BONC=$ID_BONC AND B.ID_F=F.ID_F";
+   $result1=mysqli_query($sqlquery1);
+   $row1=mysqli_fetch_array($result1,MYSQLI_ASSOC);
+   panel_tab_defaut('panel-success','<div class="row">
+                                <div class="col-xs-12"> <h2 class="text-center"><strong><img src="../images/ajoutcommande.PNG" width="100" heigth="100" class="img-circle">&nbsp;&nbsp;&nbsp;Liste Des lignes de Commande</strong></h2> </div>
+                              </div>
+                              <div class="row">
+                                <div class=" col-xs-6 ">Commande :  <em class="ligneCommande">'.$row1['ID_BONC'].' - '.$row1['REFERENCE'].'</em> </div>
+                                <div class="col-xs-offset-2 col-xs-4">Fournisseur :  <em class="ligneCommande">'.$row1['ID_F'].' - '.$row1['RAISSOCF'].'</em> </div>
+
+                              </div>'
+                              );
+   echo '
+   <table class="table table-bordered table-striped table-condensed">
+   <tr class="success">
+      <td><form name="formajout" action="ajoutLigneCommande.php" method="post"><input name="ajoutLigneCommande" type="image" src="../images/plus.PNG" width="25" heigth="25" title="Ajouter une Ligne Commande" value="'.$row1['ID_BONC'].'"></form></td>
+     
+     
+      
+      <td><strong>ID_Article</strong></td>
+      <td><strong>Désignation</strong></td>
+      <td><strong>Quantité</strong></td>
+      <td><strong>Famille</strong></td>
+     
+
+   </tr>';
+   
+   while($row=mysqli_fetch_array($result,MYSQLI_ASSOC))
+   {
+    
+    echo '
+       <tr>
+           <td><form name="formsupprimer" action="supprimerLigneCommande.php" method="post"><input name="supprimerLigneCommande" type="image" src="../images/sup.PNG" width="25" heigth="25" value="'.$row['ID_A'].'" title="Supprimer cette Ligne de Commande"><input type="hidden" name="ID_BONC" value="'.$row1['ID_BONC'].'" ></form></td>
+           
+           <td>'.$row['ID_A'].'</td>
+           <td>'.$row['DESIGNATION'].'</td>
+           <td>'.$row['QTE_BON'].'</td>
+           <td>'.$row['FAMILLE'].'</td>
+           
+       </tr>
+    ';
+   }
+   echo'</table>
+   
+ 
+    <!--Div de la fonction panel_tab-->
+    </div>
+    </div>
+    </div>';
+     
+     
+   
+      
+   
+    ?> 
+
+
+
+
+ </td>
+
+  </tr>
+
+  <form name="form1" action="ajoutcommande.php" method="post"></form>
+
+</table>
+<?php 
+include('../modeles/deconnexion.php');
+include('../modeles/pied.php'); ?>

@@ -1,0 +1,93 @@
+<?php
+session_start();
+ include('../modeles/enteteAdmin.php'); ?>
+ <table width="1350" border="0" cellpadding="100" cellspacing="10"  bgcolor="#ABAD68">
+  <tr >
+    <td height="350" valign="top">
+<!--div class="row">
+  <div class="col-xs-offset-2 col-xs-8">
+      <h3>Listes des Articles</h3>
+      </div>
+    </div-->
+    <div class="row">
+      <div class="col-xs-2">
+      
+  
+    <?php
+   include('../scripts/connexionDB.php');
+    $retour=connexion();
+    //$c=$retour[0];
+   $link=$retour[0];
+    
+    include('../modeles/bar_menu.php'); 
+    bar_entree(1);
+    echo ' </div> 
+
+    <div class="col-xs-8 ">';
+  
+   $sqlquery="select B.ID_BONC, B.REFERENCE, B.DATE_BONC, F.ID_F, F.RAISSOCF, U.LOGIN, U.NOM, U.PRENOM
+              FROM BON_COM B, FOURNISSEUR F, UTILISATEUR U
+              WHERE U.LOGIN=B.LOGIN AND B.ID_F=F.ID_F
+              order by ID_BONC ASC";
+   $result=mysqli_query($link,$sqlquery);
+   panel_tab('panel-success','<img src="../images/ajoutcommande.PNG" width="100" heigth="100" class="img-circle">&nbsp;&nbsp;&nbsp;Listes des Commandes');
+   echo '
+   <table class="table table-bordered table-striped table-condensed">
+   <tr class="success">
+      <td><form name="formajout" action="ajoutcommande.php" method="post"><input name="ajoutcommande" type="image" src="../images/plus.PNG" width="25" heigth="25" title="Ajouter une Commande"></form></td>
+      <td></td>
+      
+      
+      <td><strong>Identifiant</strong></td>
+      <td><strong>Réference</strong></td>
+      <td><strong>Date_commande</strong></td>
+      <td><strong>Fournisseur</strong></td>
+      <td><strong>Responsable</strong></td>
+
+   </tr>';
+   
+   while($row=mysqli_fetch_array($result,MYSQLI_ASSOC))
+   {
+    
+    echo '
+       <tr>
+           <td><form name="formsupprimer" action="supprimercommande.php" method="post"><input name="supprimercommande" type="image" src="../images/sup.PNG" width="25" heigth="25" value="'.$row['ID_BONC'].'" title="Supprimer cette Commande"></form></td>
+           
+           <td><form name="formpdf" action="pdfcommande.php" method="post" target="_blank"><input name="pdfcommande" type="image" src="../images/pdf.PNG" width="25" heigth="25" value="'.$row['ID_BONC'].'" title="Afficher Le Bon de commande de cette Commande"></form></td>
+           
+           <td>'.$row['ID_BONC'].'</td>
+           <td>'.$row['REFERENCE'].'</td>
+           <td>'.$row['DATE_BONC'].'</td>
+           <td>'.$row['ID_F'].' - '.$row['RAISSOCF'].'</td>
+           <td>'.$row['NOM'].' '.$row['PRENOM'].'</td>
+           
+       </tr>
+    ';
+   }
+   echo'</table>
+   
+ 
+    <!--Div de la fonction panel_tab-->
+    </div>
+    </div>
+    </div>';
+     
+     
+   
+      
+   
+    ?> 
+
+
+
+
+ </td>
+
+  </tr>
+
+  <form name="form1" action="ajoutcommande.php" method="post"></form>
+
+</table>
+<?php 
+include('../modeles/deconnexion.php');
+include('../modeles/pied.php'); ?>

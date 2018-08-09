@@ -1,0 +1,212 @@
+<?php
+session_start();
+ include('../modeles/enteteAdmin.php'); ?>
+ <table width="1350" border="0" cellpadding="100" cellspacing="10"  bgcolor="#ABAD68">
+  <tr >
+    <td height="350" valign="top">
+<!--div class="row">
+  <div class="col-xs-offset-2 col-xs-8">
+      <h3>Ajout Article</h3>
+      </div>
+    </div-->
+    <div class="row">
+      <div class="col-xs-2">
+      
+
+    <?php
+    include('../scripts/connexionDB.php');
+    $retour=connexion();
+//$c=$retour[0];
+$link=$retour[0];
+   include('../modeles/bar_menu.php'); 
+    bar_stock(4);
+    echo ' </div> 
+
+    <div class="col-xs-8 ">';  
+ 
+    foreach($_POST as $key => $value)
+   {
+    $varname="_".$key;
+    $$varname=$value;
+   }
+    $sqlquery="select A.ID_A, A.DESIGNATION, A.FAMILLE, A.QTE_STO, A.QTE_MIN, A.PRIX_U, A.CHEMIN_IMG, FO.RAISSOCF FROM ARTICLE A, FOURNISSEUR FO , FOURNIR F WHERE A.ID_A=$_ID_A AND A.ID_A=F.ID_A AND F.ID_F=FO.ID_F";
+    $result=mysqli_query($sqlquery);
+    $row=mysqli_fetch_array($result,MYSQLI_ASSOC);
+
+     ?> 
+  
+  
+ 
+      <form name="form1" method="post" action="modification_article2.php" enctype="multipart/form-data" class="well3" onSubmit="return verification()">
+        
+        <p>
+           <div class="row">
+            <div class="col-xs-1">
+              <img src="../images/modifarticle.PNG" class="img-circle" width="100" height="100">
+            </div>
+            <div class="col-xs-offset-1 col-xs-10">
+            <legend><h1>Modification d'un Article<h1></legend>
+          </div>
+           </div>
+            
+    <fieldset>
+     
+       
+      
+
+          <div class="row">
+                 <div class="form-group">
+                   <label for="select" class="col-xs-2">Désignation</label>
+                <div class="col-xs-4">
+                   <?php echo '<input  pattern=".{3,30}" required title="La désignation contient minimum 3 caractères et maximum 30 caractères." class="form-control" name="DESIGNATION" maxlength="30" value="'.$row['DESIGNATION'].'">' ?>
+                </div>
+                <label for="select" class="col-xs-2">Famille</label>
+                <div class="col-xs-4">
+          <select id="select" name="FAMILLE" class="form-control ">
+                 <option value="MATERIEL INFORMATIQUE">MATERIEL INFORMATIQUE</option>
+                 <option value="CONSOMMABLE INFORMATIQUE">CONSOMMABLE INFORMATIQUE</option>
+                 <option value="MOBILIER DE BUREAU">MOBILIER DE BUREAU</option>
+                 <option value="FOURNITURE DE BUREAU">FOURNITURE DE BUREAU</option>
+                 <option value="PAPETERIE">PAPETERIE</option>
+                 <option value="MATERIEL DE BUREAU">MATERIEL DE BUREAU</option>
+                 <option value="FOURNITURE DE REPROGRAPHIE">FOURNITURE DE REPROGRAPHIE</option>
+                 <option value="TRAVAUX DE REPROGRAPHIE">TRAVAUX DE REPROGRAPHIE</option>
+                 <option value="RAYONNAGE">RAYONNAGE</option>
+                 <option value="CLIMATISATION">CLIMATISATION</option>
+                 <option value="CONSOMMABLE PHOTOCOPIEUR">CONSOMMABLE PHOTOCOPIEUR</option>
+                 <option value="ACCESSOIR">ACCESSOIR</option>
+
+          </select> </div>
+             </div>
+             </div>
+
+             <div class="row">
+             <div class="form-group">
+             <label  class="col-xs-2">Quantité Stock</label>
+             <div class=" col-xs-4">
+             
+             <?php echo '<input type="number" min="0" max="2000000000" maxlength="10" class="form-control" name="QTE_STO" value="'.$row['QTE_STO'].'">' ?>
+             </div>
+
+             <label  class="col-xs-2">Quantité Seuil</label>
+             <div class="col-xs-4">
+             
+              <?php echo '<input  type="number" min="0" max="2000000000" maxlength="10" class="form-control" name="QTE_MIN"  value="'.$row['QTE_MIN'].'">' ?>
+            
+            
+             </div>
+             </div>
+             </div>
+
+             <div class="row">
+             <div class="form-group">
+                    <label  class="col-xs-2">Prix Unitaire</label>
+             <div class=" col-xs-4">
+             
+             <?php echo '<input type="number" min="1" max="2000000000" maxlength="10" class="form-control" name="PRIX_U"  value="'.$row['PRIX_U'].'">' ?>
+             </div>
+               
+
+             <label  class="col-xs-2">Choisir Une Image</label>
+             <div class=" col-xs-4">
+             
+             <?php echo '<input type="file" class="form-control" name="CHEMIN_IMG" accept="image/gif, image/jpeg, image/JPG">'?>
+             </div>
+             </div>
+             </div>
+            <?php
+
+            /* $sqlquery="select ID_F, RAISSOCF FROM FOURNISSEUR";
+             $result=mysqli_query($sqlquery);
+              echo '
+           <div class="row">
+             <div class="form-group">
+          <label for="select" class="col-xs-2">Fournisseur</label>
+          <div class="col-xs-4">
+          <select id="select" name="ID_F" class="form-control ">';
+          while ($row=mysqli_fetch_array($result,MYSQLI_ASSOC)) 
+          {
+            echo '<option value="'.$row['ID_F'].'"> '.$row['ID_F'].'  - '.$row['RAISSOCF'].'</option>';
+          }
+          echo '</select> </div> </div> </div>';*/
+      
+       ?>
+          
+        
+
+<div class="row">
+           
+            <div class="col-xs-12">
+            <legend></legend>
+          </div>
+           </div>
+
+         <div class="row">
+       <div class="form-group">
+          
+     
+      <div class="col-xs-1">
+      <?php echo '<input type="hidden" name="ID_A" id="texte" class="form-control"  value="'.$_ID_A.'">';?>
+      </div>
+     <div class="col-xs-1">
+      <?php echo '<input type="hidden" name="image" id="texte" class="form-control"  value="'.$row['CHEMIN_IMG'].'">';?>
+      </div>
+       </div>
+    </div>
+   
+    <div class="form-group">
+      <div class="col-xs-2">
+       <a href="modification_article.php"><button class="btn btn-primary" type="button">Retour</button></a>
+    </div>
+      <input type="submit" name="Submit" value="Modifier" class=" pull-right btn btn-primary">
+    </div>
+
+      
+    
+    </fieldset>
+        
+        </p>
+        <script language="javascript" type="text/javascript">
+                            function verification()
+                            {
+                             
+                                if(document.forms["form1"].elements["QTE_STO"].value=="")
+                                {
+                                  alert("Vous avez laissez le champs de la quantité du stock vide");
+                                  return false;
+
+                                }
+                                if(document.forms["form1"].elements["QTE_MIN"].value=="")
+                                {
+                                  alert("Vous avez laissez le champs de la quantité minimum vide");
+                                  return false;
+
+                                }
+                                if(document.forms["form1"].elements["PRIX_U"].value=="")
+                                {
+                                  alert("Vous avez laissez le champs du prix unitaire vide");
+                                  return false;
+
+                                }
+                                else 
+                                {
+                                  return true;
+                                }
+                            }
+                          </script>
+      </form>
+       </div>
+     </div>
+
+    
+
+ </td>
+
+  </tr>
+
+  
+
+</table>
+<?php 
+include('../modeles/deconnexion.php');
+include('../modeles/pied.php'); ?>

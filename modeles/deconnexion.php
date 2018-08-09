@@ -1,0 +1,1 @@
+<p><a href="login.php"> <button type="submit"  class="btn btn-primary" value="Se Déconnecter">Se Déconnecter</button></a></p>

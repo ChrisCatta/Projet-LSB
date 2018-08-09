@@ -1,0 +1,60 @@
+<?php
+session_start();
+ include('../modeles/enteteAdmin.php'); ?>
+ <table width="1350" border="0" cellpadding="100" cellspacing="10"  bgcolor="#ABAD68">
+  <tr >
+    <td height="350" valign="top">
+<!--div class="row">
+  <div class="col-xs-offset-2 col-xs-8">
+      <h3>Système de gestion des stages</h3>
+      </div>
+    </div>-->
+    <div class="row">
+      <div class="col-xs-2">
+      
+
+    <?php
+   include('../scripts/connexionDB.php');
+    $c=connexion();
+  
+    include('../modeles/bar_menu.php'); 
+    bar_entree(3);
+    echo ' </div> ';
+    $ID_A=$_POST['supprimerLivraison'];
+    $ID_BONL=$_POST['ID_BONL'];
+          
+    echo '<div class="col-xs-8">';
+   
+ 
+     $sqlquery="delete from CONTENIR_BON_L WHERE ID_BONL=$ID_BONL AND ID_A=$ID_A";
+     $result=mysqli_query($sqlquery) or die(panel('panel-danger','Erreur de Suppression ','<p> <img src="../images/ERREUR.gif"><strong>Echec de la Suppression</strong></p>'));
+     panel('panel-success','Suppression réussite','<p> <img src="../images/ok.PNG">La ligne de livraison  a été Supprimé correctement.</p>');
+   $sqlquery1="update LIVRAISON_BON SET SOLDE='NON' WHERE ID_BONL=$ID_BONL";
+     $result1=mysqli_query($sqlquery1) ;
+
+
+     $sqlquery3="select QTE_BON_L from CONTENIR_BON_L WHERE ID_BONL=$ID_BONL";
+     $result3=mysqli_query($sqlquery3) ;
+     $row3=mysqli_fetch_array($result3,MYSQLI_ASSOC);
+     $qte=$row3['QTE_BON_L'];
+     
+   $sqlquery5="update ARTICLE SET QTE_STO=QTE_STO-$qte WHERE ID_A IN(SELECT ID_A FROM CONTENIR_BON C, LIVRAISON_BON L WHERE L.ID_BONL=$ID_BONL AND L.ID_BONC=C.ID_BONC)";
+     $result5=mysqli_query($sqlquery5) ;
+   echo '</div>';
+     
+   
+      
+    ?> 
+
+
+
+</div>
+ </td>
+
+  </tr>
+
+  
+
+</table>
+<?php 
+include('../modeles/pied.php'); ?>

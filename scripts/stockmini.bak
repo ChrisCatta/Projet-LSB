@@ -1,0 +1,88 @@
+<?php
+session_start();
+ include('../modeles/enteteAdmin.php'); ?>
+ <table width="1350" border="0" cellpadding="100" cellspacing="10"  bgcolor="#ABAD68">
+  <tr >
+    <td height="350" valign="top">
+<!--div class="row">
+  <div class="col-xs-offset-2 col-xs-8">
+      <h3>Listes des Articles Seuil Minimum</h3>
+      </div>
+    </div-->
+    <div class="row">
+      <div class="col-xs-2">
+      
+
+    <?php
+   include('../scripts/connexionDB.php');
+    $retour=connexion();
+//$c=$retour[0];
+$link=$retour[0];
+   
+    include('../modeles/bar_menu.php'); 
+    bar_stock(5);
+    echo ' </div> 
+
+    <div class="col-xs-8 ">';
+  
+   $sqlquery="select distinct A.ID_A, A.DESIGNATION, A.FAMILLE, A.PRIX_U, A.QTE_STO, A.QTE_MIN, A.CHEMIN_IMG, FO.RAISSOCF  FROM ARTICLE A, FOURNIR F, FOURNISSEUR FO WHERE A.ID_A=F.ID_A AND F.ID_F=FO.ID_F AND A.QTE_STO <= QTE_MIN";
+   $result=mysqli_query($sqlquery);
+   panel_tab('panel-danger','<img src="../images/seuil.PNG" class="img-circle" width="100" heigth="100">&nbsp;&nbsp;&nbsp;Listes des Articles Seuil Minimum');
+   echo '<table class="table table-bordered table-striped table-condensed">
+   <tr class="danger">
+      <td><strong>Identifiant</strong></td>
+      <td><strong>Désignation</strong></td>
+      <td><strong>Famille</strong></td>
+      <td><strong>Prix_Uni</strong></td>
+      <td><strong>Qte_Stock</strong></td>
+      <td><strong>Qte_Seuil</strong></td>
+      <td><strong>Image</strong></td>
+      <td><strong>Fournisseur</strong></td>
+   </tr>';
+   
+   while($row=mysqli_fetch_array($result,MYSQLI_ASSOC))
+   {
+    if($row['CHEMIN_IMG']== NULL)
+    {
+      $row['CHEMIN_IMG']='../images/pasimage.PNG';
+    }
+    echo '
+       <tr>
+           <td>'.$row['ID_A'].'</td>
+           <td>'.$row['DESIGNATION'].'</td>
+           <td>'.$row['FAMILLE'].'</td>
+           <td>'.$row['PRIX_U'].'</td>
+           <td class="danger">'.$row['QTE_STO'].'</td>
+           <td class="danger">'.$row['QTE_MIN'].'</td>
+           <td><img src="'.$row['CHEMIN_IMG'].' " width="50" height="50" align="center"></td>
+           <td>'.$row['RAISSOCF'].'</td>
+       </tr>
+    ';
+   }
+   echo'</table>
+   
+ 
+    <!--Div de la fonction panel_tab-->
+    </div>
+    </div>
+    </div>';
+     
+     
+   
+      
+   
+    ?> 
+
+
+
+
+ </td>
+
+  </tr>
+
+  
+
+</table>
+<?php 
+include('../modeles/deconnexion.php');
+include('../modeles/pied.php'); ?>

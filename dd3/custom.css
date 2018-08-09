@@ -1,0 +1,27 @@
+.msg{ 
+position: fixed;
+top:0px;
+right: 30%;
+display: none;
+FONT-SIZE: 12px;
+font-family: Verdana;
+width:500px;
+background-color: yellow;
+}
+.breadcrumb { 
+	list-style: none; 
+	overflow: hidden; 
+	font: 18px Helvetica, Arial, Sans-Serif;
+}
+.breadcrumb li { 
+	float: left; 
+}
+.breadcrumb li a {
+	color: white;
+	text-decoration: none; 
+	padding: 10px 10px 10px 25px;
+	background: blue;                  
+	position: relative; 
+	display: block;
+	float: left;
+}

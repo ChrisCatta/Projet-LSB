@@ -1,0 +1,422 @@
+ID_A,DESIGNATION,ID_TYPE,ID_FAMILLE,LONGUEUR,LARGEUR,EPAISSEUR,U_Pqt,DIAMETRE,HAUTEUR,QTE_STO,QTE_MIN,CHEMIN_IMG,Qte/U,Vol,TYPE,FAMILLE,UNITE,ID_TARIF,PRIX_U,TX,PV_HT
+134,F60p/2.5x60x13,3,5,2.50,60,13,20,0,0,0,0,../images/Frisette.png,0.15000,0.00195,Bois profile,A peindre,M2,32,17355.30,-15,14752
+135,P60p/2.5x60x26,3,5,2.50,60,26,12,0,0,0,0,../images/Parquet.png,0.15000,0.00390,Bois profile,A peindre,M2,35,22734.95,-15,19325
+137,F86p/2.5x86x13,3,5,2.50,86,13,14,0,0,0,0,../images/Frisette.png,0.21500,0.00280,Bois profile,A peindre,M2,31,16268.15,-15,13828
+138,P86p/2.5x86x26,3,5,2.50,86,26,8,0,0,0,0,../images/Parquet.png,0.21500,0.00559,Bois profile,A peindre,M2,34,21694.55,-15,18440
+141,F110p/2.5x110x13,3,5,2.50,110,13,12,0,0,0,0,../images/Frisette.png,0.27500,0.00358,Bois profile,A peindre,M2,30,15191.20,-15,12913
+144,F60p/2x60x13,3,5,2.00,60,13,20,0,0,0,0,../images/Frisette.png,0.12000,0.00156,Bois profile,A peindre,M2,32,17355.30,-15,14752
+145,P60p/2x60x26,3,5,2.00,60,26,15,0,0,0,0,../images/Parquet.png,0.12000,0.00312,Bois profile,A peindre,M2,35,22734.95,-15,19325
+147,F86p/2x86x13,3,5,2.00,86,13,14,0,0,0,0,../images/Frisette.png,0.17200,0.00224,Bois profile,A peindre,M2,31,16268.15,-15,13828
+148,P86p/2x86x26,3,5,2.00,86,26,10,0,0,0,0,../images/Parquet.png,0.17200,0.00447,Bois profile,A peindre,M2,34,21694.55,-15,18440
+151,F110p/2x110x13,3,5,2.00,110,13,12,0,0,0,0,../images/Frisette.png,0.22000,0.00286,Bois profile,A peindre,M2,30,15191.20,-15,12913
+154,F60p/1.5x60x13,3,5,1.50,60,13,20,0,0,0,0,../images/Frisette.png,0.09000,0.00117,Bois profile,A peindre,M2,32,17355.30,-15,14752
+155,P60p/1.5x60x26,3,5,1.50,60,26,21,0,0,0,0,../images/Parquet.png,0.09000,0.00234,Bois profile,A peindre,M2,35,22734.95,-15,19325
+157,F86p/1.5x86x13,3,5,1.50,86,13,14,0,0,0,0,../images/Frisette.png,0.12900,0.00168,Bois profile,A peindre,M2,31,16268.15,-15,13828
+158,P86p/1.5x86x26,3,5,1.50,86,26,10,0,0,0,0,../images/Parquet.png,0.12900,0.00335,Bois profile,A peindre,M2,34,21694.55,-15,18440
+161,F110p/1.5x110x13,3,5,1.50,110,13,12,0,0,0,0,../images/Frisette.png,0.16500,0.00215,Bois profile,A peindre,M2,30,15191.20,-15,12913
+164,F60p/1x60x13,3,5,1.00,60,13,40,0,0,0,0,../images/Frisette.png,0.06000,0.00078,Bois profile,A peindre,M2,32,17355.30,-15,14752
+165,P60p/1x60x26,3,5,1.00,60,26,30,0,0,0,0,../images/Parquet.png,0.06000,0.00156,Bois profile,A peindre,M2,35,22734.95,-15,19325
+167,F86p/1x86x13,3,5,1.00,86,13,28,0,0,0,0,../images/Frisette.png,0.08600,0.00112,Bois profile,A peindre,M2,31,16268.15,-15,13828
+168,P86p/1x86x26,3,5,1.00,86,26,20,0,0,0,0,../images/Parquet.png,0.08600,0.00224,Bois profile,A peindre,M2,34,21694.55,-15,18440
+170,F110p/1x110x13,3,5,1.00,110,13,24,0,0,0,0,../images/Frisette.png,0.11000,0.00143,Bois profile,A peindre,M2,30,15191.20,-15,12913
+171,F60p/0.75x60x13,3,5,0.75,60,13,40,0,0,0,0,../images/Frisette.png,0.04500,0.00059,Bois profile,A peindre,M2,32,17355.30,-15,14752
+172,P60p/0.75x60x26,3,5,0.75,60,26,30,0,0,0,0,../images/Parquet.png,0.04500,0.00117,Bois profile,A peindre,M2,35,22734.95,-15,19325
+173,F86p/0.75x86x13,3,5,0.75,86,13,28,0,0,0,0,../images/Frisette.png,0.06450,0.00084,Bois profile,A peindre,M2,31,16268.15,-15,13828
+174,P86p/0.75x86x26,3,5,0.75,86,26,20,0,0,0,0,../images/Parquet.png,0.06450,0.00168,Bois profile,A peindre,M2,34,21694.55,-15,18440
+175,F110p/0.75x110x13,3,5,0.75,110,13,24,0,0,0,0,../images/Frisette.png,0.08250,0.00107,Bois profile,A peindre,M2,30,15191.20,-15,12913
+176,F60p/0.5x60x13,3,5,0.50,60,13,40,0,0,0,0,../images/Frisette.png,0.03000,0.00039,Bois profile,A peindre,M2,32,17355.30,-15,14752
+177,P60p/0.5x60x26,3,5,0.50,60,26,30,0,0,0,0,../images/Parquet.png,0.03000,0.00078,Bois profile,A peindre,M2,35,22734.95,-15,19325
+178,F86p/0.5x86x13,3,5,0.50,86,13,28,0,0,0,0,../images/Frisette.png,0.04300,0.00056,Bois profile,A peindre,M2,31,16268.15,-15,13828
+179,P86p/0.5x86x26,3,5,0.50,86,26,20,0,0,0,0,../images/Parquet.png,0.04300,0.00112,Bois profile,A peindre,M2,34,21694.55,-15,18440
+180,F110p/0.5x110x13,3,5,0.50,110,13,24,0,0,0,0,../images/Frisette.png,0.05500,0.00072,Bois profile,A peindre,M2,30,15191.20,-15,12913
+183,F60v/2.5x60x13,3,6,2.50,60,13,20,0,0,0,0,../images/Frisette.png,0.15000,0.00195,Bois profile,A vernir,M2,32,20418.00,0,20418
+184,P60v/2.5x60x26,3,6,2.50,60,26,12,0,0,0,0,../images/Parquet.png,0.15000,0.00390,Bois profile,A vernir,M2,35,26747.00,0,26747
+186,F86v/2.5x86x13,3,6,2.50,86,13,14,0,0,0,0,../images/Frisette.png,0.21500,0.00280,Bois profile,A vernir,M2,31,19139.00,0,19139
+187,P86v/2.5x86x26,3,6,2.50,86,26,8,0,0,0,0,../images/Parquet.png,0.21500,0.00559,Bois profile,A vernir,M2,34,25523.00,0,25523
+190,F110v/2.5x110x13,3,6,2.50,110,13,12,0,0,0,0,../images/Frisette.png,0.27500,0.00358,Bois profile,A vernir,M2,30,17872.00,0,17872
+193,F60v/2x60x13,3,6,2.00,60,13,20,0,0,0,0,../images/Frisette.png,0.12000,0.00156,Bois profile,A vernir,M2,32,20418.00,0,20418
+194,P60v/2x60x26,3,6,2.00,60,26,15,0,0,0,0,../images/Parquet.png,0.12000,0.00312,Bois profile,A vernir,M2,35,26747.00,0,26747
+196,F86v/2x86x13,3,6,2.00,86,13,14,0,0,0,0,../images/Frisette.png,0.17200,0.00224,Bois profile,A vernir,M2,31,19139.00,0,19139
+197,P86v/2x86x26,3,6,2.00,86,26,10,0,0,0,0,../images/Parquet.png,0.17200,0.00447,Bois profile,A vernir,M2,34,25523.00,0,25523
+200,F110v/2x110x13,3,6,2.00,110,13,12,0,0,0,0,../images/Frisette.png,0.22000,0.00286,Bois profile,A vernir,M2,30,17872.00,0,17872
+203,F60v/1.5x60x13,3,6,1.50,60,13,20,0,0,0,0,../images/Frisette.png,0.09000,0.00117,Bois profile,A vernir,M2,32,20418.00,0,20418
+204,P60v/1.5x60x26,3,6,1.50,60,26,21,0,0,0,0,../images/Parquet.png,0.09000,0.00234,Bois profile,A vernir,M2,35,26747.00,0,26747
+206,F86v/1.5x86x13,3,6,1.50,86,13,14,0,0,0,0,../images/Frisette.png,0.12900,0.00168,Bois profile,A vernir,M2,31,19139.00,0,19139
+207,P86v/1.5x86x26,3,6,1.50,86,26,10,0,0,0,0,../images/Parquet.png,0.12900,0.00335,Bois profile,A vernir,M2,34,25523.00,0,25523
+210,F110v/1.5x110x13,3,6,1.50,110,13,12,0,0,0,0,../images/Frisette.png,0.16500,0.00215,Bois profile,A vernir,M2,30,17872.00,0,17872
+213,F60v/1x60x13,3,6,1.00,60,13,40,0,0,0,0,../images/Frisette.png,0.06000,0.00078,Bois profile,A vernir,M2,32,20418.00,0,20418
+214,P60v/1x60x26,3,6,1.00,60,26,30,0,0,0,0,../images/Parquet.png,0.06000,0.00156,Bois profile,A vernir,M2,35,26747.00,0,26747
+216,F86v/1x86x13,3,6,1.00,86,13,28,0,0,0,0,../images/Frisette.png,0.08600,0.00112,Bois profile,A vernir,M2,31,19139.00,0,19139
+217,P86v/1x86x26,3,6,1.00,86,26,20,0,0,0,0,../images/Parquet.png,0.08600,0.00224,Bois profile,A vernir,M2,34,25523.00,0,25523
+219,F110v/1x110x13,3,6,1.00,110,13,24,0,0,0,0,../images/Frisette.png,0.11000,0.00143,Bois profile,A vernir,M2,30,17872.00,0,17872
+220,F60v/0.75x60x13,3,6,0.75,60,13,40,0,0,0,0,../images/Frisette.png,0.04500,0.00059,Bois profile,A vernir,M2,32,20418.00,0,20418
+221,P60v/0.75x60x26,3,6,0.75,60,26,30,0,0,0,0,../images/Parquet.png,0.04500,0.00117,Bois profile,A vernir,M2,35,26747.00,0,26747
+222,F86v/0.75x86x13,3,6,0.75,86,13,28,0,0,0,0,../images/Frisette.png,0.06450,0.00084,Bois profile,A vernir,M2,31,19139.00,0,19139
+223,P86v/0.75x86x26,3,6,0.75,86,26,20,0,0,0,0,../images/Parquet.png,0.06450,0.00168,Bois profile,A vernir,M2,34,25523.00,0,25523
+224,F110v/0.75x110x13,3,6,0.75,110,13,24,0,0,0,0,../images/Frisette.png,0.08250,0.00107,Bois profile,A vernir,M2,30,17872.00,0,17872
+225,F60v/0.5x60x13,3,6,0.50,60,13,40,0,0,0,0,../images/Frisette.png,0.03000,0.00039,Bois profile,A vernir,M2,32,20418.00,0,20418
+226,P60v/0.5x60x26,3,6,0.50,60,26,30,0,0,0,0,../images/Parquet.png,0.03000,0.00078,Bois profile,A vernir,M2,35,26747.00,0,26747
+227,F86v/0.5x86x13,3,6,0.50,86,13,28,0,0,0,0,../images/Frisette.png,0.04300,0.00056,Bois profile,A vernir,M2,31,19139.00,0,19139
+228,P86v/0.5x86x26,3,6,0.50,86,26,20,0,0,0,0,../images/Parquet.png,0.04300,0.00112,Bois profile,A vernir,M2,34,25523.00,0,25523
+229,F110v/0.5x110x13,3,6,0.50,110,13,24,0,0,0,0,../images/Frisette.png,0.05500,0.00072,Bois profile,A vernir,M2,30,17872.00,0,17872
+1,Pl/4x100x25,1,1,4.00,100,25,1,0,0,0,0,../images/Planche.png,0.01000,0.01000,Bois brut,Planche,M3,1,300000.00,0,300000
+2,Pl/4x100x22,1,1,4.00,100,22,1,0,0,0,0,../images/Planche.png,0.00880,0.00880,Bois brut,Planche,M3,1,300000.00,0,300000
+3,Pl/4x125x25,1,1,4.00,125,25,1,0,0,0,0,../images/Planche.png,0.01250,0.01250,Bois brut,Planche,M3,1,300000.00,0,300000
+4,Pl/4x125x22,1,1,4.00,125,22,1,0,0,0,0,../images/Planche.png,0.01100,0.01100,Bois brut,Planche,M3,1,300000.00,0,300000
+5,Pl/4x150x25,1,1,4.00,150,25,1,0,0,0,0,../images/Planche.png,0.01500,0.01500,Bois brut,Planche,M3,1,300000.00,0,300000
+6,Pl/4x150x22,1,1,4.00,150,22,1,0,0,0,0,../images/Planche.png,0.01320,0.01320,Bois brut,Planche,M3,1,300000.00,0,300000
+7,Pl/4x175x25,1,1,4.00,175,25,1,0,0,0,0,../images/Planche.png,0.01750,0.01750,Bois brut,Planche,M3,4,315000.00,0,315000
+8,Pl/4x175x22,1,1,4.00,175,22,1,0,0,0,0,../images/Planche.png,0.01540,0.01540,Bois brut,Planche,M3,4,315000.00,0,315000
+9,"Pl/2,5x100x25",1,1,2.50,100,25,1,0,0,0,0,../images/Planche.png,0.00625,0.00625,Bois brut,Planche,M3,1,300000.00,0,300000
+10,"Pl/2,5x100x22",1,1,2.50,100,22,1,0,0,0,0,../images/Planche.png,0.00550,0.00550,Bois brut,Planche,M3,1,300000.00,0,300000
+11,"Pl/2,5x125x25",1,1,2.50,125,25,1,0,0,0,0,../images/Planche.png,0.00781,0.00781,Bois brut,Planche,M3,1,300000.00,0,300000
+12,"Pl/2,5x125x22",1,1,2.50,125,22,1,0,0,0,0,../images/Planche.png,0.00688,0.00688,Bois brut,Planche,M3,1,300000.00,0,300000
+13,"Pl/2,5x150x25",1,1,2.50,150,25,1,0,0,0,0,../images/Planche.png,0.00938,0.00938,Bois brut,Planche,M3,1,300000.00,0,300000
+14,"Pl/2,5x150x22",1,1,2.50,150,22,1,0,0,0,0,../images/Planche.png,0.00825,0.00825,Bois brut,Planche,M3,1,300000.00,0,300000
+15,"Pl/2,5x175x25",1,1,2.50,175,25,1,0,0,0,0,../images/Planche.png,0.01094,0.01094,Bois brut,Planche,M3,4,315000.00,0,315000
+16,"Pl/2,5x175x22",1,1,2.50,175,22,1,0,0,0,0,../images/Planche.png,0.00963,0.00963,Bois brut,Planche,M3,4,315000.00,0,315000
+17,Pl/2x150x25,1,1,2.00,150,25,1,0,0,0,0,../images/Planche.png,0.00750,0.00750,Bois brut,Planche,M3,1,300000.00,0,300000
+18,Pl/2x150x22,1,1,2.00,150,22,1,0,0,0,0,../images/Planche.png,0.00660,0.00660,Bois brut,Madrier,M3,1,300000.00,0,300000
+19,Pl/2x175x25,1,1,2.00,175,25,1,0,0,0,0,../images/Planche.png,0.00875,0.00875,Bois brut,Planche,M3,4,315000.00,0,315000
+20,Pl/2x175x22,1,1,2.00,175,22,1,0,0,0,0,../images/Planche.png,0.00770,0.00770,Bois brut,Planche,M3,4,315000.00,0,315000
+21,Ma/5x100x50,1,2,5.00,100,50,1,0,0,0,0,../images/Madrier.png,0.02500,0.02500,Bois brut,Madrier,M3,1,300000.00,25,375000
+22,Ma/5x100x63,1,2,5.00,100,63,1,0,0,0,0,../images/Madrier.png,0.03150,0.03150,Bois brut,Madrier,M3,1,300000.00,25,375000
+23,Ma/5x100x75,1,2,5.00,100,75,1,0,0,0,0,../images/Madrier.png,0.03750,0.03750,Bois brut,Madrier,M3,1,300000.00,25,375000
+24,Ma/5x125x50,1,2,5.00,125,50,1,0,0,0,0,../images/Madrier.png,0.03125,0.03125,Bois brut,Madrier,M3,1,300000.00,25,375000
+25,Ma/5x125x63,1,2,5.00,125,63,1,0,0,0,0,../images/Madrier.png,0.03938,0.03938,Bois brut,Madrier,M3,1,300000.00,25,375000
+26,Ma/5x125x75,1,2,5.00,125,75,1,0,0,0,0,../images/Madrier.png,0.04688,0.04688,Bois brut,Madrier,M3,1,300000.00,25,375000
+27,Ma/5x150x50,1,2,5.00,150,50,1,0,0,0,0,../images/Madrier.png,0.03750,0.03750,Bois brut,Madrier,M3,1,300000.00,25,375000
+28,Ma/5x150x63,1,2,5.00,150,63,1,0,0,0,0,../images/Madrier.png,0.04725,0.04725,Bois brut,Madrier,M3,1,300000.00,25,375000
+29,Ma/5x150x75,1,2,5.00,150,75,1,0,0,0,0,../images/Madrier.png,0.05625,0.05625,Bois brut,Madrier,M3,1,300000.00,25,375000
+30,Ma/5x175x50,1,2,5.00,175,50,1,0,0,0,0,../images/Madrier.png,0.04375,0.04375,Bois brut,Madrier,M3,4,315000.00,25,393750
+31,Ma/5x175x63,1,2,5.00,175,63,1,0,0,0,0,../images/Madrier.png,0.05513,0.05513,Bois brut,Madrier,M3,4,315000.00,25,393750
+32,Ma/5x175x75,1,2,5.00,175,75,1,0,0,0,0,../images/Madrier.png,0.06563,0.06563,Bois brut,Madrier,M3,4,315000.00,25,393750
+33,Ma/4.5x100x50,1,2,4.50,100,50,1,0,0,0,0,../images/Madrier.png,0.02250,0.02250,Bois brut,Madrier,M3,1,300000.00,25,375000
+34,Ma/4.5x100x63,1,2,4.50,100,63,1,0,0,0,0,../images/Madrier.png,0.02835,0.02835,Bois brut,Madrier,M3,1,300000.00,25,375000
+35,Ma/4.5x100x75,1,2,4.50,100,75,1,0,0,0,0,../images/Madrier.png,0.03375,0.03375,Bois brut,Madrier,M3,1,300000.00,25,375000
+36,Ma/4.5x125x50,1,2,4.50,125,50,1,0,0,0,0,../images/Madrier.png,0.02813,0.02813,Bois brut,Madrier,M3,1,300000.00,25,375000
+37,Ma/4.5x125x63,1,2,4.50,125,63,1,0,0,0,0,../images/Madrier.png,0.03544,0.03544,Bois brut,Madrier,M3,1,300000.00,25,375000
+38,Ma/4.5x125x75,1,2,4.50,125,75,1,0,0,0,0,../images/Madrier.png,0.04219,0.04219,Bois brut,Madrier,M3,1,300000.00,25,375000
+39,Ma/4.5x150x50,1,2,4.50,150,50,1,0,0,0,0,../images/Madrier.png,0.03375,0.03375,Bois brut,Madrier,M3,1,300000.00,25,375000
+40,Ma/4.5x150x63,1,2,4.50,150,63,1,0,0,0,0,../images/Madrier.png,0.04253,0.04253,Bois brut,Madrier,M3,1,300000.00,25,375000
+41,Ma/4.5x150x75,1,2,4.50,150,75,1,0,0,0,0,../images/Madrier.png,0.05063,0.05063,Bois brut,Madrier,M3,1,300000.00,25,375000
+42,"Ma/4,5x175x50",1,2,4.50,175,50,1,0,0,0,0,../images/Madrier.png,0.03938,0.03938,Bois brut,Madrier,M3,4,315000.00,25,393750
+43,"Ma/4,5x175x63",1,2,4.50,175,63,1,0,0,0,0,../images/Madrier.png,0.04961,0.04961,Bois brut,Madrier,M3,4,315000.00,25,393750
+44,"Ma/4,5x175x75",1,2,4.50,175,75,1,0,0,0,0,../images/Madrier.png,0.05906,0.05906,Bois brut,Madrier,M3,4,315000.00,25,393750
+45,Ma/4x100x50,1,2,4.00,100,50,1,0,0,0,0,../images/Madrier.png,0.02000,0.02000,Bois brut,Madrier,M3,1,300000.00,0,300000
+46,Ma/4x100x63,1,2,4.00,100,63,1,0,0,0,0,../images/Madrier.png,0.02520,0.02520,Bois brut,Madrier,M3,1,300000.00,0,300000
+47,Ma/4x100x75,1,2,4.00,100,75,1,0,0,0,0,../images/Madrier.png,0.03000,0.03000,Bois brut,Madrier,M3,1,300000.00,0,300000
+48,Ma/4x125x50,1,2,4.00,125,50,1,0,0,0,0,../images/Madrier.png,0.02500,0.02500,Bois brut,Madrier,M3,1,300000.00,0,300000
+49,Ma/4x125x63,1,2,4.00,125,63,1,0,0,0,0,../images/Madrier.png,0.03150,0.03150,Bois brut,Madrier,M3,1,300000.00,0,300000
+50,Ma/4x125x75,1,2,4.00,125,75,1,0,0,0,0,../images/Madrier.png,0.03750,0.03750,Bois brut,Madrier,M3,1,300000.00,0,300000
+51,Ma/4x150x50,1,2,4.00,150,50,1,0,0,0,0,../images/Madrier.png,0.03000,0.03000,Bois brut,Madrier,M3,1,300000.00,0,300000
+52,Ma/4x150x63,1,2,4.00,150,63,1,0,0,0,0,../images/Madrier.png,0.03780,0.03780,Bois brut,Madrier,M3,1,300000.00,0,300000
+53,Ma/4x150x75,1,2,4.00,150,75,1,0,0,0,0,../images/Madrier.png,0.04500,0.04500,Bois brut,Madrier,M3,1,300000.00,0,300000
+54,Ma/4x175x50,1,2,4.00,175,50,1,0,0,0,0,../images/Madrier.png,0.03500,0.03500,Bois brut,Madrier,M3,4,315000.00,0,315000
+55,Ma/4x175x63,1,2,4.00,175,63,1,0,0,0,0,../images/Madrier.png,0.04410,0.04410,Bois brut,Madrier,M3,4,315000.00,0,315000
+56,Ma/4x175x75,1,2,4.00,175,75,1,0,0,0,0,../images/Madrier.png,0.05250,0.05250,Bois brut,Madrier,M3,4,315000.00,0,315000
+57,"Ma/2,5x100x50",1,2,2.50,100,50,1,0,0,0,0,../images/Madrier.png,0.01250,0.01250,Bois brut,Madrier,M3,4,315000.00,0,315000
+58,"Ma/2,5x100x63",1,2,2.50,100,63,1,0,0,0,0,../images/Madrier.png,0.01575,0.01575,Bois brut,Madrier,M3,4,315000.00,0,315000
+59,"Ma/2,5x100x75",1,2,2.50,100,75,1,0,0,0,0,../images/Madrier.png,0.01875,0.01875,Bois brut,Madrier,M3,4,315000.00,0,315000
+60,"Ma/2,5x125x50",1,2,2.50,125,50,1,0,0,0,0,../images/Madrier.png,0.01563,0.01563,Bois brut,Madrier,M3,4,315000.00,0,315000
+61,"Ma/2,5x125x63",1,2,2.50,125,63,1,0,0,0,0,../images/Madrier.png,0.01969,0.01969,Bois brut,Madrier,M3,4,315000.00,0,315000
+62,"Ma/2,5x125x75",1,2,2.50,125,75,1,0,0,0,0,../images/Madrier.png,0.02344,0.02344,Bois brut,Madrier,M3,4,315000.00,0,315000
+63,"Ma/2,5x150x50",1,2,2.50,150,50,1,0,0,0,0,../images/Madrier.png,0.01875,0.01875,Bois brut,Madrier,M3,4,315000.00,0,315000
+64,"Ma/2,5x150x63",1,2,2.50,150,63,1,0,0,0,0,../images/Madrier.png,0.02363,0.02363,Bois brut,Madrier,M3,4,315000.00,0,315000
+65,"Ma/2,5x150x75",1,2,2.50,150,75,1,0,0,0,0,../images/Madrier.png,0.02813,0.02813,Bois brut,Madrier,M3,4,315000.00,0,315000
+66,"Ma/2,5x175x50",1,2,2.50,175,50,1,0,0,0,0,../images/Madrier.png,0.02188,0.02188,Bois brut,Madrier,M3,4,315000.00,0,315000
+67,"Ma/2,5x175x63",1,2,2.50,175,63,1,0,0,0,0,../images/Madrier.png,0.02756,0.02756,Bois brut,Madrier,M3,4,315000.00,0,315000
+68,"Ma/2,5x175x75",1,2,2.50,175,75,1,0,0,0,0,../images/Madrier.png,0.03281,0.03281,Bois brut,Madrier,M3,4,315000.00,0,315000
+69,Ba/4x100x32,1,3,4.00,100,32,1,0,0,0,0,../images/Battant.png,0.01280,0.01280,Bois brut,Battant,M3,1,300000.00,0,300000
+70,Ba/4x100x38,1,3,4.00,100,38,1,0,0,0,0,../images/Battant.png,0.01520,0.01520,Bois brut,Battant,M3,1,300000.00,0,300000
+71,Ba/4x100x44,1,3,4.00,100,44,1,0,0,0,0,../images/Battant.png,0.01760,0.01760,Bois brut,Battant,M3,1,300000.00,0,300000
+72,Ba/4.5x100x32,1,3,4.50,100,32,1,0,0,0,0,../images/Battant.png,0.01440,0.01440,Bois brut,Battant,M3,1,300000.00,25,375000
+73,Ba/4.5x100x38,1,3,4.50,100,38,1,0,0,0,0,../images/Battant.png,0.01710,0.01710,Bois brut,Battant,M3,1,300000.00,25,375000
+74,Ba/4.5x100x44,1,3,4.50,100,44,1,0,0,0,0,../images/Battant.png,0.01980,0.01980,Bois brut,Battant,M3,1,300000.00,25,375000
+75,Ba/4x125x32,1,3,4.00,125,32,1,0,0,0,0,../images/Battant.png,0.01600,0.01600,Bois brut,Battant,M3,1,300000.00,0,300000
+76,Ba/4x125x38,1,3,4.00,125,38,1,0,0,0,0,../images/Battant.png,0.01900,0.01900,Bois brut,Battant,M3,1,300000.00,0,300000
+77,Ba/4x125x44,1,3,4.00,125,44,1,0,0,0,0,../images/Battant.png,0.02200,0.02200,Bois brut,Battant,M3,1,300000.00,0,300000
+78,Ba/4.5x125x32,1,3,4.50,125,32,1,0,0,0,0,../images/Battant.png,0.01800,0.01800,Bois brut,Battant,M3,1,300000.00,25,375000
+79,Ba/4.5x125x38,1,3,4.50,125,38,1,0,0,0,0,../images/Battant.png,0.02138,0.02138,Bois brut,Battant,M3,1,300000.00,25,375000
+80,Ba/4.5x125x44,1,3,4.50,125,44,1,0,0,0,0,../images/Battant.png,0.02138,0.02475,Bois brut,Battant,M3,1,300000.00,25,300000
+81,Ba/4x150x32,1,3,4.00,150,32,1,0,0,0,0,../images/Battant.png,0.01920,0.01920,Bois brut,Battant,M3,1,300000.00,0,300000
+82,Ba/4x150x38,1,3,4.00,150,38,1,0,0,0,0,../images/Battant.png,0.02280,0.02280,Bois brut,Battant,M3,1,300000.00,0,300000
+83,Ba/4x150x44,1,3,4.00,150,44,1,0,0,0,0,../images/Battant.png,0.02640,0.02640,Bois brut,Battant,M3,1,300000.00,0,300000
+84,Ba/4.5x150x32,1,3,4.50,150,32,1,0,0,0,0,../images/Battant.png,0.02160,0.02160,Bois brut,Battant,M3,1,300000.00,25,375000
+85,Ba/4.5x150x38,1,3,4.50,150,38,1,0,0,0,0,../images/Battant.png,0.02565,0.02565,Bois brut,Battant,M3,1,300000.00,25,375000
+86,Ba/4.5x150x44,1,3,4.50,150,44,1,0,0,0,0,../images/Battant.png,0.02970,0.02970,Bois brut,Battant,M3,1,300000.00,25,375000
+87,Ba/4x175x32,1,3,4.00,175,32,1,0,0,0,0,../images/Battant.png,0.02240,0.02240,Bois brut,Battant,M3,4,315000.00,0,315000
+88,Ba/4x175x38,1,3,4.00,175,38,1,0,0,0,0,../images/Battant.png,0.02660,0.02660,Bois brut,Battant,M3,4,315000.00,0,315000
+89,Ba/4x175x44,1,3,4.00,175,44,1,0,0,0,0,../images/Battant.png,0.03080,0.03080,Bois brut,Battant,M3,4,315000.00,0,315000
+90,Ba/4.5x175x32,1,3,4.50,175,32,1,0,0,0,0,../images/Battant.png,0.02520,0.02520,Bois brut,Battant,M3,4,315000.00,25,393750
+91,Ba/4.5x175x38,1,3,4.50,175,38,1,0,0,0,0,../images/Battant.png,0.02993,0.02993,Bois brut,Battant,M3,4,315000.00,25,393750
+92,Ba/4.5x175x44,1,3,4.50,175,44,1,0,0,0,0,../images/Battant.png,0.03465,0.03465,Bois brut,Battant,M3,4,315000.00,25,393750
+93,"Ba/2,5x50x38",1,3,2.50,50,38,1,0,0,0,0,../images/Battant.png,0.00475,0.00475,Bois brut,Battant,M3,6,325000.00,0,325000
+94,"Ba/2,5x100x32",1,3,2.50,100,32,1,0,0,0,0,../images/Battant.png,0.00800,0.00800,Bois brut,Battant,M3,1,300000.00,0,300000
+95,"Ba/2,5x100x38",1,3,2.50,100,38,1,0,0,0,0,../images/Battant.png,0.00950,0.00950,Bois brut,Battant,M3,1,300000.00,0,300000
+96,"Ba/2,5x100x44",1,3,2.50,100,44,1,0,0,0,0,../images/Battant.png,0.01100,0.01100,Bois brut,Battant,M3,1,300000.00,0,300000
+97,"Ba/2,5x125x32",1,3,2.50,125,32,1,0,0,0,0,../images/Battant.png,0.01000,0.01000,Bois brut,Battant,M3,1,300000.00,0,300000
+98,"Ba/2,5x125x38",1,3,2.50,125,38,1,0,0,0,0,../images/Battant.png,0.01188,0.01188,Bois brut,Battant,M3,1,300000.00,0,300000
+99,"Ba/2,5x125x44",1,3,2.50,125,44,1,0,0,0,0,../images/Battant.png,0.01375,0.01375,Bois brut,Battant,M3,1,300000.00,0,300000
+100,"Ba/2,5x150x32",1,3,2.50,150,32,1,0,0,0,0,../images/Madrier.png,0.01200,0.01200,Bois brut,Madrier,M3,1,300000.00,0,300000
+101,"Ba/2,5x150x38",1,3,2.50,150,38,1,0,0,0,0,../images/Madrier.png,0.01425,0.01425,Bois brut,Madrier,M3,1,300000.00,0,300000
+102,"Ba/2,5x150x44",1,3,2.50,150,44,1,0,0,0,0,../images/Madrier.png,0.01650,0.01650,Bois brut,Madrier,M3,1,300000.00,0,300000
+103,"Ba/2,5x175x32",1,3,2.50,175,32,1,0,0,0,0,../images/Madrier.png,0.01400,0.01400,Bois brut,Madrier,M3,4,315000.00,0,315000
+104,"Ba/2,5x175x38",1,3,2.50,175,38,1,0,0,0,0,../images/Madrier.png,0.01663,0.01663,Bois brut,Madrier,M3,4,315000.00,0,315000
+105,"Ba/2,5x175x44",1,3,2.50,175,44,1,0,0,0,0,../images/Madrier.png,0.01925,0.01925,Bois brut,Madrier,M3,4,315000.00,0,315000
+106,Ba/2x100x32,1,3,2.00,100,32,1,0,0,0,0,../images/Battant.png,0.00640,0.00640,Bois brut,Battant,M3,1,300000.00,0,300000
+107,Ba/2x100x38,1,3,2.00,100,38,1,0,0,0,0,../images/Battant.png,0.00760,0.00760,Bois brut,Battant,M3,1,300000.00,0,300000
+108,Ba/2x100x44,1,3,2.00,100,44,1,0,0,0,0,../images/Battant.png,0.00880,0.00880,Bois brut,Battant,M3,1,300000.00,0,300000
+109,Ba/2x125x32,1,3,2.00,125,32,1,0,0,0,0,../images/Battant.png,0.00800,0.00800,Bois brut,Battant,M3,1,300000.00,0,300000
+110,Ba/2x125x38,1,3,2.00,125,38,1,0,0,0,0,../images/Battant.png,0.00950,0.00950,Bois brut,Battant,M3,1,300000.00,0,300000
+111,Ba/2x125x44,1,3,2.00,125,44,1,0,0,0,0,../images/Battant.png,0.01100,0.01100,Bois brut,Battant,M3,1,300000.00,0,300000
+112,Ba/2x150x32,1,3,2.00,150,32,1,0,0,0,0,../images/Battant.png,0.00960,0.00960,Bois brut,Battant,M3,4,315000.00,0,315000
+113,Ba/2x150x38,1,3,2.00,150,38,1,0,0,0,0,../images/Battant.png,0.01140,0.01140,Bois brut,Battant,M3,4,315000.00,0,315000
+114,Ba/2x150x44,1,3,2.00,150,44,1,0,0,0,0,../images/Battant.png,0.01320,0.01320,Bois brut,Battant,M3,4,315000.00,0,315000
+115,Ba/2x175x32,1,3,2.00,175,32,1,0,0,0,0,../images/Battant.png,0.01120,0.01120,Bois brut,Battant,M3,4,315000.00,0,315000
+116,Ba/2x175x38,1,3,2.00,175,38,1,0,0,0,0,../images/Battant.png,0.01330,0.01330,Bois brut,Battant,M3,4,315000.00,0,315000
+117,Ba/2x175x44,1,3,2.00,175,44,1,0,0,0,0,../images/Battant.png,0.01540,0.01540,Bois brut,Battant,M3,4,315000.00,0,315000
+118,Ch/4x50x50,1,4,4.00,50,50,1,0,0,0,0,../images/Chevron.png,0.01000,0.01000,Bois brut,Chevron,M3,4,315000.00,0,315000
+119,Ch/4x63x63,1,4,4.00,63,63,1,0,0,0,0,../images/Chevron.png,0.01588,0.01588,Bois brut,Chevron,M3,3,310000.00,0,310000
+120,Ch/4x75x50,1,4,4.00,75,50,1,0,0,0,0,../images/Chevron.png,0.01500,0.01500,Bois brut,Chevron,M3,2,305000.00,0,305000
+121,Ch/4x75x75,1,4,4.00,75,75,1,0,0,0,0,../images/Chevron.png,0.02250,0.02250,Bois brut,Chevron,M3,2,305000.00,0,305000
+122,Ch/4x100x100,1,4,4.00,100,100,1,0,0,0,0,../images/Madrier.png,0.04000,0.04000,Bois brut,Madrier,M3,1,300000.00,0,300000
+123,Ch/2.5x50x50,1,4,2.50,50,50,1,0,0,0,0,../images/Chevron.png,0.00625,0.00625,Bois brut,Chevron,M3,4,315000.00,0,315000
+124,"Ch/2,5x63x63",1,4,2.50,63,63,1,0,0,0,0,../images/Chevron.png,0.00992,0.00992,Bois brut,Chevron,M3,3,310000.00,0,310000
+125,"Ch/2,5x75x50",1,4,2.50,75,50,1,0,0,0,0,../images/Chevron.png,0.00938,0.00938,Bois brut,Chevron,M3,2,305000.00,0,305000
+126,"Ch/2,5x75x75",1,4,2.50,75,75,1,0,0,0,0,../images/Chevron.png,0.01406,0.01406,Bois brut,Chevron,M3,2,305000.00,0,305000
+127,"Ch/2,5x100x100",1,4,2.50,100,100,1,0,0,0,0,../images/Madrier.png,0.02500,0.02500,Bois brut,Madrier,M3,1,300000.00,0,300000
+128,Ch/2x50x50,1,4,2.00,50,50,1,0,0,0,0,../images/Chevron.png,0.00500,0.00500,Bois brut,Chevron,M3,4,315000.00,0,315000
+129,Ch/2x63x63,1,4,2.00,63,63,1,0,0,0,0,../images/Madrier.png,0.00794,0.00794,Bois brut,Madrier,M3,3,310000.00,0,310000
+130,Ch/2x75x50,1,4,2.00,75,50,1,0,0,0,0,../images/Madrier.png,0.00750,0.00750,Bois brut,Madrier,M3,2,305000.00,0,305000
+131,Ch/2x75x75,1,4,2.00,75,75,1,0,0,0,0,../images/Madrier.png,0.01125,0.01125,Bois brut,Madrier,M3,2,305000.00,0,305000
+230,LC/6x180x65,6,7,6.00,180,65,0,0,0,0,0,NULL,0.07020,0.07020,Lamelle-colle,Larg 65,M3,14,1450000.00,0,1450000
+231,LC/6x225x65,6,7,6.00,225,65,0,0,0,0,0,NULL,0.08775,0.08775,Lamelle-colle,Larg 65,M3,14,1450000.00,0,1450000
+232,LC/6x180x90,6,8,6.00,180,90,0,0,0,0,0,NULL,0.09720,0.09720,Lamelle-colle,Larg 90,M3,13,1300000.00,0,1300000
+233,LC/6.5x225x90,6,8,6.00,225,90,0,0,0,0,0,NULL,0.12150,0.12150,Lamelle-colle,Larg 90,M3,13,1300000.00,0,1300000
+234,LC/6x225x90,6,8,6.00,225,90,0,0,0,0,0,NULL,0.12150,0.12150,Lamelle-colle,Larg 90,M3,13,1300000.00,0,1300000
+235,LC/5x225x90,6,8,5.00,225,90,0,0,0,0,0,NULL,0.10125,0.10125,Lamelle-colle,Larg 90,M3,13,1300000.00,0,1300000
+236,LC/4x225x90,6,8,4.00,225,90,0,0,0,0,0,NULL,0.08100,0.08100,Lamelle-colle,Larg 90,M3,13,1300000.00,0,1300000
+237,LC/8x315x115,6,9,8.00,315,115,0,0,0,0,0,NULL,0.28980,0.28980,Lamelle-colle,Larg 115,M3,13,1300000.00,0,1300000
+238,LC/6x225x115,6,9,6.00,225,115,0,0,0,0,0,NULL,0.15525,0.15525,Lamelle-colle,Larg 115,M3,13,1300000.00,0,1300000
+278,"La/2,5x32x32",1,13,2.50,32,32,0,0,0,0,0,../images/Chevron.png,0.00256,0.00256,Bois brut,Latte,M3,12,370000.00,0,370000
+279,La/2x32x32,1,13,2.00,32,32,0,0,0,0,0,../images/Chevron.png,0.00205,0.00205,Bois brut,Latte,M3,12,370000.00,0,370000
+280,La/2x38x38,1,13,2.00,38,38,0,0,0,0,0,../images/Chevron.png,0.00289,0.00289,Bois brut,Latte,M3,11,360000.00,0,360000
+281,"Pl/1,5x75x19",4,17,1.50,75,19,0,0,0,0,0,../images/Planche.png,0.00214,0.00214,Sechoir,Planche,M3,0,0.00,0,0
+282,"Pl/1,5x100x19",4,17,1.50,100,19,0,0,0,0,0,../images/Planche.png,0.00285,0.00285,Sechoir,Planche,M3,0,0.00,0,0
+283,"Pl/1,5x125x19",4,17,1.50,125,19,0,0,0,0,0,../images/Planche.png,0.00356,0.00356,Sechoir,Planche,M3,0,0.00,0,0
+284,"Pl/1,5x125x25",4,17,1.50,125,25,0,0,0,0,0,../images/Planche.png,0.00469,0.00469,Sechoir,Planche,M3,0,0.00,0,0
+285,Pl/1x75x19,4,17,1.00,75,19,0,0,0,0,0,../images/Planche.png,0.00143,0.00143,Sechoir,Planche,M3,0,0.00,0,0
+286,Pl/1x100x19,4,17,1.00,100,19,0,0,0,0,0,../images/Planche.png,0.00190,0.00190,Sechoir,Planche,M3,0,0.00,0,0
+287,Ba/1x100x32,4,16,1.00,100,32,0,0,0,0,0,../images/Planche.png,0.00320,0.00320,Sechoir,Planche,M3,0,0.00,0,0
+288,Ba/1x125x32,4,16,1.00,125,32,0,0,0,0,0,../images/Planche.png,0.00400,0.00400,Sechoir,Planche,M3,0,0.00,0,0
+289,Pl/1x125x25,4,17,1.00,125,25,0,0,0,0,0,../images/Planche.png,0.00313,0.00313,Sechoir,Planche,M3,0,0.00,0,0
+290,"Pl/0,75x75x19",4,17,0.75,75,19,0,0,0,0,0,../images/Planche.png,0.00107,0.00107,Sechoir,Planche,M3,0,0.00,0,0
+291,"Ba/0,75x75x32",4,16,0.75,75,32,0,0,0,0,0,../images/Planche.png,0.00180,0.00180,Sechoir,Planche,M3,0,0.00,0,0
+292,"Pl/0,75x75x25",4,17,0.75,75,25,0,0,0,0,0,../images/Planche.png,0.00141,0.00141,Sechoir,Planche,M3,0,0.00,0,0
+293,"Pl/0,75x100x19",4,17,0.75,100,19,0,0,0,0,0,../images/Planche.png,0.00143,0.00143,Sechoir,Planche,M3,0,0.00,0,0
+294,"BA/0,75x100x32",4,16,0.75,100,32,0,0,0,0,0,../images/Planche.png,0.00240,0.00240,Sechoir,Planche,M3,0,0.00,0,0
+295,"Pl/0,75x100x25",4,17,0.75,100,25,0,0,0,0,0,../images/Planche.png,0.00188,0.00188,Sechoir,Planche,M3,0,0.00,0,0
+296,"Pl/0,75x125x19",4,17,0.75,125,19,0,0,0,0,0,../images/Planche.png,0.00178,0.00178,Sechoir,Planche,M3,0,0.00,0,0
+297,"Ba/0,75x125x32",4,16,0.75,125,32,0,0,0,0,0,../images/Planche.png,0.00300,0.00300,Sechoir,Planche,M3,0,0.00,0,0
+298,"Pl/0,75x125x25",4,17,0.75,125,25,0,0,0,0,0,../images/Planche.png,0.00234,0.00234,Sechoir,Planche,M3,0,0.00,0,0
+299,"Pl/2,5x75x19",4,17,2.50,75,19,0,0,0,0,0,../images/Planche.png,0.00356,0.00356,Sechoir,Planche,M3,0,0.00,0,0
+300,"Pl/2,5x100x19",4,17,2.50,100,19,0,0,0,0,0,../images/Planche.png,0.00475,0.00475,Sechoir,Planche,M3,0,0.00,0,0
+301,"Pl/2,5x125x19",4,17,2.50,125,19,0,0,0,0,0,../images/Planche.png,0.00594,0.00594,Sechoir,Planche,M3,0,0.00,0,0
+302,Pl/2x75x19,4,17,2.00,75,19,0,0,0,0,0,../images/Planche.png,0.00285,0.00285,Sechoir,Planche,M3,0,0.00,0,0
+303,Pl/2x100x19,4,17,2.00,100,19,0,0,0,0,0,../images/Planche.png,0.00380,0.00380,Sechoir,Planche,M3,0,0.00,0,0
+304,Ba/2x100x32,4,16,2.00,100,32,0,0,0,0,0,../images/Planche.png,0.00640,0.00640,Sechoir,Planche,M3,0,0.00,0,0
+305,Pl/2x125x19,4,17,2.00,125,19,0,0,0,0,0,../images/Planche.png,0.00475,0.00475,Sechoir,Planche,M3,0,0.00,0,0
+306,Pl/2x125x25,4,17,2.00,125,25,0,0,0,0,0,../images/Planche.png,0.00625,0.00625,Sechoir,Planche,M3,0,0.00,0,0
+307,"Ba/1,5x100x32",4,16,1.50,100,32,0,0,0,0,0,../images/Planche.png,0.00480,0.00480,Sechoir,Planche,M3,0,0.00,0,0
+308,Ma/2x100x50,1,2,2.00,100,50,1,0,0,0,0,../images/Madrier.png,0.01000,0.01000,Bois brut,Madrier,M3,4,315000.00,0,315000
+309,Ma/2x100x63,1,2,2.00,100,63,1,0,0,0,0,../images/Madrier.png,0.01260,0.01260,Bois brut,Madrier,M3,4,315000.00,0,315000
+310,Ma/2x100x75,1,2,2.00,100,75,1,0,0,0,0,../images/Madrier.png,0.01500,0.01500,Bois brut,Madrier,M3,4,315000.00,0,315000
+311,Ma/2x125x50,1,2,2.00,125,50,1,0,0,0,0,../images/Madrier.png,0.01250,0.01250,Bois brut,Madrier,M3,4,315000.00,0,315000
+312,Ma/2x125x63,1,2,2.00,125,63,1,0,0,0,0,../images/Madrier.png,0.01575,0.01575,Bois brut,Madrier,M3,4,315000.00,0,315000
+313,Ma/2x125x75,1,2,2.00,125,75,1,0,0,0,0,../images/Madrier.png,0.01875,0.01875,Bois brut,Madrier,M3,4,315000.00,0,315000
+314,Ma/2x150x50,1,2,2.00,150,50,1,0,0,0,0,../images/Madrier.png,0.01500,0.01500,Bois brut,Madrier,M3,4,315000.00,0,315000
+315,Ma/2x150x63,1,2,2.00,150,63,1,0,0,0,0,../images/Madrier.png,0.01890,0.01890,Bois brut,Madrier,M3,4,315000.00,0,315000
+316,Ma/2x150x75,1,2,2.00,150,75,1,0,0,0,0,../images/Madrier.png,0.02250,0.02250,Bois brut,Madrier,M3,4,315000.00,0,315000
+317,Ma/2x175x50,1,2,2.00,175,50,1,0,0,0,0,../images/Madrier.png,0.01750,0.01750,Bois brut,Madrier,M3,4,315000.00,0,315000
+318,Ma/2x175x63,1,2,2.00,175,63,1,0,0,0,0,../images/Madrier.png,0.02205,0.02205,Bois brut,Madrier,M3,4,315000.00,0,315000
+319,Ma/2x175x75,1,2,2.00,175,75,1,0,0,0,0,../images/Madrier.png,0.02625,0.02625,Bois brut,Madrier,M3,4,315000.00,0,315000
+320,Pl/2x100x25,1,1,2.00,100,25,1,0,0,0,0,../images/Planche.png,0.00500,0.00500,Bois brut,Planche,M3,1,300000.00,0,300000
+321,Pl/2x100x32,1,1,2.00,100,32,1,0,0,0,0,../images/Planche.png,0.00640,0.00640,Bois brut,Planche,M3,1,300000.00,0,300000
+322,Pl/2x125x25,1,1,2.00,125,25,1,0,0,0,0,../images/Planche.png,0.00625,0.00625,Bois brut,Planche,M3,1,300000.00,0,300000
+323,Pl/2x125x32,1,1,2.00,125,32,1,0,0,0,0,../images/Planche.png,0.00800,0.00800,Bois brut,Planche,M3,1,300000.00,0,300000
+324,"Pl/1,5x150x19",4,17,1.50,150,19,0,0,0,0,0,../images/Planche.png,0.00428,0.00428,Sechoir,Planche,M3,0,0.00,0,0
+325,"Pl/1,5x75x25",4,17,1.50,75,25,0,0,0,0,0,../images/Planche.png,0.00281,0.00281,Sechoir,Planche,M3,0,0.00,0,0
+326,"Pl/1,5x100x25",4,17,1.50,100,25,0,0,0,0,0,../images/Planche.png,0.00375,0.00375,Sechoir,Planche,M3,0,0.00,0,0
+327,"Pl/1,5x150x25",4,17,1.50,150,25,0,0,0,0,0,../images/Planche.png,0.00563,0.00563,Sechoir,Planche,M3,0,0.00,0,0
+328,Pl/1x125x19,4,17,1.00,125,19,0,0,0,0,0,../images/Planche.png,0.00238,0.00238,Sechoir,Planche,M3,0,0.00,0,0
+329,Pl/1x150x19,4,17,1.00,150,19,0,0,0,0,0,../images/Planche.png,0.00285,0.00285,Sechoir,Planche,M3,0,0.00,0,0
+330,Pl/1x75x25,4,17,1.00,75,25,0,0,0,0,0,../images/Planche.png,0.00188,0.00188,Sechoir,Planche,M3,0,0.00,0,0
+331,Pl/1x100x25,4,17,1.00,100,25,0,0,0,0,0,../images/Planche.png,0.00250,0.00250,Sechoir,Planche,M3,0,0.00,0,0
+332,Pl/1x150x25,4,17,1.00,150,25,0,0,0,0,0,../images/Planche.png,0.00375,0.00375,Sechoir,Planche,M3,0,0.00,0,0
+333,Ba/1x75x32,4,16,1.00,75,32,0,0,0,0,0,../images/Planche.png,0.00240,0.00240,Sechoir,Planche,M3,0,0.00,0,0
+334,Pl/0.75x150x19,4,17,0.75,150,19,0,0,0,0,0,../images/Planche.png,0.00214,0.00214,Sechoir,Planche,M3,0,0.00,0,0
+335,"Pl/0,75x150x25",4,17,0.75,150,25,0,0,0,0,0,../images/Planche.png,0.00281,0.00281,Sechoir,Planche,M3,0,0.00,0,0
+336,"Pl/2,5x150x19",4,17,2.50,150,19,0,0,0,0,0,../images/Planche.png,0.00713,0.00713,Sechoir,Planche,M3,0,0.00,0,0
+337,Pl/2x150x19,4,17,2.00,150,19,0,0,0,0,0,../images/Planche.png,0.00570,0.00570,Sechoir,Planche,M3,0,0.00,0,0
+338,Pl/2x75x25,4,17,2.00,75,25,0,0,0,0,0,../images/Planche.png,0.00375,0.00375,Sechoir,Planche,M3,0,0.00,0,0
+339,Pl/2x100x25,4,17,2.00,100,25,0,0,0,0,0,../images/Planche.png,0.00500,0.00500,Sechoir,Planche,M3,0,0.00,0,0
+340,Pl/2x150x25,4,17,2.00,150,25,0,0,0,0,0,../images/Planche.png,0.00750,0.00750,Sechoir,Planche,M3,0,0.00,0,0
+341,Ba/2x75x32,4,16,2.00,75,32,0,0,0,0,0,../images/Planche.png,0.00480,0.00480,Sechoir,Planche,M3,0,0.00,0,0
+342,"Ba/1,5x75x32",4,16,1.50,75,32,0,0,0,0,0,../images/Planche.png,0.00360,0.00360,Sechoir,Planche,M3,0,0.00,0,0
+343,Pl/4.5x100x16,1,1,4.50,100,16,1,0,0,0,0,../images/Planche.png,0.00720,0.00720,Bois brut,Planche,M3,1,300000.00,25,375000
+344,Pl/4.5x125x16,1,1,4.50,125,16,1,0,0,0,0,../images/Planche.png,0.00900,0.00900,Bois brut,Planche,M3,1,300000.00,25,375000
+345,Pl/4.5x150x16,1,1,4.50,150,16,1,0,0,0,0,../images/Planche.png,0.01080,0.01080,Bois brut,Planche,M3,1,300000.00,25,375000
+346,Pl/4.5x175x16,1,1,4.50,175,16,1,0,0,0,0,../images/Planche.png,0.01260,0.01260,Bois brut,Planche,M3,4,315000.00,25,393750
+347,Pl/4.5x100x19,1,1,4.50,100,19,1,0,0,0,0,../images/Planche.png,0.00855,0.00855,Bois brut,Planche,M3,1,300000.00,25,375000
+348,Pl/4.5x125x19,1,1,4.50,125,19,1,0,0,0,0,../images/Planche.png,0.01069,0.01069,Bois brut,Planche,M3,1,300000.00,25,375000
+349,Pl/4.5x150x19,1,1,4.50,150,19,1,0,0,0,0,../images/Planche.png,0.01283,0.01283,Bois brut,Planche,M3,1,300000.00,25,375000
+350,Pl/4.5x175x19,1,1,4.50,175,19,1,0,0,0,0,../images/Planche.png,0.01496,0.01496,Bois brut,Planche,M3,4,315000.00,25,393750
+351,Pl/4.5x100x22,1,1,4.50,100,22,1,0,0,0,0,../images/Planche.png,0.00990,0.00990,Bois brut,Planche,M3,1,300000.00,25,375000
+352,Pl/4.5x125x22,1,1,4.50,125,22,1,0,0,0,0,../images/Planche.png,0.01238,0.01238,Bois brut,Planche,M3,1,300000.00,25,375000
+353,Pl/4.5x150x22,1,1,4.50,150,22,1,0,0,0,0,../images/Planche.png,0.01485,0.01485,Bois brut,Planche,M3,1,300000.00,25,375000
+354,Pl/4.5x175x22,1,1,4.50,175,22,1,0,0,0,0,../images/Planche.png,0.01733,0.01733,Bois brut,Planche,M3,4,315000.00,25,393750
+355,Pl/4.5x100x25,1,1,4.50,100,25,1,0,0,0,0,../images/Planche.png,0.01125,0.01125,Bois brut,Planche,M3,1,300000.00,25,375000
+356,Pl/4.5x125x25,1,1,4.50,125,25,1,0,0,0,0,../images/Planche.png,0.01406,0.01406,Bois brut,Planche,M3,1,300000.00,25,375000
+357,Pl/4.5x150x25,1,1,4.50,150,25,1,0,0,0,0,../images/Planche.png,0.01688,0.01688,Bois brut,Planche,M3,1,300000.00,25,375000
+358,Pl/4.5x175x25,1,1,4.50,175,25,1,0,0,0,0,../images/Planche.png,0.01969,0.01969,Bois brut,Planche,M3,4,315000.00,25,393750
+359,Pl/4x100x16,1,1,4.00,100,16,1,0,0,0,0,../images/Planche.png,0.00640,0.00640,Bois brut,Planche,M3,1,300000.00,0,300000
+360,Pl/4x125x16,1,1,4.00,125,16,1,0,0,0,0,../images/Planche.png,0.00800,0.00800,Bois brut,Planche,M3,1,300000.00,0,300000
+361,Pl/4x150x16,1,1,4.00,150,16,1,0,0,0,0,../images/Planche.png,0.00960,0.00960,Bois brut,Planche,M3,1,300000.00,0,300000
+362,Pl/4x175x16,1,1,4.00,175,16,1,0,0,0,0,../images/Planche.png,0.01120,0.01120,Bois brut,Planche,M3,4,315000.00,0,315000
+363,Pl/4x100x19,1,1,4.00,100,19,1,0,0,0,0,../images/Planche.png,0.00760,0.00760,Bois brut,Planche,M3,1,300000.00,0,300000
+364,Pl/4x125x19,1,1,4.00,125,19,1,0,0,0,0,../images/Planche.png,0.00950,0.00950,Bois brut,Planche,M3,1,300000.00,0,300000
+365,Pl/4x150x19,1,1,4.00,150,19,1,0,0,0,0,../images/Planche.png,0.01140,0.01140,Bois brut,Planche,M3,1,300000.00,0,300000
+366,Pl/4x175x19,1,1,4.00,175,19,1,0,0,0,0,../images/Planche.png,0.01330,0.01330,Bois brut,Planche,M3,4,315000.00,0,315000
+367,"Pl/2,5x100x16",1,1,2.50,100,16,1,0,0,0,0,../images/Planche.png,0.00400,0.00400,Bois brut,Planche,M3,1,300000.00,0,300000
+368,"Pl/2,5x125x16",1,1,2.50,125,16,1,0,0,0,0,../images/Planche.png,0.00500,0.00500,Bois brut,Planche,M3,1,300000.00,0,300000
+369,"Pl/2,5x150x16",1,1,2.50,150,16,1,0,0,0,0,../images/Planche.png,0.00600,0.00600,Bois brut,Planche,M3,1,300000.00,0,300000
+370,"Pl/2,5x175x16",1,1,2.50,175,16,1,0,0,0,0,../images/Planche.png,0.00700,0.00700,Bois brut,Planche,M3,4,315000.00,0,315000
+371,"Pl/2,5x100x19",1,1,2.50,100,19,1,0,0,0,0,../images/Planche.png,0.00475,0.00475,Bois brut,Planche,M3,1,300000.00,0,300000
+372,"Pl/2,5x125x19",1,1,2.50,125,19,1,0,0,0,0,../images/Planche.png,0.00594,0.00594,Bois brut,Planche,M3,1,300000.00,0,300000
+373,"Pl/2,5x150x19",1,1,2.50,150,19,1,0,0,0,0,../images/Planche.png,0.00713,0.00713,Bois brut,Planche,M3,1,300000.00,0,300000
+374,"Pl/2,5x175x19",1,1,2.50,175,19,1,0,0,0,0,../images/Planche.png,0.00831,0.00831,Bois brut,Planche,M3,4,315000.00,0,315000
+375,Pl/2x150x16,1,1,2.00,150,16,1,0,0,0,0,../images/Planche.png,0.00480,0.00480,Bois brut,Planche,M3,1,300000.00,0,300000
+376,Pl/2x175x16,1,1,2.00,175,16,1,0,0,0,0,../images/Planche.png,0.00560,0.00560,Bois brut,Planche,M3,4,315000.00,0,315000
+377,Pl/2x150x19,1,1,2.00,150,19,1,0,0,0,0,../images/Planche.png,0.00570,0.00570,Bois brut,Planche,M3,1,300000.00,0,300000
+378,Pl/2x175x19,1,1,2.00,175,19,1,0,0,0,0,../images/Planche.png,0.00665,0.00665,Bois brut,Planche,M3,4,315000.00,0,315000
+379,Ma/2x100x50,1,2,2.00,100,50,1,0,0,0,0,../images/Madrier.png,0.01000,0.01000,Bois brut,Madrier,M3,4,315000.00,0,315000
+380,Ma/2x125x50,1,2,2.00,125,50,1,0,0,0,0,../images/Madrier.png,0.01250,0.01250,Bois brut,Madrier,M3,4,315000.00,0,315000
+381,Ma/2x150x50,1,2,2.00,150,50,1,0,0,0,0,../images/Madrier.png,0.01500,0.01500,Bois brut,Madrier,M3,4,315000.00,0,315000
+382,Ma/2x175x50,1,2,2.00,175,50,1,0,0,0,0,../images/Madrier.png,0.01750,0.01750,Bois brut,Madrier,M3,4,315000.00,0,315000
+383,Ma/2x100x63,1,2,2.00,100,63,1,0,0,0,0,../images/Madrier.png,0.01260,0.01260,Bois brut,Madrier,M3,4,315000.00,0,315000
+384,Ma/2x125x63,1,2,2.00,125,63,1,0,0,0,0,../images/Madrier.png,0.01575,0.01575,Bois brut,Madrier,M3,4,315000.00,0,315000
+385,Ma/2x150x63,1,2,2.00,150,63,1,0,0,0,0,../images/Madrier.png,0.01890,0.01890,Bois brut,Madrier,M3,4,315000.00,0,315000
+386,Ma/2x175x63,1,2,2.00,175,63,1,0,0,0,0,../images/Madrier.png,0.02205,0.02205,Bois brut,Madrier,M3,4,315000.00,0,315000
+387,Ma/2x100x75,1,2,2.00,100,75,1,0,0,0,0,../images/Madrier.png,0.01500,0.01500,Bois brut,Madrier,M3,4,315000.00,0,315000
+388,Ma/2x125x75,1,2,2.00,125,75,1,0,0,0,0,../images/Madrier.png,0.01875,0.01875,Bois brut,Madrier,M3,4,315000.00,0,315000
+389,Ma/2x150x75,1,2,2.00,150,75,1,0,0,0,0,../images/Madrier.png,0.02250,0.02250,Bois brut,Madrier,M3,4,315000.00,0,315000
+390,Ma/2x175x75,1,2,2.00,175,75,1,0,0,0,0,../images/Madrier.png,0.02625,0.02625,Bois brut,Madrier,M3,4,315000.00,0,315000
+391,Ma/2x100x50,4,18,2.00,100,50,0,0,0,0,0,../images/Planche.png,0.01000,0.01000,Sechoir,Planche,M3,0,0.00,0,0
+392,Ma/2x125x50,4,18,2.00,125,50,0,0,0,0,0,../images/Planche.png,0.00750,0.01250,Sechoir,Planche,M3,0,0.00,0,0
+393,"Ma/1,5x100x50",4,18,1.50,100,50,0,0,0,0,0,../images/Planche.png,0.00750,0.00750,Sechoir,Planche,M3,0,0.00,0,0
+394,Ma/1x100x50,4,18,1.00,100,50,0,0,0,0,0,../images/Planche.png,0.00500,0.00500,Sechoir,Planche,M3,0,0.00,0,0
+395,Ma/1x125x50,4,18,1.00,125,50,0,0,0,0,0,../images/Planche.png,0.00625,0.00625,Sechoir,Planche,M3,0,0.00,0,0
+396,"MA/0,75x100x50",4,18,0.75,100,50,0,0,0,0,0,../images/Planche.png,0.00375,0.00375,Sechoir,Planche,M3,0,0.00,0,0
+397,"Ma/0,75x125x50",4,18,0.75,125,50,0,0,0,0,0,../images/Planche.png,0.00469,0.00469,Sechoir,Planche,M3,0,0.00,0,0
+401,"Pl/2,5x50x19",4,17,2.50,50,19,0,0,0,0,0,../images/Planche.png,0.00238,0.00238,Sechoir,Planche,M3,0,1.00,0,0
+402,"Pl/2,5x50x25",4,17,2.50,50,25,0,0,0,0,0,../images/Planche.png,0.00313,0.00313,Sechoir,Planche,M3,0,2.00,0,0
+403,"Pl/2,5x75x25",4,17,2.50,75,25,0,0,0,0,0,../images/Planche.png,0.00469,0.00469,Sechoir,Planche,M3,0,3.00,0,0
+404,"Pl/2,5x100x25",4,17,2.50,100,25,0,0,0,0,0,../images/Planche.png,0.00625,0.00625,Sechoir,Planche,M3,0,4.00,0,0
+405,"Pl/2,5x125x25",4,17,2.50,125,25,0,0,0,0,0,../images/Planche.png,0.00781,0.00781,Sechoir,Planche,M3,0,5.00,0,0
+406,"Pl/2,5x150x25",4,17,2.50,150,25,0,0,0,0,0,../images/Planche.png,0.00938,0.00938,Sechoir,Planche,M3,0,6.00,0,0
+407,Ba/5x125x44,1,3,5.00,125,44,1,0,0,0,0,../images/Battant.png,0.02138,0.02750,Bois brut,Battant,M3,1,300000.00,35,300000
+408,Ba/5.5x125x44,1,3,5.50,125,44,1,0,0,0,0,../images/Battant.png,0.03025,0.03025,Bois brut,Battant,M3,1,300000.00,50,450000
+409,Ba/2.5x100x32,4,16,2.50,100,32,0,0,0,0,0,../images/Planche.png,0.00640,0.00800,Sechoir,Planche,M3,0,0.00,0,0
+410,Ba/2.5x75x32,4,16,2.50,75,32,0,0,0,0,0,../images/Planche.png,0.00480,0.00600,Sechoir,Planche,M3,0,0.00,0,0
+411,Ma/2.5x100x50,4,18,2.50,100,50,0,0,0,0,0,../images/Planche.png,0.01000,0.01250,Sechoir,Planche,M3,0,0.00,0,0
+412,Ma/2.5x125x50,4,18,2.50,125,50,0,0,0,0,0,../images/Planche.png,0.00750,0.01563,Sechoir,Planche,M3,0,0.00,0,0
+413,Ma/2.5x150x50,4,18,2.50,150,50,0,0,0,0,0,../images/Planche.png,0.01500,0.01875,Sechoir,Planche,M3,0,0.00,0,0
+414,Ma/2.5x175x50,4,18,2.50,175,50,0,0,0,0,0,../images/Planche.png,0.01750,0.02188,Sechoir,Planche,M3,0,0.00,0,0
+415,Ma/2.5x100x75,4,18,2.50,100,75,0,0,0,0,0,../images/Planche.png,0.01000,0.01875,Sechoir,Planche,M3,0,0.00,0,0
+416,Ma/2.5x125x75,4,18,2.50,125,75,0,0,0,0,0,../images/Planche.png,0.00750,0.02344,Sechoir,Planche,M3,0,0.00,0,0
+417,Ma/2.5x150x75,4,18,2.50,150,75,0,0,0,0,0,../images/Planche.png,0.01500,0.02813,Sechoir,Planche,M3,0,0.00,0,0
+418,Ma/2.5x175x75,4,18,2.50,175,75,0,0,0,0,0,../images/Planche.png,0.01750,0.03281,Sechoir,Planche,M3,0,0.00,0,0
+419,Ma/2x150x50,4,18,2.00,150,50,0,0,0,0,0,../images/Planche.png,0.01500,0.01500,Sechoir,Planche,M3,0,0.00,0,0
+420,Ma/2x175x50,4,18,2.00,175,50,0,0,0,0,0,../images/Planche.png,0.01750,0.01750,Sechoir,Planche,M3,0,0.00,0,0
+132,G28p/2.5x28x28,3,5,2.50,28,28,40,0,0,0,0,../images/Gorge.png,2.50000,0.00196,Bois profile,A peindre,ML,20,1080.35,-15,918
+133,CJ40p/2.5x40x14,3,5,2.50,40,14,40,0,0,0,0,../images/Couvre-joint.png,2.50000,0.00140,Bois profile,A peindre,ML,20,1080.35,-15,918
+136,Pt60p/2.5x60x14,3,5,2.50,60,14,30,0,0,0,0,../images/Plinthe.png,2.50000,0.00210,Bois profile,A peindre,ML,20,1080.35,-15,918
+139,CA90p/2.5x90x25,3,5,2.50,90,25,8,0,0,0,0,NULL,2.50000,0.00563,Bois profile,A peindre,ML,23,1865.75,-15,1586
+140,Pt90p/2.5x90x14,3,5,2.50,90,14,20,0,0,0,0,../images/Plinthe.png,2.50000,0.00315,Bois profile,A peindre,ML,21,1276.70,-15,1085
+142,G28p/2x28x28,3,5,2.00,28,28,50,0,0,0,0,../images/Gorge.png,2.00000,0.00157,Bois profile,A peindre,ML,20,1080.35,-15,918
+143,CJ40p/2x40x14,3,5,2.00,40,14,50,0,0,0,0,../images/Couvre-joint.png,2.00000,0.00112,Bois profile,A peindre,ML,20,1080.35,-15,918
+146,Pt60p/2x60x14,3,5,2.00,60,14,30,0,0,0,0,../images/Plinthe.png,2.00000,0.00168,Bois profile,A peindre,ML,20,1080.35,-15,918
+149,CA90p/2x90x25,3,5,2.00,90,25,10,0,0,0,0,NULL,2.00000,0.00450,Bois profile,A peindre,ML,23,1865.75,-15,1586
+150,Pt90p/2x90x14,3,5,2.00,90,14,20,0,0,0,0,../images/Plinthe.png,2.00000,0.00252,Bois profile,A peindre,ML,21,1276.70,-15,1085
+152,G28p/1.5x28x28,3,5,1.50,28,28,50,0,0,0,0,../images/Gorge.png,1.50000,0.00118,Bois profile,A peindre,ML,20,1080.35,-15,918
+153,CJ40p/1.5x40x14,3,5,1.50,40,14,50,0,0,0,0,../images/Couvre-joint.png,1.50000,0.00084,Bois profile,A peindre,ML,20,1080.35,-15,918
+156,"Pt60p/1,5x60x14",3,5,1.50,60,14,30,0,0,0,0,../images/Plinthe.png,1.50000,0.00126,Bois profile,A peindre,ML,20,1271.00,-15,1080
+159,CA90p/1.5x90x25,3,5,1.50,90,25,10,0,0,0,0,NULL,1.50000,0.00338,Bois profile,A peindre,ML,23,1865.75,-15,1586
+160,"Pt90p/1,5x90x14",3,5,1.50,90,14,20,0,0,0,0,../images/Plinthe.png,1.50000,0.00189,Bois profile,A peindre,ML,21,1276.70,-15,1085
+162,G28p/1x28x28,3,5,1.00,28,28,100,0,0,0,0,../images/Gorge.png,1.00000,0.00078,Bois profile,A peindre,ML,20,1080.35,-15,918
+163,CJ40p/1x40x14,3,5,1.00,40,14,50,0,0,0,0,../images/Couvre-joint.png,1.00000,0.00056,Bois profile,A peindre,ML,20,1080.35,-15,918
+166,Pt60p/1x60x14,3,5,1.00,60,14,30,0,0,0,0,../images/Plinthe.png,1.00000,0.00084,Bois profile,A peindre,ML,20,1271.00,-15,1080
+169,Pt90p/1x90x14,3,5,1.00,90,14,40,0,0,0,0,../images/Plinthe.png,1.00000,0.00126,Bois profile,A peindre,ML,21,1276.70,-15,1085
+181,G28v/2.5x28x28,3,6,2.50,28,28,40,0,0,0,0,../images/Gorge.png,2.50000,0.00196,Bois profile,A vernir,ML,20,1271.00,0,1271
+182,CJ40v/2.5x40x14,3,6,2.50,40,14,40,0,0,0,0,../images/Couvre-joint.png,2.50000,0.00140,Bois profile,A vernir,ML,20,1271.00,0,1271
+185,Pt60v/2.5x60x14,3,6,2.50,60,14,30,0,0,0,0,../images/Plinthe.png,2.50000,0.00210,Bois profile,A vernir,ML,20,1271.00,0,1271
+188,CA90v/2.5x90x25,3,6,2.50,90,25,8,0,0,0,0,NULL,2.50000,0.00563,Bois profile,A vernir,ML,23,2195.00,0,2195
+189,Pt90v/2.5x90x14,3,6,2.50,90,14,20,0,0,0,0,../images/Plinthe.png,2.50000,0.00315,Bois profile,A vernir,ML,21,1502.00,0,1502
+191,G28v/2x28x28,3,6,2.00,28,28,50,0,0,0,0,../images/Gorge.png,2.00000,0.00157,Bois profile,A vernir,ML,20,1271.00,0,1271
+192,CJ40v/2x40x14,3,6,2.00,40,14,50,0,0,0,0,../images/Couvre-joint.png,2.00000,0.00112,Bois profile,A vernir,ML,20,1271.00,0,1271
+195,Pt60v/2x60x14,3,6,2.00,60,14,30,0,0,0,0,../images/Plinthe.png,2.00000,0.00168,Bois profile,A vernir,ML,20,1271.00,0,1271
+198,CA90v/2x90x25,3,6,2.00,90,25,10,0,0,0,0,NULL,2.00000,0.00450,Bois profile,A vernir,ML,23,2195.00,0,2195
+199,Pt90v/2x90x14,3,6,2.00,90,14,20,0,0,0,0,../images/Plinthe.png,2.00000,0.00252,Bois profile,A vernir,ML,21,1502.00,0,1502
+201,G28v/1.5x28x28,3,6,1.50,28,28,50,0,0,0,0,../images/Gorge.png,1.50000,0.00118,Bois profile,A vernir,ML,20,1271.00,0,1271
+202,CJ40v/1.5x40x14,3,6,1.50,40,14,50,0,0,0,0,../images/Couvre-joint.png,1.50000,0.00084,Bois profile,A vernir,ML,20,1271.00,0,1271
+205,"Pt60v/1,5x60x14",3,6,1.50,60,14,30,0,0,0,0,../images/Plinthe.png,1.50000,0.00126,Bois profile,A vernir,ML,20,1271.00,0,1271
+208,CA90v/1.5x90x25,3,6,1.50,90,25,10,0,0,0,0,NULL,1.50000,0.00338,Bois profile,A vernir,ML,23,2195.00,0,2195
+209,"Pt90v/1,5x90x14",3,6,1.50,90,14,20,0,0,0,0,../images/Plinthe.png,1.50000,0.00189,Bois profile,A vernir,ML,21,1502.00,0,1502
+211,G28v/1x28x28,3,6,1.00,28,28,100,0,0,0,0,../images/Gorge.png,1.00000,0.00078,Bois profile,A vernir,ML,20,1271.00,0,1271
+212,CJ40v/1x40x14,3,6,1.00,40,14,50,0,0,0,0,../images/Couvre-joint.png,1.00000,0.00056,Bois profile,A vernir,ML,20,1271.00,0,1271
+215,Pt60v/1x60x14,3,6,1.00,60,14,30,0,0,0,0,../images/Plinthe.png,1.00000,0.00084,Bois profile,A vernir,ML,20,1271.00,0,1271
+218,Pt90v/1x90x14,3,6,1.00,90,14,40,0,0,0,0,../images/Parquet.png,1.00000,0.00126,Bois profile,A vernir,ML,21,1502.00,0,1502
+239,BR/5x160,7,10,6.00,0,0,0,160,0,0,0,../images/Rond.png,6.00000,0.12058,Bois rond,BR,ML,26,3675.00,0,3675
+240,BR/6x120,7,10,6.00,0,0,0,120,0,0,0,../images/Rond.png,6.00000,0.06782,Bois rond,BR,ML,24,2205.00,0,2205
+241,BR/6x140,7,10,6.00,0,0,0,140,0,0,0,../images/Rond.png,6.00000,0.09232,Bois rond,BR,ML,25,2835.00,0,2835
+242,BR/6x160,7,10,6.00,0,0,0,160,0,0,0,../images/Rond.png,6.00000,0.12058,Bois rond,BR,ML,26,3675.00,0,3675
+243,BR/5x120,7,10,5.00,0,0,0,120,0,0,0,../images/Rond.png,5.00000,0.05652,Bois rond,BR,ML,24,2205.00,0,2205
+244,BR/5x140,7,10,5.00,0,0,0,140,0,0,0,../images/Rond.png,5.00000,0.07693,Bois rond,BR,ML,25,2835.00,0,2835
+245,BR/4x100,7,10,4.00,0,0,0,100,0,0,0,../images/Rond.png,4.00000,0.03140,Bois rond,BR,ML,22,1733.00,0,1733
+246,BR/4x120,7,10,4.00,0,0,0,120,0,0,0,../images/Rond.png,4.00000,0.04522,Bois rond,BR,ML,24,2205.00,0,2205
+247,BR/4x140,7,10,4.00,0,0,0,140,0,0,0,../images/Rond.png,4.00000,0.06154,Bois rond,BR,ML,25,2835.00,0,2835
+248,BR/4x160,7,10,4.00,0,0,0,160,0,0,0,../images/Rond.png,4.00000,0.08038,Bois rond,BR,ML,26,3675.00,0,3675
+249,BR/4x80,7,10,4.00,0,0,0,80,0,0,0,../images/Rond.png,4.00000,0.02010,Bois rond,BR,ML,19,1260.00,0,1260
+250,BR/2.5x100,7,10,2.50,0,0,0,100,0,0,0,../images/Rond.png,2.50000,0.01963,Bois rond,BR,ML,22,1733.00,0,1733
+251,BR/2.5x60,7,10,2.50,0,0,0,60,0,0,0,../images/Rond.png,2.50000,0.00707,Bois rond,BR,ML,17,893.00,0,893
+252,BR/2.5x70,7,10,2.50,0,0,0,70,0,0,0,../images/Rond.png,2.50000,0.00962,Bois rond,BR,ML,18,1050.00,0,1050
+253,BR/2.5x80,7,10,2.50,0,0,0,80,0,0,0,../images/Rond.png,2.50000,0.01256,Bois rond,BR,ML,19,1260.00,0,1260
+254,BR/2x100,7,10,2.00,0,0,0,100,0,0,0,../images/Rond.png,2.00000,0.01570,Bois rond,BR,ML,22,1733.00,0,1733
+255,BR/2x40,7,10,2.00,0,0,0,40,0,0,0,../images/Rond.png,2.00000,0.00251,Bois rond,BR,ML,15,683.00,0,683
+256,BR/2x50,7,10,2.00,0,0,0,50,0,0,0,../images/Rond.png,2.00000,0.00393,Bois rond,BR,ML,16,735.00,0,735
+257,BR/2x60,7,10,2.00,0,0,0,60,0,0,0,../images/Rond.png,2.00000,0.00565,Bois rond,BR,ML,17,893.00,0,893
+258,BR/2x70,7,10,2.00,0,0,0,70,0,0,0,../images/Rond.png,2.00000,0.00769,Bois rond,BR,ML,18,1050.00,0,1050
+259,BR/2x80,7,10,2.00,0,0,0,80,0,0,0,../images/Rond.png,2.00000,0.01005,Bois rond,BR,ML,19,1260.00,0,1260
+421,DO/2.5xL,1,19,2.50,0,0,0,0,0,0,0,,2.50000,0.00000,Bois brut,Doss,ML,0,550.00,0,550
+422,DO/2.5xS,1,19,2.50,0,0,0,0,0,0,0,,2.50000,0.00000,Bois brut,Doss,ML,0,500.00,0,500
+423,DO/2xL,1,19,2.00,0,0,0,0,0,0,0,,2.00000,0.00000,Bois brut,Doss,ML,0,550.00,0,550
+424,DO/2xS,1,19,2.00,0,0,0,0,0,0,0,,2.00000,0.00000,Bois brut,Doss,ML,0,500.00,0,500
+268,Dalle caillebotis,5,12,0.50,1,0,0,0,0,0,0,NULL,1.00000,0.00000,Produit jardin,PJ,U,0,0.00,0,0
+269,Cache-pot,5,12,0.40,0,0,0,0,0,0,0,NULL,1.00000,0.00000,Produit jardin,PJ,U,0,0.00,0,0
+270,Bac a fleurs,5,12,0.10,1,0,0,0,0,0,0,NULL,1.00000,0.00000,Produit jardin,PJ,U,0,0.00,0,0
+271,Banc,5,12,0.00,0,0,0,0,0,0,0,NULL,1.00000,0.00000,Produit jardin,PJ,U,0,0.00,0,0
+272,Chaise,5,12,0.00,0,0,0,0,0,0,0,NULL,1.00000,0.00000,Produit jardin,PJ,U,0,0.00,0,0
+273,Fauteuil,5,12,0.00,0,0,0,0,0,0,0,NULL,1.00000,0.00000,Produit jardin,PJ,U,0,0.00,0,0
+274,Poubelle,5,12,0.00,0,0,0,0,0,0,0,NULL,1.00000,0.00000,Produit jardin,PJ,U,0,0.00,0,0
+275,Table basse,5,12,0.00,0,0,0,0,0,0,0,NULL,1.00000,0.00000,Produit jardin,PJ,U,0,0.00,0,0
+276,Table de pique-nique,5,12,0.00,0,0,0,0,0,0,0,NULL,1.00000,0.00000,Produit jardin,PJ,U,0,0.00,0,0
+277,Tabouret,5,12,0.00,0,0,0,0,0,0,0,NULL,1.00000,0.00000,Produit jardin,PJ,U,0,0.00,0,0
+260,Px/2.5x320x18,8,11,2.50,320,18,0,0,0,0,0,NULL,0.00000,0.00000,Panneaux,Panneaux,,0,0.00,0,0
+261,Px/2.5x320x25,8,11,2.50,320,25,0,0,0,0,0,NULL,0.00000,0.00000,Panneaux,Panneaux,,0,0.00,0,0
+262,Px/2.5x460x18,8,11,2.50,460,18,0,0,0,0,0,NULL,0.00000,0.00000,Panneaux,Panneaux,,0,0.00,0,0
+263,Px/2.5x460x25,8,11,2.50,460,25,0,0,0,0,0,NULL,0.00000,0.00000,Panneaux,Panneaux,,0,0.00,0,0
+264,Px/2x320x18,8,11,2.00,320,18,0,0,0,0,0,NULL,0.00000,0.00000,Panneaux,Panneaux,,0,0.00,0,0
+265,Px/2x320x25,8,11,2.00,320,25,0,0,0,0,0,NULL,0.00000,0.00000,Panneaux,Panneaux,,0,0.00,0,0
+266,Px/2x460x18,8,11,2.00,460,18,0,0,0,0,0,NULL,0.00000,0.00000,Panneaux,Panneaux,,0,0.00,0,0
+267,Px/2x460x25,8,11,2.00,460,25,0,0,0,0,0,NULL,0.00000,0.00000,Panneaux,Panneaux,,0,0.00,0,0

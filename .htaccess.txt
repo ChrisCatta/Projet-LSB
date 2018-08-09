@@ -1,0 +1,5 @@
+DENY FROM ALL
+
+Allow from localhost
+ALLOW FROM 192.168.8.0/20
+ALLOW FROM 127.0.0.1

@@ -1,0 +1,103 @@
+<?php
+session_start();
+ include('../modeles/enteteAdmin.php'); ?>
+ <table width="1350" border="0" cellpadding="100" cellspacing="10"  bgcolor="#ABAD68">
+  <tr >
+    <td height="350" valign="top">
+<!--div class="row">
+  <div class="col-xs-offset-2 col-xs-8">
+      <h3>Listes des Articles</h3>
+      </div>
+    </div-->
+    <div class="row">
+      <div class="col-xs-2">
+      
+  
+    <?php
+   include('../scripts/connexionDB.php');
+    $retour=connexion();
+//$c=$retour[0];
+$link=$retour[0];
+    
+    include('../modeles/bar_menu.php'); 
+    bar_sortie(4);
+    echo ' </div> 
+
+    <div class="col-xs-8 ">';
+  
+
+   $sqlquery="select F.ID_FA, F.REF_FACT, F.DATE_FA, F.DATE_ECHE, CO.ID_CO, CO.REF_CO, CL.ID_C, CL.RAISSO_C, SUM( C.QTE_CO * A.PRIX_U ) AS THT,  SUM( C.QTE_CO * A.PRIX_U )*(1+0.20) as 'TTC'
+         FROM FACTURE F, COMMANDE CO, CONTENIR_CO C, ARTICLE A, CLIENT CL, LIVRAISON L
+         WHERE F.ID_CO = CO.ID_CO
+         AND CO.ID_CO=L.ID_CO
+AND CO.ID_C = CL.ID_C
+AND CO.ID_CO = C.ID_CO
+AND C.ID_A = A.ID_A
+GROUP BY F.ID_FA, F.REF_FACT, F.DATE_FA, F.DATE_ECHE, CO.ID_CO, CO.REF_CO, CL.ID_C, CL.RAISSO_C";
+   $result=mysqli_query($sqlquery);
+   panel_tab('panel-info',' <img src="../images/facture.gif" width="100" heigth="100" class="img-circle">&nbsp;&nbsp;&nbsp;&nbsp;Listes des Factures');
+   echo '
+   <table class="table table-bordered table-striped table-condensed">
+   <tr class="info">
+      <td><form name="formajout" action="SortieAjoutFacture.php" method="post"><input name="SortieFacture" type="image" src="../images/ajoutSortie.gif" width="25" heigth="25" title="Ajouter une Facture"></form></td>
+      <td></td>
+      <td></td>
+   
+      <td><strong>Identifiant</strong></td>
+      <td><strong>Facture</strong></td>
+      <td><strong>Date_Facture</strong></td>
+      <td><strong>Date_Echéance</strong></td>
+      <td><strong>Commande</strong></td>
+      <td><strong>Client</strong></td>
+      <td><strong>T.H.T</strong></td>
+      <td><strong>T.T.C</strong></td>
+   </tr>';
+   
+   while($row=mysqli_fetch_array($result,MYSQLI_ASSOC))
+   {
+    
+    echo '
+       <tr>
+            <td><form name="AfficheDetail" action="SortieDetailFacture.php" method="post"><input name="SortieDetailFacture" type="image" src="../images/loupe.PNG" width="25" heigth="25" value="'.$row['ID_FA'].'" title="Détail Facture"></form></td>
+
+           <td><form name="formsupprimer" action="SortieSupprimerFacture.php" method="post"><input name="SortieSupprimerFacture" type="image" src="../images/Sortiesup.PNG" width="25" heigth="25" value="'.$row['ID_FA'].'" title="Supprimer cette Facture"></form></td>
+           
+            <td><form name="formpdf" action="SortiePdfFacture.php" method="post" target="_blank"><input name="pdfcommande" type="image" src="../images/pdf.PNG" width="25" heigth="25" value="'.$row['ID_FA'].'" title="Afficher La Facture"></form></td>
+
+          <td>'.$row['ID_FA'].'</td>
+           <td>'.$row['REF_FACT'].'</td>
+           <td>'.$row['DATE_FA'].'</td>
+           <td>'.$row['DATE_ECHE'].'</td>
+           <td>'.$row['ID_CO'].' - '.$row['REF_CO'].'</td>
+           <td>'.$row['ID_C'].' '.$row['RAISSO_C'].'</td>
+           <td>'.$row['THT'].'</td>
+           <td>'.$row['TTC'].'</td>
+       </tr>
+    ';
+   }
+   echo'</table>
+   
+ 
+    <!--Div de la fonction panel_tab-->
+    </div>
+    </div>
+    </div>';
+     
+     
+   
+      
+   
+    ?> 
+
+
+
+
+ </td>
+
+  </tr>
+
+ 
+</table>
+<?php 
+include('../modeles/deconnexion.php');
+include('../modeles/pied.php'); ?>

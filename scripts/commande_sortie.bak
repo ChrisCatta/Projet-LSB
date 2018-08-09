@@ -1,0 +1,92 @@
+<?php
+session_start();
+ include('../modeles/enteteAdmin.php'); ?>
+ <table width="1350" border="0" cellpadding="100" cellspacing="10"  bgcolor="#ABAD68">
+  <tr >
+    <td height="350" valign="top">
+<!--div class="row">
+  <div class="col-xs-offset-2 col-xs-8">
+      <h3>Listes des Articles</h3>
+      </div>
+    </div-->
+    <div class="row">
+      <div class="col-xs-2">
+      
+  
+    <?php
+   include('../scripts/connexionDB.php');
+    $retour=connexion();
+//$c=$retour[0];
+$link=$retour[0];
+    
+    include('../modeles/bar_menu.php'); 
+    bar_sortie(1);
+    echo ' </div> 
+
+    <div class="col-xs-8 ">';
+  
+   $sqlquery="select C.ID_CO, C.REF_CO, C.DATE_CO, CL.ID_C, CL.RAISSO_C, U.LOGIN, U.NOM, U.PRENOM
+              FROM COMMANDE C, CLIENT CL, UTILISATEUR U
+              WHERE U.LOGIN=C.LOGIN AND C.ID_C=CL.ID_C
+              order by ID_CO ASC";
+   $result=mysqli_query($sqlquery);
+   panel_tab('panel-info','<img src="../images/SortieAjout.PNG" class="img-circle" width="100" heigth="100">&nbsp;&nbsp;&nbsp;Listes des Commandes');
+   echo '
+   <table class="table table-bordered table-striped table-condensed">
+   <tr class="info">
+      <td><form name="formajout" action="SortieAjoutCommande.php" method="post"><input name="Sortieajoutcommande" type="image" src="../images/ajoutSortie.gif" width="25" heigth="25" title="Ajouter une Commande"></form></td>
+      
+     
+      
+      <td><strong>Identifiant</strong></td>
+      <td><strong>Réference</strong></td>
+      <td><strong>Date_commande</strong></td>
+      <td><strong>Client</strong></td>
+      <td><strong>Responsable</strong></td>
+
+   </tr>';
+   
+   while($row=mysqli_fetch_array($result,MYSQLI_ASSOC))
+   {
+    
+    echo '
+       <tr>
+           <td><form name="formsupprimer" action="Sortiesupprimercommande.php" method="post"><input name="Sortiesupprimercommande" type="image" src="../images/Sortiesup.PNG" width="25" heigth="25" value="'.$row['ID_CO'].'" title="Supprimer cette Commande"></form></td>
+           
+           
+           <td>'.$row['ID_CO'].'</td>
+           <td>'.$row['REF_CO'].'</td>
+           <td>'.$row['DATE_CO'].'</td>
+           <td>'.$row['ID_C'].' - '.$row['RAISSO_C'].'</td>
+           <td>'.$row['NOM'].' '.$row['PRENOM'].'</td>
+           
+       </tr>
+    ';
+   }
+   echo'</table>
+   
+ 
+    <!--Div de la fonction panel_tab-->
+    </div>
+    </div>
+    </div>';
+     
+     
+   
+      
+   
+    ?> 
+
+
+
+
+ </td>
+
+  </tr>
+
+  <form name="form1" action="ajoutcommande.php" method="post"></form>
+
+</table>
+<?php 
+include('../modeles/deconnexion.php');
+include('../modeles/pied.php'); ?>

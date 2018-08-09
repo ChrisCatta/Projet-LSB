@@ -1,0 +1,395 @@
+body
+{
+    height: 100%;
+	padding-top:10px;
+	background: url('./images/bois290.jpg') fixed repeat;
+	background-color: DarkGray  ;
+}
+.imp{
+  background:none;
+	background-color: none  ;
+  }
+#container{
+  padding-left: 0;
+  padding-right: 0;
+}
+.panel-heading{
+  padding: 0;
+  border:0px;
+}
+.panel-default>.panel-heading,
+.panel-info>.panel-heading{
+  background:transparent ;
+  border:0px;
+  }
+.panel,
+.panel-success,
+.panel-success>.panel-heading {
+    color: #3c763d;
+  background: transparent;
+  border:0px;
+    }
+[class*="col"] 
+{
+	margin-bottom: 20px;
+  padding-left: 0px;
+}
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover{
+background: transparent;
+}
+.nav>li>a:focus, .nav>li>a:hover{
+  background-color: rgba(140, 130, 70, 0.5) ;
+
+}
+.well
+{
+	background-color: #CCC;
+	padding: 20px;
+}
+.well1
+{
+	background-color: LightSteelBlue   ;
+	padding: 20px;
+}
+.interdit
+{
+	color:red;
+}
+.well2
+{
+	background-color: WhiteSmoke ;
+	padding: 20px;
+}
+.menu{
+	line-height: 0%;
+}
+.well3{
+	background-color: rgba(140, 130, 70, 0.5) ;
+      border:1px solid white;
+	padding: 10px;
+      margin-bottom: 20px ;
+}
+table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd{
+  background-color: rgba(140, 130, 70, 0.5) ;
+}
+table.dataTable tbody th, table.dataTable tbody td{
+ padding: 5px 5px;
+  font-size: 1em;
+}
+table.dataTable thead th, table.dataTable thead td{
+  padding: 5px 5px;
+  font-size: 0.8em;
+}
+table.dataTable tbody tr{
+  background-color:rgba(140, 130, 70, 0.7)  ;
+}
+table.dataTable.hover tbody tr:hover, table.dataTable.display tbody tr:hover{
+  background-color:rgba(140, 130, 70, 0.9)  ;
+}
+table.dataTable.display tbody tr:hover>.sorting_1, table.dataTable.order-column.hover tbody tr:hover>.sorting_1{
+  background-color: rgba(200 180, 80, 0.6) ;
+}
+table.dataTable.display tbody tr.even>.sorting_1, table.dataTable.order-column.stripe tbody tr.even>.sorting_1{
+  background-color: rgba(200, 180, 80, 0.6) ;
+}
+table.dataTable.display tbody tr.odd>.sorting_1, table.dataTable.order-column.stripe tbody tr.odd>.sorting_1{
+  background-color: rgba(200, 180, 80, 0.4) ;
+
+}
+table.dataTable.order-column tbody tr>.sorting_1, 
+table.dataTable.order-column tbody tr>.sorting_2, 
+table.dataTable.order-column tbody tr>.sorting_3, 
+table.dataTable.display tbody tr>.sorting_1, 
+table.dataTable.display tbody tr>.sorting_2, 
+table.dataTable.display tbody tr>.sorting_3{
+background-color: rgba(200, 180, 80, 0.4) ;
+}
+thead{
+  background-color: rgba(140, 130, 70, 0.6) ;
+}
+.titre1
+{
+	font-family: 'Times New Roman', Times, sans-serif;
+line-height: 1em;
+color: #abaab5;
+font-weight:bold;
+font-style:italic;
+font-size: 50px;
+text-shadow:0px 0px 0 rgb(115,114,125),1px 0px 0 rgb(102,101,112),2px 0px 0 rgb(90,89,100),3px 0px 0 rgb(78,77,88),4px 0px 0 rgb(65,64,75),5px 0px 0 rgb(53,52,63),6px 0px 0 rgb(40,39,50),7px 0px 0 rgb(28,27,38), 8px 0px 0 rgb(16,15,26),9px 0px 8px rgba(0,0,0,0.55),9px 0px 1px rgba(0,0,0,0.5),0px 0px 8px rgba(0,0,0,.2);
+}
+#logo
+{
+	font-family: 'Times New Roman', Times, sans-serif;
+line-height: 1em;
+color: #abaab5;
+font-weight:bold;
+font-style:italic;
+font-size: 12px;
+/*text-shadow:0px 0px 0 rgb(115,114,125),1px 0px 0 rgb(102,101,112),2px 0px 0 rgb(90,89,100),3px 0px 0 rgb(78,77,88),4px 0px 0 rgb(65,64,75),5px 0px 0 rgb(53,52,63),6px 0px 0 rgb(40,39,50),7px 0px 0 rgb(28,27,38), 8px 0px 0 rgb(16,15,26),9px 0px 8px rgba(0,0,0,0.55),9px 0px 1px rgba(0,0,0,0.5),0px 0px 8px rgba(0,0,0,.2);*/
+
+}
+.well4
+{
+	background-color:rgba(140, 130, 70, 0.7)  ;
+	padding: 20px;
+}
+.well5
+{
+	background-color:AliceBlue    ;
+	padding: 20px;
+}
+.ligneCommande
+{
+	color:black;
+	font-size: 12px;
+        padding-top: 5px;
+
+}
+.well10
+{
+	background-color:LightGray;
+	padding: 20px;
+}
+.ui-datepicker {
+    width: 10em;
+}
+.ui-datepicker table {
+    font-size: .7em;
+}
+.ui-spinner-input{
+  padding:0;
+  width:100%;
+}
+.ui-widget-content {
+  /*background-color: rgba(140, 130, 70, 0.5) ;*/
+  background: transparent;
+  border:0px;
+  color: #493026;
+}
+.ui-widget-header {
+    border: 0px;
+    background: transparent;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.ui-widget {
+   font-size:1em;
+   line-height:1.8em;
+  background-color: rgba(140, 130, 70, 0.5) ;
+}
+.select-menu {
+   height:30px;
+  }
+.ajoute{
+  opacity:0;
+  }
+.plus{
+  background: url('./images/plus.PNG'); 
+  background-size:25px;
+  width:25px; 
+  height:25px;
+  }
+.affiche{
+  background: url('./images/loupe.PNG'); 
+  background-size:25px;
+  width:25px; 
+  height:25px;
+  }
+.facture{
+  background: url('./images/PDF.PNG'); 
+  background-size:25px;
+  width:25px; 
+  height:25px;
+  }
+.supprime{
+  background: url('./images/sup.PNG'); 
+  background-size:25px;
+  width:25px; 
+  height:25px;
+  }
+.quantite{
+  background: url('./images/plus.PNG'); 
+  background-size:25px;
+  width:25px; 
+  height:25px;
+  }
+  #div-type, 
+  #div-article{
+    display: inline;
+  }
+ /* div {
+    border:1px dotted gray;
+    margin: 10px;
+    padding: 10px;
+  }
+  .cache{
+    visibility: hidden;
+  }*/
+tr.selected
+{
+  background-color: #fd6602;
+  color:#030303;
+  border-width: 0px 1px 0px 1px;
+  border-color: #f02c2d;
+  border-style: solid;
+  width: 277px;
+}
+.success{
+  background-color: transparent;
+}
+  table{
+      width: 100%;
+      color:#333
+    }
+td{
+      border: 1px dotted #f4f2f2;
+      padding-left: 2px;
+    }
+th.masque,
+ tr.masque{
+      visibility: hidden;
+      width:0px;
+    }
+   input.chiffre{
+    width: 50px;
+   }
+   input[type=file]{
+    width: 150px;
+   }
+   span{
+    color:#2d1801;
+   }
+   a{
+    color:#2d1801;
+   }
+.row{
+    padding-left: 15px;
+    padding-right: 15px;
+   }
+.btn-default,
+.btn-primary{
+    background: #8a6d3b url(jquery/css/images/ui-bg_highlight-hard_20_0972a5_1x100.png) 50% 50% repeat-x;
+   }
+.btn-default,
+.btn-primary:hover{
+    background: #5b4623 url(jquery/css/images/ui-bg_highlight-hard_20_0972a5_1x100.png) 50% 50% repeat-x;
+   }
+   /*------------------------------BT Select----------------*/
+   .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+    width: 150px;
+}
+.pied{
+  color:white;
+  text-align: center;
+}
+h1, h2, h3, h4, h5 {
+  color: #493026;
+}
+h3{
+  border: 0px;
+}
+a:hover{
+  color: #365f06
+}
+.pull-right{
+  background: transparent;
+  border:0px;
+}
+#cherche1 .stockOK,
+#cherche2 .stockOK,
+#cherche3 .stockOK,
+#ligne-devis .stockOK,
+#ligne-commande .stockOK,
+#devis .stockOK,
+#commande .stockOK,
+#Stock .stockOK{
+background-color:rgba(71,203,0,0.4);
+}
+
+#cherche1 .stockLimite,
+#cherche2 .stockLimite,
+#cherche3 .stockLimite,
+#ligne-devis .stockLimite,
+#ligne-commande .stockLimite,
+#devis .stockLimite,
+#commande .stockLimite,
+#Stock .stockLimite{
+background-color:rgba(255,176,25,0.4);
+}
+
+#cherche1 .stockDown,
+#cherche2 .stockDown,
+#cherche3 .stockDown,
+#ligne-devis .stockDown,
+#ligne-commande .stockDown,
+#devis .stockDown,
+#commande .stockDown,
+#Stock .stockDown{
+background-color:rgba(229,0,1,0.4);
+}
+table {
+    margin-bottom: 15px;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    font-size:0.8em;
+    width:700px;
+}
+table.info td , table.info th{
+  border: 1px solid #3a3a3a;
+ }
+table.info td.noborder{
+border-right:none;
+border-left:none;
+}
+table.display{
+width:720px;
+}
+
+.pied{
+  font-size: 8px;
+   color: black; 
+}
+.entete{
+  font-size: 10px;
+  text-align: left;
+   color: black; 
+   padding-left: 5px;
+}
+.adresse{
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px
+}
+.footer-imp {
+  display: table-cell;
+  text-align: center;
+  vertical-align: bottom;
+}
+.foot{
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+  width: 100%;
+  display: table;
+  text-align: center;
+}
+.montant{
+margin-top:30px;
+}
+.signature{
+margin-top:50px;
+margin-bottom:50px;
+    
+}
+.saut
+   {
+   page-break-inside : avoid;
+   }
+.container-imp{
+width: 700px;
+margin-left: auto;
+margin-right: auto;
+}

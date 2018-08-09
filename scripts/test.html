@@ -1,0 +1,200 @@
+<html><head>
+        <meta charset="utf-8">
+          <title>test ajax</title>
+           <link rel="stylesheet" type="text/css" href="../jquery/css/jquery-ui.css">
+           <link rel="stylesheet" type="text/css" href="../bootsrap/dist/css/bootstrap.min.css">
+           <link rel="stylesheet" type="text/css" href="../LSB.css">
+           <script src="../jquery/js/jquery-3.2.1.min.js"></script>
+           <script src="../jquery/js/jquery-ui.js"></script>
+           <script src="test-ajax.js"></script>
+           <script type="text/javascript">
+    $( "#hide" ).change(function() {
+      $(':checkbox', this).prop('checked', true);
+       if ($(this).is(":checked")) {
+      $( "#spinner" ).removeClass( "cache" );
+    }
+    else{
+      $( "#spinner" ).addClass( "cache" );
+    }
+   } );
+           </script>
+        </head>
+        <body>
+         <div class="row">
+              <div class="col-xs-2">
+                <img src="../images/modifarticle.PNG" class="img-circle" width="100" height="100">
+              </div>
+              <div class="col-xs-9">
+                  <legend><h1>Modification d'un Article</h1></legend>
+              </div>
+          </div>
+            
+    <fieldset>
+      <div class="row">
+              <div class="col-xs-2">
+                      Select catégories :
+                        </div>
+              <div class="col-xs-3">
+                        <div id="div-type">                    <select id="select-type">
+                  <option value="1">Bois brut</option><option value="2">Bois sec</option><option value="3">Bois Travaille</option> 
+                  </select></div>
+                  </div>    
+              <div class="col-xs-2">
+                    Select articles :
+                  </div>    
+              <div class="col-xs-3">
+                        <div id="div-article">                    <select id="select-art" name="Art">
+                  <option value="1">Ma/4,5/175-75</option><option value="2">Ma/4,5/175-63</option><option value="3">Ma/4,5/175-38</option><option value="4">Ma/4,5/150-38</option><option value="5">Ma/4/175-75</option><option value="6">Ma/4/175-63</option><option value="7">Ma/4/175-38</option><option value="8">Ma/4/150-63</option><option value="9">Ma/4/150-50</option><option value="10">Ma/4/150-44</option><option value="11">Ma/4/125-38</option><option value="12">Ma/4/100-100</option><option value="13">Ma/4/75-50</option><option value="14">Ma/4/63-63</option><option value="15">Ma/4/50-50</option><option value="16">Pl/4/175-25</option><option value="17">Pl/4/150-25</option><option value="18">Pl/4/100-25</option><option value="19">Ma/2,5/175-75</option><option value="20">Ma/2,5/175-63</option><option value="21">Ma/2,5/175-38</option><option value="22">Ma/2,5/150-38</option><option value="23">Ma/2,5/150-32</option><option value="24">Ma/2,5/125-38</option><option value="25">Ma/2,5/100-100</option><option value="26">Ma/2,5/100-38</option><option value="27">Ma/2,5/100-32</option><option value="28">Ma/2,5/75-75</option><option value="29">Ma/2,5/75-50</option><option value="30">Ma/2,5/63-63</option><option value="31">Ma/2,5/50-38</option><option value="32">Ma/2,5/32-32</option><option value="33">Pl/2,5/175-25</option><option value="34">Pl/2,5/150-25</option><option value="35">Pl/2,5/125-25</option><option value="36">Pl/2,5/125-19</option><option value="37">Pl/2,5/100-19</option><option value="38">Pl/2,5/75-19</option><option value="39">Ma/2/175-38</option><option value="40">Ma/2/150-32</option><option value="41">Ma/2/125-38</option><option value="42">Ma/2/100-38</option><option value="43">Ma/2/100-32</option><option value="44">Ma/2/75-75</option><option value="45">Ma/2/75-50</option><option value="46">Ma/2/63-63</option><option value="47">Ma/2/50-50</option><option value="48">Ma/2/38-38</option><option value="49">Ma/2/32-32</option><option value="50">Pl/2/175-25</option><option value="51">Pl/2/150-25</option><option value="52">Pl/2/125-25</option><option value="53">Pl/2/125-19</option><option value="54">Pl/2/100-19</option><option value="55">Pl/2/75-19</option><option value="56">Ma/1,5/100-32</option><option value="57">Ma/1/100-32</option><option value="58">Ma/0,75/100-32</option><option value="59">Pl/1,5/125-25</option><option value="60">Pl/1/125-25</option><option value="61">Pl/0,75/125-25</option><option value="62">Pl/1,5/125-19</option><option value="63">Pl/1/125-19</option><option value="64">Pl/0,75/125-19</option><option value="65">Pl/1,5/100-19</option><option value="66">Pl/1/100-19</option><option value="67">Pl/0,75/100-19</option><option value="68">Pl/1,5/75-19</option><option value="69">Pl/1/75-19</option><option value="70">Pl/0,75/75-19</option> 
+                  </select>
+              </div>
+                </div>
+         </div>
+    </fieldset>
+      <div class="row">
+          <div class="col-xs-10">
+              List articles :
+                <div id="div-list-art">                       <table id="test" border="1"> 
+                                <thead>
+                                 <tr>
+                                    <th><strong>Select</strong></th>
+                                    <th><strong>Id</strong></th>
+                                    <th><strong>Désignation</strong></th>
+                                    <th><strong>Type</strong></th>
+                                    <th><strong>Famille</strong></th>
+                                    <th><strong>Long</strong></th>
+                                    <th><strong>Lar</strong></th>
+                                    <th><strong>Epais</strong></th>
+                                    <th><strong>QTe entrée</strong></th>
+                                    <th><strong>Image</strong></th>
+                                 </tr>
+                                </thead>
+    <tbody>
+                           <tr>
+           <td><input id="hide" type="checkbox" name="select"></td>
+           <td>1</td>
+           <td>Ma/4,5/175-75</td>
+           <td>Bois brut</td>
+           <td>Madrier</td>
+           <td>4.50</td>
+           <td>175</td>
+           <td>75</td>
+           <td><input id="spinner" type="spinner" name="appro" class="cache ui-spinner"></td>
+           <td><img src="../images/pasimage.PNG " width="50" height="50" align="center"></td>
+                  </tr><tr>
+           <td><input id="hide" type="checkbox" name="select"></td>
+           <td>2</td>
+           <td>Ma/4,5/175-63</td>
+           <td>Bois brut</td>
+           <td>Madrier</td>
+           <td>4.50</td>
+           <td>175</td>
+           <td>63</td>
+           <td><input id="spinner" type="spinner" name="appro" class="cache ui-spinner"></td>
+           <td><img src="../images/livraison.jpg " width="50" height="50" align="center"></td>
+                  </tr><tr>
+           <td><input id="hide" type="checkbox" name="select"></td>
+           <td>3</td>
+           <td>Ma/4,5/175-38</td>
+           <td>Bois brut</td>
+           <td>Madrier</td>
+           <td>4.50</td>
+           <td>175</td>
+           <td>38</td>
+           <td><input id="spinner" type="spinner" name="appro" class="cache ui-spinner"></td>
+           <td><img src="../images/pasimage.PNG " width="50" height="50" align="center"></td>
+                  </tr><tr>
+           <td><input id="hide" type="checkbox" name="select"></td>
+           <td>4</td>
+           <td>Ma/4,5/150-38</td>
+           <td>Bois brut</td>
+           <td>Madrier</td>
+           <td>4.50</td>
+           <td>150</td>
+           <td>38</td>
+           <td><input id="spinner" type="spinner" name="appro" class="cache ui-spinner"></td>
+           <td><img src="../images/pasimage.PNG " width="50" height="50" align="center"></td>
+                  </tr><tr>
+           <td><input id="hide" type="checkbox" name="select"></td>
+           <td>5</td>
+           <td>Ma/4/175-75</td>
+           <td>Bois brut</td>
+           <td>Madrier</td>
+           <td>4.00</td>
+           <td>175</td>
+           <td>75</td>
+           <td><input id="spinner" type="spinner" name="appro" class="cache ui-spinner"></td>
+           <td><img src="../images/pasimage.PNG " width="50" height="50" align="center"></td>
+                  </tr><tr>
+           <td><input id="hide" type="checkbox" name="select"></td>
+           <td>6</td>
+           <td>Ma/4/175-63</td>
+           <td>Bois brut</td>
+           <td>Madrier</td>
+           <td>4.00</td>
+           <td>175</td>
+           <td>63</td>
+           <td><input id="spinner" type="spinner" name="appro" class="cache ui-spinner"></td>
+           <td><img src="../images/pasimage.PNG " width="50" height="50" align="center"></td>
+                  </tr><tr>
+           <td><input id="hide" type="checkbox" name="select"></td>
+           <td>7</td>
+           <td>Ma/4/175-38</td>
+           <td>Bois brut</td>
+           <td>Madrier</td>
+           <td>4.00</td>
+           <td>175</td>
+           <td>38</td>
+           <td><input id="spinner" type="spinner" name="appro" class="cache ui-spinner"></td>
+           <td><img src="../images/pasimage.PNG " width="50" height="50" align="center"></td>
+                  </tr><tr>
+           <td><input id="hide" type="checkbox" name="select"></td>
+           <td>8</td>
+           <td>Ma/4/150-63</td>
+           <td>Bois brut</td>
+           <td>Madrier</td>
+           <td>4.00</td>
+           <td>150</td>
+           <td>63</td>
+           <td><input id="spinner" type="spinner" name="appro" class="cache ui-spinner"></td>
+           <td><img src="../images/pasimage.PNG " width="50" height="50" align="center"></td>
+                  </tr><tr>
+           <td><input id="hide" type="checkbox" name="select"></td>
+           <td>9</td>
+           <td>Ma/4/150-50</td>
+           <td>Bois brut</td>
+           <td>Madrier</td>
+           <td>4.00</td>
+           <td>150</td>
+           <td>50</td>
+           <td><input id="spinner" type="spinner" name="appro" class="cache ui-spinner"></td>
+           <td><img src="../images/pasimage.PNG " width="50" height="50" align="center"></td>
+                  </tr><tr>
+           <td><input id="hide" type="checkbox" name="select"></td>
+           <td>10</td>
+           <td>Ma/4/150-44</td>
+           <td>Bois brut</td>
+           <td>Madrier</td>
+           <td>4.00</td>
+           <td>150</td>
+           <td>44</td>
+           <td><input id="spinner" type="spinner" name="appro" class="cache ui-spinner"></td>
+           <td><img src="../images/pasimage.PNG " width="50" height="50" align="center"></td>
+                  </tr><tr>
+           <td><input id="hide" type="checkbox" name="select"></td>
+           <td>11</td>
+           <td>Ma/4/125-38</td>
+           <td>Bois brut</td>
+           <td>Madrier</td>
+           <td>4.00</td>
+           <td>125</td>
+           <td>38</td>
+           <td><input id="spinner" type="spinner" name="appro" class="cache ui-spinner"></td>
+           <td><img src="../images/pasimage.PNG " width="50" height="50" align="center"></td>
+                  </tr>
+                  </tbody>
+                  </table>
+                  </div>
+                  </div>
+                  </div>
+                  </body>
+                  </html>

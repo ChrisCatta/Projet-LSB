@@ -1,0 +1,69 @@
+<?php
+session_start();
+ include('../modeles/enteteAdmin.php'); ?>
+ <table width="1350" border="0" cellpadding="100" cellspacing="10"  bgcolor="#ABAD68">
+  <tr >
+    <td height="350" valign="top">
+<!--div class="row">
+  <div class="col-xs-offset-2 col-xs-8">
+      <h3>Système de gestion des stages</h3>
+      </div>
+    </div-->
+    <div class="row">
+      <div class="col-xs-2">
+      
+
+    <?php
+   include('../scripts/connexionDB.php');
+    $retour=connexion();
+//$c=$retour[0];
+$link=$retour[0];
+   
+    include('../modeles/bar_menu.php'); 
+    bar_fournisseur(0);
+    echo ' ';
+  
+   
+    ?> 
+       </div>
+         <div class="col-xs-8">
+     <div id="accordion6"><h5>Présentation de la partie Gestion des Fournisseurs</h5><div>
+
+     <p><h2><img src="../images/fleche.gif" width="50" heigth="50" >&nbsp;&nbsp;&nbsp;Gestion des Fournisseurs</h2></p>
+    <p>
+        Bienvenue dans la partie Gestion des Fournisseurs de l'application qui va vous permettre plusieurs options:
+    
+    <ul>
+       <li>Lister les Fournisseurs</li>
+       <li>Ajouter les Fournisseurs</li>
+       <li>Supprimer les Fournisseurs</li>
+       <li>Modifier les Fournisseurs</li>
+       <li>Rechercher les Fournisseurs</li>
+    </ul>
+    
+    </p>
+  </div>
+  <h5>Démonstration</h5><div>
+   <p>
+    <video controls poster="../images/VideoFournisseur.PNG" width="800" height="400">
+   <source src="../modeles/sintel.mp4" />
+   <source src="../modeles/sintel.webm" />
+   <source src="../modeles/sintel.avi" />
+   </video>
+    </p>
+</div>
+</div>
+</div>
+        </div>
+
+
+ </td>
+
+  </tr>
+
+  
+
+</table>
+<?php 
+include('../modeles/deconnexion.php');
+include('../modeles/pied.php'); ?>

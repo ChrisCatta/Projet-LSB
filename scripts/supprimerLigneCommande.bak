@@ -1,0 +1,79 @@
+<?php
+session_start();
+ include('../modeles/enteteAdmin.php'); ?>
+ <table width="1350" border="0" cellpadding="100" cellspacing="10"  bgcolor="#ABAD68">
+  <tr >
+    <td height="350" valign="top">
+<!--div class="row">
+  <div class="col-xs-offset-2 col-xs-8">
+      <h3>Système de gestion des stages</h3>
+      </div>
+    </div>-->
+    <div class="row">
+      <div class="col-xs-2">
+      
+
+    <?php
+   include('../scripts/connexionDB.php');
+    $c=connexion();
+  
+    include('../modeles/bar_menu.php'); 
+    bar_entree(2);
+    echo ' </div> ';
+   
+    echo '<div class="col-xs-8">';
+   $id_A=$_POST['supprimerLigneCommande'];
+    $id_bonc=$_POST['ID_BONC'];
+  $sqlquery1="select U.LOGIN, U.NOM, U.PRENOM
+              FROM BON_COM B, UTILISATEUR U 
+              WHERE B.ID_BONC=$id_bonc AND B.LOGIN=U.LOGIN"   ;
+   $result1=mysqli_query($sqlquery1);
+   $row1=mysqli_fetch_array($result1,MYSQLI_ASSOC);
+
+   $sqlquery2="select count(*) as 'n'
+              FROM LIVRAISON_BON L
+              WHERE L.ID_BONC=$id_bonc"   ;
+   $result2=mysqli_query($sqlquery2);
+   $row2=mysqli_fetch_array($result2,MYSQLI_ASSOC);
+   if($_SESSION['LOGIN']==$row1['LOGIN'])
+   {
+     if($row2['n']!=0)
+     {
+     panel('panel-info','Suppression Impossible','<p> <img src="../images/info.PNG" width="100" heigth="100">La Ligne de Commande ne peut pas être Supprimer.<br/> Elle Concerne '.$row2['n'].' Livraison(s) .</p>');
+     }
+     else
+     {
+       $sqlquery1="delete from CONTENIR_BON WHERE ID_A='$id_A' and ID_BONC='$id_bonc'";
+       $result1=mysqli_query($sqlquery1) or die(panel('panel-danger','Erreur de suppression 2','<p> <img src="../images/ERREUR.gif"><strong>Echec de la suppression.</strong></p>'));
+    panel('panel-success','Suppression réussie','<p> <img src="../images/ok.PNG"><strong>La ligne de commande a été supprimé correctement.</strong></p>');
+     
+     }
+   }
+    else
+    {
+      panel('panel-danger','<h2><strong>Aucun droit</strong></h2>','<p> <strong>Vous ne pouvez pas supprimer cette ligne de Commande de cette Commande pour les raisons suivantes :</p>
+      <p><img src="../images/interdit.PNG" alt="interdit"></p>
+      <p class="interdit">
+          Le responsable de cette Commande est  '.$row1['NOM'].'  '.$row1['PRENOM'].'</strong>
+
+      </p>');
+    }
+   echo '</div>';
+     
+   
+      
+    ?> 
+
+
+
+</div>
+ </td>
+
+  </tr>
+
+  
+
+</table>
+<?php 
+include('../modeles/deconnexion.php');
+include('../modeles/pied.php'); ?>

@@ -1,0 +1,223 @@
+<?php
+session_start();
+ include('../modeles/enteteAdmin.php'); ?>
+ <table width="1350" border="0" cellpadding="100" cellspacing="10"  bgcolor="#ABAD68">
+  <tr >
+    <td height="350" valign="top">
+<!--div class="row">
+  <div class="col-xs-offset-2 col-xs-8">
+      <h3>Ajout Article</h3>
+      </div>
+    </div-->
+    <div class="row">
+      <div class="col-xs-2">
+      
+
+    <?php
+    include('../scripts/connexionDB.php');
+    $c=connexion();
+   include('../modeles/bar_menu.php'); 
+    bar_stock(2);
+    echo ' </div> 
+
+    <div class="col-xs-8 ">';   ?> 
+  
+  
+ 
+      <form name="form1" method="post" action="ajoutarticle2.php" enctype="multipart/form-data" class="well3" onSubmit="return verification()">
+        
+        <p>
+           <div class="row">
+            <div class="col-xs-1">
+              <img src="../images/article.JPG" class="img-circle " width="100" heigth="100">
+            </div>
+            <div class="col-xs-offset-1 col-xs-10">
+            <legend><h1>Ajout d'un Article<h1></legend>
+          </div>
+           </div>
+            
+    <fieldset>
+     
+       <?php
+      
+       if($_POST['article']==1)
+       {
+
+         echo ' <div class="row">
+                 <div class="form-group">
+                   <label for="select" class="col-xs-2">Désignation</label>
+                <div class="col-xs-4">
+                   <input  pattern=".{3,30}" required title="La désignation contient minimum 3 caractères et maximum 30 caractères." class="form-control" name="DESIGNATION" maxlength="30">
+                </div>
+                <label for="select" class="col-xs-2">Famille</label>
+                <div class="col-xs-4">
+          <select id="select" name="FAMILLE" class="form-control ">
+                 <option value="MATERIEL INFORMATIQUE">MATERIEL INFORMATIQUE</option>
+                 <option value="CONSOMMABLE INFORMATIQUE">CONSOMMABLE INFORMATIQUE</option>
+                 <option value="MOBILIER DE BUREAU">MOBILIER DE BUREAU</option>
+                 <option value="FOURNITURE DE BUREAU">FOURNITURE DE BUREAU</option>
+                 <option value="PAPETERIE">PAPETERIE</option>
+                 <option value="MATERIEL DE BUREAU">MATERIEL DE BUREAU</option>
+                 <option value="FOURNITURE DE REPROGRAPHIE">FOURNITURE DE REPROGRAPHIE</option>
+                 <option value="TRAVAUX DE REPROGRAPHIE">TRAVAUX DE REPROGRAPHIE</option>
+                 <option value="RAYONNAGE">RAYONNAGE</option>
+                 <option value="CLIMATISATION">CLIMATISATION</option>
+                 <option value="CONSOMMABLE PHOTOCOPIEUR">CONSOMMABLE PHOTOCOPIEUR</option>
+                 <option value="ACCESSOIR">ACCESSOIR</option>
+
+          </select> </div>
+             </div>
+             </div>
+
+             <div class="row">
+             <div class="form-group">
+             <label  class="col-xs-2">Quantité Stock</label>
+             <div class=" col-xs-4">
+             
+             <input type="number" min="0" max= "2000000000" class="form-control" name="QTE_STO"  >
+             </div>
+
+             <label  class="col-xs-2">Quantité Seuil</label>
+             <div class="col-xs-4">
+             
+             <input  type="number" min="0" max= "2000000000" class="form-control" name="QTE_MIN" >
+            
+            
+             </div>
+             </div>
+             </div>
+
+             <div class="row">
+             <div class="form-group">
+                    <label  class="col-xs-2">Prix Unitaire</label>
+             <div class=" col-xs-4">
+             
+             <input type="number" min="1" max= "2000000000" class="form-control" name="PRIX_U" >
+             </div>
+               
+
+             <label  class="col-xs-2">Choisir Une Image</label>
+             <div class=" col-xs-4">
+             
+             <input type="file" class="form-control" name="CHEMIN_IMG" accept="image/PNG, image/JPG, image/gif">
+             </div>
+             </div>
+             </div>';
+             $sqlquery="select ID_F, RAISSOCF FROM FOURNISSEUR";
+             $result=mysql_query($sqlquery);
+              echo '
+           <div class="row">
+             <div class="form-group">
+          <label for="select" class="col-xs-2">Fournisseur</label>
+          <div class="col-xs-4">
+          <select id="select" name="ID_F" class="form-control ">';
+          while ($row=mysqli_fetch_array($result,MYSQLI_ASSOC)) 
+          {
+            echo '<option value="'.$row['ID_F'].'"> '.$row['ID_F'].'  - '.$row['RAISSOCF'].'</option>';
+          }
+          echo '</select> </div> </div> </div>';
+       }
+       else
+       {
+         $sqlquery="select ID_A, DESIGNATION FROM ARTICLE";
+          $result=mysql_query($sqlquery);
+          echo '
+           <div class="row">
+             <div class="form-group">
+          <label for="select" class="col-xs-2">Choix de l\'article</label>
+          <div class="col-xs-4">
+          <select id="select" name="ID_A" class="form-control ">';
+          while ($row=mysqli_fetch_array($result,MYSQLI_ASSOC)) 
+          {
+            echo '<option value="'.$row['ID_A'].'"> '.$row['ID_A'].'  - '.$row['DESIGNATION'].'</option>';
+          }
+          echo '</select> </div>
+          <label for="select" class="col-xs-2">Quantité à Ajouter</label>
+          <div class=" input-group col-xs-4">
+             
+               <input id="input" type="number" min="0" max="2000000000" class="form-control" name="QTE_STO" style="text-align:right" maxlength="8">
+             <span class="input-group-addon" ><label for="input">Unités</label></span>
+            
+          </div>
+          </div></div>';
+
+          
+       } 
+       ?>
+          
+        
+
+<div class="row">
+           
+            <div class="col-xs-12">
+            <legend></legend>
+          </div>
+           </div>
+
+         <div class="row">
+       <div class="form-group">
+          
+     
+      <div class="col-xs-1">
+      <?php echo '<input type="hidden" name="article" id="texte" class="form-control"  value="'.$_POST['article'].'">';?>
+      </div>
+     
+       </div>
+    </div>
+   
+    <div class="form-group">
+      <div class="col-xs-2">
+       <a href="ajoutarticle.php"><button class="btn btn-primary" type="button">Retour</button></a>
+    </div>
+      <input type="submit" name="Submit" value="Ajouter" class=" pull-right btn btn-primary">
+    </div>
+
+      
+    
+    </fieldset>
+        
+        </p>
+        <script language="javascript" type="text/javascript">
+                            function verification()
+                            {
+                             
+                                if(document.forms["form1"].elements["QTE_STO"].value=="")
+                                {
+                                  alert("Vous avez laissez le champs de la quantité du stock vide");
+                                  return false;
+
+                                }
+                                if(document.forms["form1"].elements["QTE_MIN"].value=="")
+                                {
+                                  alert("Vous avez laissez le champs de la quantité minimum vide");
+                                  return false;
+
+                                }
+                                if(document.forms["form1"].elements["PRIX_U"].value=="")
+                                {
+                                  alert("Vous avez laissez le champs du prix unitaire vide");
+                                  return false;
+
+                                }
+                                else 
+                                {
+                                  return true;
+                                }
+                            }
+                          </script>
+      </form>
+       </div>
+     </div>
+
+    
+
+ </td>
+
+  </tr>
+
+  
+
+</table>
+<?php 
+include('../modeles/deconnexion.php');
+include('../modeles/pied.php'); ?>

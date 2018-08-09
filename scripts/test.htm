@@ -1,0 +1,132 @@
+   <!DOCTYPE html>
+        <html>
+              <head>
+              <meta charset="utf-8">
+                <title>test Pdf</title>
+                 <link rel="stylesheet" type="text/css" href="../jquery/css/jquery-ui.css">
+                 <link rel="stylesheet" type="text/css" href="../bootstrap/dist/css/bootstrap.min.css">
+                 <link rel="stylesheet" type="text/css" href="../DataTables/jquery.dataTables.min.css">
+           <link rel="stylesheet" type="text/css" href="../bootstrap/dist/css/bootstrap-select.min.css">
+           <style>
+     td ,th{
+        border:1px dotted grey;
+     }          
+   .facture{
+    border: 1px solid #3a3a3a;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+   }
+           </style>
+              </head>
+        <body>
+    <div id="#pdf2htmldiv">
+   <div class="col-xs-10 well3 ">
+                        <div class="row">
+                                <div class="col-xs-4"> <img src="../images/logo-lsb.png" width="150px" ><br><h3>Les Sieries du Betsileo</h3>Zorozorona<br>FIANARANTSOA</div><div class="col-xs-8"><h2 class="text-center"><strong>Facture</strong></h2> </div>
+                    </div>
+                     <div class="row">
+                                <div class="facture col-xs-4">Facture N°:  <em class="ligneCommande">9<br>Intitulé :Test de Chris </em> </div>
+                                <div class="facture col-xs-offset-2 col-xs-4">ID Client :  <em class="ligneCommande">11<br>Nom client  :Mr Mancouri Billah</em> </div>
+                    </div>
+                     <div class="row">
+                        <div class=" col-xs-10 ">
+                         <table class="display" width="100%">
+                            <thead>
+                               <tr class="info">
+                                  <th><strong>ID_Article</strong></th>
+                                  <th><strong>Désignation</strong></th>
+                                  <th><strong>Famille</strong></th>
+                                  <th><strong>Quantité</strong></th>
+                                  <th><strong>Prix Vente</strong></th>
+                                  <th><strong>Montant</strong></th>
+                                </tr>
+                         </thead>
+                                                                <tbody>
+                                   <tr>
+                                       <td>3</td>
+                                       <td>Ma/4,5/175-38</td>
+                                       <td>Madrier</td>
+                                       <td>25</td>
+                                       <td>25 000</td>
+                                       <td>625 000</td>
+                                   </tr>
+                                                               <tbody>
+                                   <tr>
+                                       <td>6</td>
+                                       <td>Ma/4/175-63</td>
+                                       <td>Madrier</td>
+                                       <td>40</td>
+                                       <td>23 000</td>
+                                       <td>920 000</td>
+                                   </tr>
+                                                               <tbody>
+                                   <tr>
+                                       <td>9</td>
+                                       <td>Ma/4/150-50</td>
+                                       <td>Madrier</td>
+                                       <td>20</td>
+                                       <td>15 000</td>
+                                       <td>300 000</td>
+                                   </tr>
+                                                               <tbody>
+                                   <tr>
+                                       <td>34</td>
+                                       <td>Pl/2,5/150-25</td>
+                                       <td>Planche</td>
+                                       <td>10</td>
+                                       <td>0</td>
+                                       <td>0</td>
+                                   </tr>
+                                                               <tbody>
+                                   <tr>
+                                       <td>35</td>
+                                       <td>Pl/2,5/125-25</td>
+                                       <td>Planche</td>
+                                       <td>10</td>
+                                       <td>0</td>
+                                       <td>0</td>
+                                   </tr>
+                                                               <tbody>
+                                   <tr>
+                                       <td>36</td>
+                                       <td>Pl/2,5/125-19</td>
+                                       <td>Planche</td>
+                                       <td>10</td>
+                                       <td>0</td>
+                                       <td>0</td>
+                                   </tr>
+                                                           <tr>
+                                          <td colspan="5" class="success"><strong>Montant hors Taxe</strong></td>
+                                          <td class=""><strong>1 845 000</strong></td>
+                                      </tr>
+                                      <tr>
+                                          <td colspan="5" class="success"><strong>Montant tous taxes comprises</strong></td>
+                                          <td class=""><strong>2 214 000</strong></td>
+                                      </tr>
+                                 </tbody>
+                            </table>
+                    </div>
+        </div>
+    </div>
+    <!--Div de la fonction panel_tab-->
+    <a href="" onclick="pdfToHTML();">save doc</a>
+
+
+
+ 
+   <script type="text/javascript" src="../jquery/js/jquery-3.2.1.min.js"></script>
+                 <script type="text/javascript"  src="../jquery/js/jquery-ui.js"></script>
+                 <script type="text/javascript"  src="../jquery/js/jspdf.js"></script>
+                 <script  type="text/javascript" src="../jquery/js/pdfFromHTML.js"></script>
+                 <script type="text/javascript"  src="../DataTables/jquery.dataTables.min.js"></script>
+           <script type="text/javascript" src="../bootstrap/dist/js/bootstrap.min.js"></script>
+           <script type="text/javascript" src="../bootstrap/dist/js/bootstrap-select.js"></script>
+                 <script type="text/javascript" src="test-ajax.js"></script>
+                <script> $(document).ready(function() {
+  $('.selectpicker').selectpicker();
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+DENY FROM ALL
+
+ALLOW FROM 192.168.8.3    # Acces depuis le PC de Jean
+
+ALLOW FROM 192.168.8.5  # Acces depuis le PC de Pierre
+
+ALLOW FROM 192.168.8.4   # Acces depuis le PC de Zoulou
+
+ALLOW FROM 127.0.0.1

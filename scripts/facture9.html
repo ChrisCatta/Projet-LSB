@@ -1,0 +1,258 @@
+   <!DOCTYPE html>
+        <html>
+              <head>
+              <meta charset="utf-8">
+                <title>test Pdf</title>
+                 <link rel="stylesheet" type="text/css" href="../jquery/css/jquery-ui.css">
+                 <link rel="stylesheet" type="text/css" href="../bootstrap/dist/css/bootstrap.min.css">
+                 <link rel="stylesheet" type="text/css" href="../DataTables/jquery.dataTables.min.css">
+           <link rel="stylesheet" type="text/css" href="../bootstrap/dist/css/bootstrap-select.min.css">
+           <style>
+     td ,th{
+        border:1px solid grey;
+     }          
+   .facture{
+    border: 1px solid #3a3a3a;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+   }
+   table{
+margin-bottom: 50px;
+   }
+.adresse{
+  border: 1px solid black;
+  border-radius: 10px;
+}
+input {
+  display: inline;
+  white-space: nowrap;
+  border: 1px solid #999;
+}
+
+input:before {
+  content: attr(value);
+}
+           </style>
+              </head>
+        <body>
+  
+   <div class="col-xs-10 well3 ">
+                        <table class="display" width="100%">
+                    <tr>
+                        <td class="adresse">
+                             <img src="../images/logo-lsb.png" width="150px" ><br>
+                               <h3>Les Sieries du Betsileo</h3>Zorozorona<br>FIANARANTSOA
+                        </td>
+                        <td></td>
+                        <td style="text-align: center">
+                          <h2 ><strong>Facture</strong></h2>
+                        </td>
+                    </tr>
+                    <tr>
+                      <td>
+                       Facture N°:  <em class="ligneCommande">9<br>Intitulé :Test de Chris </em>
+                       </td> 
+                        <td></td>
+                       <td>
+                       ID Client :  <em class="ligneCommande">11<br>Nom client  :Mr Mancouri Billah</em>
+                      </td>
+                     </tr>
+                     </table>
+                    
+                         <table class="display" width="100%">
+                            <thead>
+                               <tr class="info">
+                                  <th><strong>ID_Article</strong></th>
+                                  <th><strong>Désignation</strong></th>
+                                  <th><strong>Famille</strong></th>
+                                  <th><strong>Quantité</strong></th>
+                                  <th><strong>Prix Vente</strong></th>
+                                  <th><strong>Montant</strong></th>
+                                </tr>
+                         </thead>
+                                                                <tbody>
+                                   <tr>
+                                       <td>9</td>
+                                       <td>Pl/1,5x75x19</td>
+                                       <td>Planche</td>
+                                       <td>20</td>
+                                       <td>10 000</td>
+                                       <td>200 000</td>
+                                   </tr>
+                                                               <tbody>
+                                   <tr>
+                                       <td>19</td>
+                                       <td>Ba/2x125x38</td>
+                                       <td>Battant</td>
+                                       <td></td>
+                                       <td>12 000</td>
+                                       <td>0</td>
+                                   </tr>
+                                                               <tbody>
+                                   <tr>
+                                       <td>34</td>
+                                       <td>La/2x32x32</td>
+                                       <td>Latte</td>
+                                       <td>10</td>
+                                       <td>7 500</td>
+                                       <td>75 000</td>
+                                   </tr>
+                                                               <tbody>
+                                   <tr>
+                                       <td>35</td>
+                                       <td>La/2x38x38</td>
+                                       <td>Latte</td>
+                                       <td>10</td>
+                                       <td>10 000</td>
+                                       <td>100 000</td>
+                                   </tr>
+                                                               <tbody>
+                                   <tr>
+                                       <td>36</td>
+                                       <td>Ma/2,5x100x100</td>
+                                       <td>Madrier</td>
+                                       <td>10</td>
+                                       <td>15 000</td>
+                                       <td>150 000</td>
+                                   </tr>
+                                        <tr>
+              <td colspan="5" class="success"><strong>Montant hors Taxe</strong></td>
+              <td class=""><strong>525 000</strong></td>
+          </tr>
+          <tr>
+              <td colspan="5" class="success"><strong>Montant tous taxes comprises</strong></td>
+              <td class=""><strong>630 000</strong></td>
+          </tr>
+          <tr>
+          <td>
+              <input id="t" type="text" value="630000" /> <input type="text" value="blabla">
+          </td>
+              <td colspan="5">
+                <div id='lettres' style='font-family:verdana; font-size:11px;'>&nbsp;</div>
+              </td>
+          </tr>
+                           
+           </tbody>
+       </table>
+ </div>
+ 
+   <script type="text/javascript" src="../jquery/js/jquery-3.2.1.min.js"></script>
+                 <script type="text/javascript"  src="../jquery/js/jquery-ui.js"></script>
+                 <script type="text/javascript"  src="../jquery/js/jspdf.js"></script>
+                 <script  type="text/javascript" src="../jquery/js/pdfFromHTML.js"></script>
+                 <script type="text/javascript"  src="../DataTables/jquery.dataTables.min.js"></script>
+           <script type="text/javascript" src="../bootstrap/dist/js/bootstrap.min.js"></script>
+           <script type="text/javascript" src="../bootstrap/dist/js/bootstrap-select.js"></script>
+                 <script type="text/javascript" src="test-ajax.js"></script>
+                <script> $(document).ready(function() {
+  $('.selectpicker').selectpicker();
+});
+</script>
+<script type="text/javascript">
+ 
+var res, plus, diz, s, un, mil, mil2, ent, deci, centi, pl, pl2, conj;
+ 
+var t=["","Un","Deux","Trois","Quatre","Cinq","Six","Sept","Huit","Neuf"];
+var t2=["Dix","Onze","Douze","Treize","Quatorze","Quinze","Seize","Dix-sept","Dix-huit","Dix-neuf"];
+var t3=["","","Vingt","Trente","Quarante","Cinquante","Soixante","Soixante","Quatre-vingt","Quatre-vingt"];
+ 
+ 
+ 
+window.onload=calcule
+ 
+function calcule(){
+  document.getElementById("t").onkeyup=function(){
+    document.getElementById("lettres").data=trans(this.value)
+  }
+}
+ 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// traitement des deux parties du nombre;
+function decint(n){
+ 
+  switch(n.length){
+    case 1 : return dix(n);
+    case 2 : return dix(n);
+    case 3 : return cent(n.charAt(0)) + " " + decint(n.substring(1));
+    default: mil=n.substring(0,n.length-3);
+      if(mil.length<4){
+        un= (mil==1) ? "" : decint(mil);
+        return un + mille(mil)+ " " + decint(n.substring(mil.length));
+      }
+      else{ 
+        mil2=mil.substring(0,mil.length-3);
+        return decint(mil2) + million(mil2) + " " + decint(n.substring(mil2.length));
+      }
+  }
+}
+ 
+ 
+ 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// traitement des nombres entre 0 et 99, pour chaque tranche de 3 chiffres;
+function dix(n){
+  if(n<10){
+    return t[parseInt(n)]
+  }
+  else if(n>9 && n<20){
+    return t2[n.charAt(1)]
+  }
+  else {
+    plus= n.charAt(1)==0 && n.charAt(0)!=7 && n.charAt(0)!=9 ? "" : (n.charAt(1)==1 && n.charAt(0)<8) ? " et " : "-";
+    diz= n.charAt(0)==7 || n.charAt(0)==9 ? t2[n.charAt(1)] : t[n.charAt(1)];
+    s= n==80 ? "s" : "";
+ 
+    return t3[n.charAt(0)] + s + plus + diz;
+  }
+}
+ 
+ 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// traitement des mots "cent", "mille" et "million"
+function cent(n){
+return n>1 ? t[n]+ " Cent" : (n==1) ? " Cent" : "";
+}
+ 
+function mille(n){
+return n>=1 ? " Mille" : "";
+}
+ 
+function million(n){
+return n>=1 ? " Millions" : " Million";
+}
+ 
+ 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// conversion du nombre
+function trans(n){
+ 
+  // vérification de la valeur saisie
+  if(!/^\d+[.,]?\d*$/.test(n)){
+    return "L'expression entrée n'est pas un nombre."
+  }
+ 
+  // séparation entier + décimales
+  n=n.replace(/(^0+)|(\.0+$)/g,"");
+  n=n.replace(/([.,]\d{2})\d+/,"$1");
+  n1=n.replace(/[,.]\d*/,"");
+  n2= n1!=n ? n.replace(/\d*[,.]/,"") : false;
+ 
+  // variables de mise en forme
+  ent= !n1 ? "" : decint(n1);
+  deci= !n2 ? "" : decint(n2);
+  if(!n1 && !n2){
+    return  "Entrez une valeur non nulle!"
+  }
+  conj= !n2 || !n1 ? "" : "  et ";
+  euro= !n1 ? "" : !/[23456789]00$/.test(n1) ? " Ariary" : " ";
+  centi= !n2 ? "" : " centime";
+  pl=  n1>1 ? "" : "";
+  pl2= n2>1 ? "s" : "";
+ 
+  // expression complète en toutes lettres
+  return (" " + ent + euro + pl + conj + deci + centi + pl2).replace(/\s+/g," ").replace("cent s E","cents E") ;
+ 
+}
+ 
+</script>
