@@ -1,20 +1,20 @@
 # LSB
 
-/bootstrap/*
-/bootstrap-select-1.12.4/*
+bootstrap/
+bootstrap-select-1.12.4/
 
-/DataTables/*
-/dd3/*
-/dompdf/*
-/font/*
-/fpdf/*
+DataTables/
+dompdf/
+font/
+fpdf/
 
-/html2pdf/*
-/jquery/*
-/jspdf/*
-/nbproject/*
-/tablesorter/*
-/video/*
+html2pdf/
+jquery/
+jspdf/
+nbproject/
+tablesorter/
+video/
 *.cvs
 *.pdf
 *.xls
+dd3/
