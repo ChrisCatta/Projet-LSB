@@ -83,6 +83,11 @@ $link=$retour[0];
       <div class="col-xs-6">
       <textarea  id="textarea" name="ADRESSE_C" class="form-control" cols="50" rows="4" maxlength="100" ></textarea>
       </div>
+        
+      <label for="texte" class="col-xs-2">Adresse1</label>
+      <div class="col-xs-4">
+      <input    name="ADRESSE1_C" id="texte" class="form-control " maxlength="150" >
+      </div>
 
       
     </div>

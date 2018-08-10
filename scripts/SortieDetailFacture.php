@@ -52,7 +52,7 @@ $link=$retour[0];
             </div>
         </div>
         <div class="row">
-            <div class=" col-xs-4 ">Facture :  <em class="ligneCommande"><?php echo $row1['REF_CO'].'/'.$year?></em> </div>
+            <div class=" col-xs-4 ">Facture :  <em class="ligneCommande"><?php echo $row1['REF_CO'].'/'.$month.'/'.$year?></em> </div>
              <div class=" col-xs-4 ">Date :  <em class="ligneCommande"><?=$newFormat?></em> </div>
             <div class=" col-xs-4 ">Client :  <em class="ligneCommande"><?=$row1['RAISSO_C']?></em> </div>
         </div>
@@ -75,7 +75,7 @@ $link=$retour[0];
 
                                     $reqNLC = "SELECT A.UNITE, A.QTE, A.VOL, A.ID_A, A.ID_TYPE, A.DESIGNATION, A.LONGUEUR, A.LARGEUR, A.UNITE, A.EPAISSEUR, A.DIAMETRE, A.PV_HT, A.FAMILLE, A.TYPE, C.ID_CO, C.ID_CO_LIGNE, C.QTE_CO,C.RABOT, C.SEC, (C.QTE_CO*A.QTE)*A.PV_HT as 'MONTANT'
               FROM  ARTICLE A, CONTENIR_CO C
-              WHERE  C.ID_CO='$ID_CO' AND A.ID_A=C.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$type1' order by DESIGNATION ASC";
+              WHERE  C.ID_CO='$ID_CO' AND A.ID_A=C.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$type1' order by A.LONGUEUR DESC, A.LARGEUR DESC, A.EPAISSEUR DESC";
 
                                     $resNLC = mysqli_query($link, $reqNLC);
                                     $nombreNLC = mysqli_num_rows($resNLC);
@@ -187,7 +187,7 @@ $link=$retour[0];
 
                                     $reqLC = "SELECT A.UNITE, A.QTE, A.VOL, A.ID_A, A.ID_TYPE, A.DESIGNATION, A.LONGUEUR, A.LARGEUR, A.UNITE, A.EPAISSEUR, A.DIAMETRE, A.PV_HT, A.FAMILLE, A.TYPE, C.ID_CO, C.ID_CO_LIGNE, C.QTE_CO, (C.QTE_CO*A.QTE)*A.PV_HT as 'MONTANT'
       FROM  ARTICLE A, CONTENIR_CO C
-      WHERE  C.ID_CO='$ID_CO' AND A.ID_A=C.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$type6' order by DESIGNATION ASC";
+      WHERE  C.ID_CO='$ID_CO' AND A.ID_A=C.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$type6' order by A.LONGUEUR DESC, A.LARGEUR DESC, A.EPAISSEUR DESC";
 
                                     $resLC = mysqli_query($link, $reqLC);
                                     $nombreLC = mysqli_num_rows($resLC);
@@ -258,7 +258,7 @@ $link=$retour[0];
 
                                         $reqAP = "SELECT A.UNITE, A.QTE, A.VOL, A.ID_A, A.ID_TYPE, A.DESIGNATION, A.LONGUEUR, A.LARGEUR, A.UNITE, A.EPAISSEUR, A.DIAMETRE, A.PV_HT, A.FAMILLE, A.TYPE, C.ID_CO, C.ID_CO_LIGNE, C.QTE_CO, (C.QTE_CO*A.QTE)*A.PV_HT as 'MONTANT'
       FROM  ARTICLE A, CONTENIR_CO C
-      WHERE  C.ID_CO='$ID_CO' AND A.ID_A=C.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$type9' AND A.ID_FAMILLE='$i' order by DESIGNATION ASC";
+      WHERE  C.ID_CO='$ID_CO' AND A.ID_A=C.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$type9' AND A.ID_FAMILLE='$i' order by A.LONGUEUR DESC, A.LARGEUR DESC, A.EPAISSEUR DESC";
 
                                         $resAP = mysqli_query($link, $reqAP);
                                         $nombreAP = mysqli_num_rows($resAP);
@@ -269,7 +269,7 @@ $link=$retour[0];
                                             <table class="info saut" border="1" style="width:100%">
                                                 <thead>  
                                                     <tr class="info">
-                                                        <th width="30%"><strong>A peindre</strong></th>
+                                                        <th width="30%"><strong>Produit, qualité à peindre</strong></th>
                                                         <th width="6%"><strong>Qté</strong></th>
                                                         <th width="7%"><strong>Long</strong></th>
                                                         <th width="7%"><strong>Larg</strong></th>
@@ -331,7 +331,7 @@ $link=$retour[0];
 
                                         $reqAV = "SELECT A.UNITE, A.QTE, A.VOL, A.ID_A, A.ID_TYPE, A.DESIGNATION, A.LONGUEUR, A.LARGEUR, A.UNITE, A.EPAISSEUR, A.DIAMETRE, A.PV_HT, A.FAMILLE, A.TYPE, C.ID_CO, C.ID_CO_LIGNE, C.QTE_CO, (C.QTE_CO*A.QTE)*A.PV_HT as 'MONTANT'
       FROM  ARTICLE A, CONTENIR_CO C
-      WHERE  C.ID_CO='$ID_CO' AND A.ID_A=C.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$type3' AND A.ID_FAMILLE='$i'  order by DESIGNATION ASC";
+      WHERE  C.ID_CO='$ID_CO' AND A.ID_A=C.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$type3' AND A.ID_FAMILLE='$i'  order by A.LONGUEUR DESC, A.LARGEUR DESC, A.EPAISSEUR DESC";
 
                                         $resAV = mysqli_query($link, $reqAV);
                                         $nombreAV = mysqli_num_rows($resAV);
@@ -342,7 +342,7 @@ $link=$retour[0];
                                             <table class="info saut" border="1" style="width:100%">
                                                 <thead>  
                                                     <tr class="info">
-                                                        <th width="30%"><strong>A vernir</strong></th>
+                                                        <th width="30%"><strong>Produit, qualité à vernir</strong></th>
                                                         <th width="6%"><strong>Qté</strong></th>
                                                         <th width="7%"><strong>Long</strong></th>
                                                         <th width="7%"><strong>Larg</strong></th>
@@ -399,13 +399,13 @@ $link=$retour[0];
                                     }
                                     break;
                                 case "ML";
-                                    // ML à peindre
+                                    // ML à vernir
                                     $typeML3 = 3;
                                     for ($i = 14; $i <= 21; $i++) {
 
                                         $reqML = "SELECT A.UNITE, A.QTE, A.VOL, A.ID_A, A.ID_FAMILLE, A.DESIGNATION, A.LONGUEUR, A.LARGEUR, A.UNITE, A.EPAISSEUR, A.DIAMETRE, A.PV_HT, A.FAMILLE, A.TYPE, C.ID_CO, C.ID_CO_LIGNE, C.QTE_CO, (C.QTE_CO*A.LONGUEUR)*A.PV_HT as 'MONTANT'
               FROM  ARTICLE A, CONTENIR_CO C
-              WHERE  C.ID_CO='$ID_CO' AND A.ID_A=C.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$typeML3' AND A.ID_FAMILLE='$i' order by DESIGNATION ASC";
+              WHERE  C.ID_CO='$ID_CO' AND A.ID_A=C.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$typeML3' AND A.ID_FAMILLE='$i' order by A.LONGUEUR DESC, A.LARGEUR DESC, A.EPAISSEUR DESC";
 
                                         $resML = mysqli_query($link, $reqML);
                                         $nombreML = mysqli_num_rows($resML);
@@ -416,7 +416,7 @@ $link=$retour[0];
                                             <table class="info saut" border="1" style="width:100%">
                                                 <thead>  
                                                     <tr class="info">
-                                                        <th width="30%"><strong>A peindre</strong></th>
+                                                        <th width="30%"><strong>Produit, qualité à vernir</strong></th>
                                                         <th width="6%"><strong>Qté</strong></th>
                                                         <th width="7%"><strong>Long</strong></th>
                                                         <th width="7%"><strong>Larg</strong></th>
@@ -480,7 +480,7 @@ $link=$retour[0];
                                     for ($i = 41; $i <= 48; $i++) {
                                         $reqT9 = "SELECT A.UNITE, A.QTE, A.VOL, A.ID_A, A.ID_FAMILLE, A.DESIGNATION, A.LONGUEUR, A.LARGEUR, A.UNITE, A.EPAISSEUR, A.DIAMETRE, A.PV_HT, A.FAMILLE, A.TYPE, C.ID_CO, C.ID_CO_LIGNE, C.QTE_CO, (C.QTE_CO*A.QTE)*A.PV_HT as 'MONTANT'
       FROM  ARTICLE A, CONTENIR_CO C
-      WHERE  C.ID_CO='$ID_CO' AND A.ID_A=C.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$typeML9' AND A.ID_FAMILLE='$i' order by DESIGNATION ASC";
+      WHERE  C.ID_CO='$ID_CO' AND A.ID_A=C.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$typeML9' AND A.ID_FAMILLE='$i' order by A.LONGUEUR DESC, A.LARGEUR DESC, A.EPAISSEUR DESC";
 
                                         $resT9 = mysqli_query($link, $reqT9);
                                         $nombreT9 = mysqli_num_rows($resT9);
@@ -491,7 +491,7 @@ $link=$retour[0];
                                             <table class="info saut" border="1" style="width:100%">
                                                 <thead>  
                                                     <tr class="info">
-                                                        <th width="30%"><strong>A peindre</strong></th>
+                                                        <th width="30%"><strong>Produit, qualité à peindre</strong></th>
                                                         <th width="6%"><strong>Qté</strong></th>
                                                         <th width="7%"><strong>Long</strong></th>
                                                         <th width="7%"><strong>Larg</strong></th>
@@ -551,7 +551,7 @@ $link=$retour[0];
                                     for ($i = 32; $i <= 34; $i++) {
                                         $reqBR = "SELECT A.UNITE, A.QTE, A.VOL, A.ID_A, A.ID_FAMILLE, A.DESIGNATION, A.LONGUEUR, A.LARGEUR, A.UNITE, A.EPAISSEUR, A.DIAMETRE, A.PV_HT, A.FAMILLE, A.TYPE, C.ID_CO, C.ID_CO_LIGNE, C.QTE_CO, (C.QTE_CO*A.QTE)*A.PV_HT as 'MONTANT'
       FROM  ARTICLE A, CONTENIR_CO C
-      WHERE  C.ID_CO='$ID_CO' AND A.ID_A=C.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$type7' AND A.ID_FAMILLE='$i' order by DESIGNATION ASC";
+      WHERE  C.ID_CO='$ID_CO' AND A.ID_A=C.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$type7' AND A.ID_FAMILLE='$i' order by A.LONGUEUR DESC, A.DIAMETRE DESC";
 
                                         $resBR = mysqli_query($link, $reqBR);
                                         $nombreBR = mysqli_num_rows($resBR);
@@ -666,14 +666,6 @@ $link=$retour[0];
             </td>
         </tr>
     </table>
-                    <div class="row">
-                        <div class="col-xs-4">
-                            <label for="text" >Validité de l'offre</label>
-                        </div>
-                        <div class="col-xs-8">
-                            <input type="text" style="width: 450px;" max-lenght="400" name="comment2" >
-                        </div>
-                    </div>
                     <div class="row">
                         <div class="col-xs-4">
                             <label for="text" >Conditions de paiement</label>

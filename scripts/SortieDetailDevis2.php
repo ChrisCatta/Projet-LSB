@@ -105,7 +105,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-5 ">
-                            <h4><strong>Devis <span>N°:  <?php echo $row1['REF_DV'] . '/' . $year ?></span></strong></h4>
+                            <h4><strong>Devis <span>N°:  <?php echo $row1['REF_DV'].'/'.$month.'/'.$year ?></span></strong></h4>
                         </div> 
                         <div class="col-xs-offset-3 col-xs-4">
                             <h4><?= $row1['RAISSO_C'] ?></h4>
@@ -138,7 +138,7 @@
 
                                     $reqNLC = "SELECT A.UNITE, A.QTE, A.VOL, A.ID_A, A.ID_TYPE, A.DESIGNATION, A.LONGUEUR, A.LARGEUR, A.UNITE, A.EPAISSEUR, A.DIAMETRE, A.PV_HT, A.FAMILLE, A.TYPE, C.ID_DV, C.ID_DV_LIGNE, C.QTE_DV, C.RABOT, C.SEC, (C.QTE_DV*A.QTE)*A.PV_HT as 'MONTANT'
               FROM  ARTICLE A, CONTENIR_DV C
-              WHERE  C.ID_DV='$ID_DV' AND A.ID_A=C.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$type1' order by A.A.LONGUEUR DESC";
+              WHERE  C.ID_DV='$ID_DV' AND A.ID_A=C.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$type1' order by A.LONGUEUR DESC, A.LARGEUR DESC, A.EPAISSEUR DESC";
 
                                     $resNLC = mysqli_query($link, $reqNLC);
                                     $nombreNLC = mysqli_num_rows($resNLC);
@@ -220,7 +220,7 @@
                                                 <?php
 
                                                 $VOLUMENLC = $VOLUMENLC + $rowNLC['VOL'] * $rowNLC['QTE_DV'];
-                                                                    $suppNLC = $suppNLC + $rowNLC['VOL'] * $rowNLC['QTE_DV'] * 70000;
+                                                $suppNLC = $suppNLC + $rowNLC['VOL'] * $rowNLC['QTE_DV'] * 70000;
                                                                 }
                                                                 $sqlquery3NLC = "SELECT  A.UNITE, sum((L.QTE_DV*A.QTE)*A.PV_HT) as 'THT', sum((L.QTE_DV*A.QTE)*A.PV_HT*(1+0.20)) as 'TTC', sum(A.VOL*L.QTE_DV) as 'VOLDV'
                from CONTENIR_DV L, ARTICLE A
@@ -251,7 +251,7 @@
 
                                     $reqLC = "SELECT A.UNITE, A.QTE, A.VOL, A.ID_A, A.ID_TYPE, A.DESIGNATION, A.LONGUEUR, A.LARGEUR, A.UNITE, A.EPAISSEUR, A.DIAMETRE, A.PV_HT, A.FAMILLE, A.TYPE, C.ID_DV, C.ID_DV_LIGNE, C.QTE_DV, (C.QTE_DV*A.QTE)*A.PV_HT as 'MONTANT'
       FROM  ARTICLE A, CONTENIR_DV C
-      WHERE  C.ID_DV='$ID_DV' AND A.ID_A=C.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$type6' order by A.LONGUEUR DESC";
+      WHERE  C.ID_DV='$ID_DV' AND A.ID_A=C.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$type6' order by A.LONGUEUR DESC, A.LARGEUR DESC, A.EPAISSEUR DESC";
 
                                     $resLC = mysqli_query($link, $reqLC);
                                     $nombreLC = mysqli_num_rows($resLC);
@@ -322,7 +322,7 @@
 
                                         $reqAP = "SELECT A.UNITE, A.QTE, A.VOL, A.ID_A, A.ID_TYPE, A.DESIGNATION, A.LONGUEUR, A.LARGEUR, A.UNITE, A.EPAISSEUR, A.DIAMETRE, A.PV_HT, A.FAMILLE, A.TYPE, C.ID_DV, C.ID_DV_LIGNE, C.QTE_DV, (C.QTE_DV*A.QTE)*A.PV_HT as 'MONTANT'
       FROM  ARTICLE A, CONTENIR_DV C
-      WHERE  C.ID_DV='$ID_DV' AND A.ID_A=C.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$type9' AND A.ID_FAMILLE='$i' order by A.LONGUEUR DESC";
+      WHERE  C.ID_DV='$ID_DV' AND A.ID_A=C.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$type9' AND A.ID_FAMILLE='$i' order by A.LONGUEUR DESC, A.LARGEUR DESC, A.EPAISSEUR DESC";
 
                                         $resAP = mysqli_query($link, $reqAP);
                                         $nombreAP = mysqli_num_rows($resAP);
@@ -333,7 +333,7 @@
                                             <table class="info saut" border="1">
                                                 <thead>  
                                                     <tr class="info">
-                                                        <th width="25%"><strong>A peindre</strong></th>
+                                                        <th width="25%"><strong>Produit, qualité à peindre</strong></th>
                                                         <th width="6%"><strong>Quantité</strong></th>
                                                         <th width="7%"><strong>Longueur</strong></th>
                                                         <th width="7%"><strong>Largeur</strong></th>
@@ -395,7 +395,7 @@
 
                                         $reqAV = "SELECT A.UNITE, A.QTE, A.VOL, A.ID_A, A.ID_TYPE, A.DESIGNATION, A.LONGUEUR, A.LARGEUR, A.UNITE, A.EPAISSEUR, A.DIAMETRE, A.PV_HT, A.FAMILLE, A.TYPE, C.ID_DV, C.ID_DV_LIGNE, C.QTE_DV, (C.QTE_DV*A.QTE)*A.PV_HT as 'MONTANT'
       FROM  ARTICLE A, CONTENIR_DV C
-      WHERE  C.ID_DV='$ID_DV' AND A.ID_A=C.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$type3' AND A.ID_FAMILLE='$i'  order by A.LONGUEUR DESC";
+      WHERE  C.ID_DV='$ID_DV' AND A.ID_A=C.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$type3' AND A.ID_FAMILLE='$i'  order by A.LONGUEUR DESC, A.LARGEUR DESC, A.EPAISSEUR DESC";
 
                                         $resAV = mysqli_query($link, $reqAV);
                                         $nombreAV = mysqli_num_rows($resAV);
@@ -406,7 +406,7 @@
                                             <table class="info saut" border="1">
                                                 <thead>  
                                                     <tr class="info">
-                                                        <th width="25%"><strong>A vernir</strong></th>
+                                                        <th width="25%"><strong>Produit, qualité à vernir</strong></th>
                                                         <th width="6%"><strong>Quantité</strong></th>
                                                         <th width="7%"><strong>Longueur</strong></th>
                                                         <th width="7%"><strong>Largeur</strong></th>
@@ -463,13 +463,13 @@
                                     }
                                     break;
                                 case "ML";
-                                    // ML à peindre
+                                    // ML à vernir
                                     $typeML3 = 3;
                                     for ($i = 14; $i <= 21; $i++) {
 
                                         $reqML = "SELECT A.UNITE, A.QTE, A.VOL, A.ID_A, A.ID_FAMILLE, A.DESIGNATION, A.LONGUEUR, A.LARGEUR, A.UNITE, A.EPAISSEUR, A.DIAMETRE, A.PV_HT, A.FAMILLE, A.TYPE, C.ID_DV, C.ID_DV_LIGNE, C.QTE_DV, (C.QTE_DV*A.LONGUEUR)*A.PV_HT as 'MONTANT'
               FROM  ARTICLE A, CONTENIR_DV C
-              WHERE  C.ID_DV='$ID_DV' AND A.ID_A=C.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$typeML3' AND A.ID_FAMILLE='$i' order by A.LONGUEUR DESC";
+              WHERE  C.ID_DV='$ID_DV' AND A.ID_A=C.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$typeML3' AND A.ID_FAMILLE='$i' order by A.LONGUEUR DESC,A.LARGEUR DESC, A.EPAISSEUR DESC";
 
                                         $resML = mysqli_query($link, $reqML);
                                         $nombreML = mysqli_num_rows($resML);
@@ -480,7 +480,7 @@
                                             <table class="info saut" border="1">
                                                 <thead>  
                                                     <tr class="info">
-                                                        <th width="25%"><strong>A peindre</strong></th>
+                                                        <th width="25%"><strong>Produit, qualité à vernir</strong></th>
                                                         <th width="6%"><strong>Quantité</strong></th>
                                                         <th width="7%"><strong>Longueur</strong></th>
                                                         <th width="7%"><strong>Largeur</strong></th>
@@ -544,7 +544,7 @@
                                     for ($i = 41; $i <= 48; $i++) {
                                         $reqT9 = "SELECT A.UNITE, A.QTE, A.VOL, A.ID_A, A.ID_FAMILLE, A.DESIGNATION, A.LONGUEUR, A.LARGEUR, A.UNITE, A.EPAISSEUR, A.DIAMETRE, A.PV_HT, A.FAMILLE, A.TYPE, C.ID_DV, C.ID_DV_LIGNE, C.QTE_DV, (C.QTE_DV*A.QTE)*A.PV_HT as 'MONTANT'
       FROM  ARTICLE A, CONTENIR_DV C
-      WHERE  C.ID_DV='$ID_DV' AND A.ID_A=C.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$typeML9' AND A.ID_FAMILLE='$i' order by A.LONGUEUR DESC";
+      WHERE  C.ID_DV='$ID_DV' AND A.ID_A=C.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$typeML9' AND A.ID_FAMILLE='$i' order by A.LONGUEUR DESC, A.LARGEUR DESC, A.EPAISSEUR DESC";
 
                                         $resT9 = mysqli_query($link, $reqT9);
                                         $nombreT9 = mysqli_num_rows($resT9);
@@ -555,7 +555,7 @@
                                             <table class="info saut" border="1">
                                                 <thead>  
                                                     <tr class="info">
-                                                        <th width="25%"><strong>A peindre</strong></th>
+                                                        <th width="25%"><strong>Produit, qualité à peindre</strong></th>
                                                         <th width="6%"><strong>Quantité</strong></th>
                                                         <th width="7%"><strong>Longueur</strong></th>
                                                         <th width="7%"><strong>Largeur</strong></th>
@@ -615,7 +615,7 @@
                                     for ($i = 32; $i <= 34; $i++) {
                                         $reqBR = "SELECT A.UNITE, A.QTE, A.VOL, A.ID_A, A.ID_FAMILLE, A.DESIGNATION, A.LONGUEUR, A.LARGEUR, A.UNITE, A.EPAISSEUR, A.DIAMETRE, A.PV_HT, A.FAMILLE, A.TYPE, C.ID_DV, C.ID_DV_LIGNE, C.QTE_DV, (C.QTE_DV*A.QTE)*A.PV_HT as 'MONTANT'
       FROM  ARTICLE A, CONTENIR_DV C
-      WHERE  C.ID_DV='$ID_DV' AND A.ID_A=C.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$type7' AND A.ID_FAMILLE='$i' order by A.LONGUEUR DESC";
+      WHERE  C.ID_DV='$ID_DV' AND A.ID_A=C.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$type7' AND A.ID_FAMILLE='$i' order by A.LONGUEUR DESC,A.DIAMETRE DESC";
 
                                         $resBR = mysqli_query($link, $reqBR);
                                         $nombreBR = mysqli_num_rows($resBR);

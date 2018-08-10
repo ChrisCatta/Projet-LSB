@@ -21,7 +21,7 @@ $link=$retour[0];
 
  
     echo '<div class="col-xs-9">';
-    $sqlquery="update  CLIENT set RAISSO_C= '$_RAISSO_C', TEL_C='$_TEL_C', NIF='$_NIF', STAT='$_STAT', CIF='$_CIF', RC='$_RC', EMAIL='$_EMAIL', ADRESSE_C='$_ADRESSE_C' WHERE ID_C='$_ID_C'";
+    $sqlquery="update  CLIENT set RAISSO_C= '$_RAISSO_C', TEL_C='$_TEL_C', NIF='$_NIF', STAT='$_STAT', CIF='$_CIF', RC='$_RC', EMAIL='$_EMAIL', ADRESSE_C='$_ADRESSE_C' , ADRESSE1_C='$_ADRESSE1_C' WHERE ID_C='$_ID_C'";
     $result=mysqli_query($link,$sqlquery) or die(panel('panel-danger','Erreur de Modification','<p> <img src="../images/ERREUR.gif"><strong>Echec de la Modification.</strong></p>'));
     panel('panel-success','Modification réussie','<p> <img src="../images/ok.PNG">L\'employé  <strong>'.$_RAISSO_C.'</strong>  a été modifié correctement.</p>');
 

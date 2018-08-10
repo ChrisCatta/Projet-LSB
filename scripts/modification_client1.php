@@ -46,7 +46,7 @@ $link=$retour[0];
     <div class="form-group">
       <label for="texte" class="col-xs-2">Raison Sociale / Nom</label>
       <div class="col-xs-4">
-      <?php echo '<input pattern=".{3,30}" required title="La raison sociale contient minimum 3 caractères et maximum 30 caractères." name="RAISSO_C" id="texte" class="form-control" maxlength="30" value="'.$row['RAISSO_C'].'">';?>
+      <input pattern=".{3,30}" required title="La raison sociale contient minimum 3 caractères et maximum 30 caractères." name="RAISSO_C" id="texte" class="form-control" maxlength="30" value="<?=$row['RAISSO_C']?>">
       </div>
     </div>
     </div>
@@ -54,11 +54,11 @@ $link=$retour[0];
     <div class="form-group">
       <label for="texte" class="col-xs-2">Tél.</label>
       <div class="col-xs-4">
-      <?php echo '<input pattern=".{10,10}"  title="Le numéro de téléphone contient 10 numéros" name="TEL_C" id="texte" class="form-control " maxlength="10" value="'.$row['TEL_C'].'">';?>
+      <input pattern=".{10,10}"  title="Le numéro de téléphone contient 10 numéros" name="TEL_C" id="texte" class="form-control " maxlength="10" value="<?=$row['TEL_C']?>">
       </div>
       <label for="texte" class="col-xs-2">E-mail</label>
       <div class="col-xs-4">
-      <?php echo '<input type="email" name="EMAIL" id="texte" class="form-control " value="'.$row['EMAIL'].'" maxlength="30">';?>
+     <input type="email" name="EMAIL" id="texte" class="form-control " value="<?=$row['EMAIL']?>" maxlength="30">
       </div>
      </div>
     </div>
@@ -66,11 +66,11 @@ $link=$retour[0];
     <div class="form-group">
     <label for="texte" class="col-xs-2">NIF.</label>
       <div class="col-xs-4">
-      <?php echo '<input   title="Le Nif contient xx numéros" name="NIF" id="texte" class="form-control " maxlength="30" value="'.$row['NIF'].'">';?>
+      <input   title="Le Nif contient xx numéros" name="NIF" id="texte" class="form-control " maxlength="30" value="<?=$row['NIF']?>">
       </div>
     <label for="texte" class="col-xs-2">STAT.</label>
       <div class="col-xs-4">
-      <?php echo '<input   title="Le Stat contient xx characteres" name="STAT" id="texte" class="form-control " maxlength="30" value="'.$row['STAT'].'">';?>
+      <input  title="Le Stat contient xx characteres" name="STAT" id="texte" class="form-control " maxlength="30" value="<?=$row['STAT']?>">
       </div>
      </div>
     </div>
@@ -78,11 +78,11 @@ $link=$retour[0];
     <div class="form-group">
       <label for="texte" class="col-xs-2">RC.</label>
       <div class="col-xs-4">
-      <input pattern=".{0,30}"  title="Le RC contient xx numéros" name="RC" id="texte" class="form-control " maxlength="30">
+      <input pattern=".{0,30}"  title="Le RC contient xx numéros" name="RC" id="texte" class="form-control " maxlength="30" value="<?=$row['RC']?>">
       </div>
       <label for="texte" class="col-xs-2">CIF.</label>
       <div class="col-xs-4">
-      <input pattern=".{0,30}"  title="Le CIF contient xx numéros" name="CIF" id="texte" class="form-control " maxlength="30">
+      <input pattern=".{0,30}"  title="Le CIF contient xx numéros" name="CIF" id="texte" class="form-control " maxlength="30" value="<?=$row['CIF']?>">
       </div>
      </div>
     </div>
@@ -90,7 +90,12 @@ $link=$retour[0];
        <div class="form-group">
         <label for="textarea" class="col-xs-2">Adresse</label>
       <div class="col-xs-6">
-      <?php echo '<textarea  id="textarea" name="ADRESSE_C" class="form-control" cols="50" rows="4" maxlength="100" >'.$row['ADRESSE_C'].'</textarea>';?>
+      <textarea  id="textarea" name="ADRESSE_C" class="form-control" cols="50" rows="4" maxlength="100" ><?= $row['ADRESSE_C'] ?></textarea>
+      </div>
+        
+      <label for="texte" class="col-xs-2">Adresse1</label>
+      <div class="col-xs-4">
+      <input    name="ADRESSE1_C" id="texte" class="form-control " maxlength="150" value="<?= $row['ADRESSE1_C']?>">
       </div>
 
     </div>

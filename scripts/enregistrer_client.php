@@ -21,7 +21,7 @@ $link=$retour[0];
    }
     
     echo '<div class="col-xs-9 well3">';
-    $sqlquery="insert into CLIENT (RAISSO_C, ADRESSE_C, TEL_C, NIF, STAT, EMAIL) values ('$_RAISSO_C', '$_ADRESSE_C', '$_TEL_C', '$_NIF',  '$_STAT', '$_EMAIL')";
+    $sqlquery="insert into CLIENT (RAISSO_C, ADRESSE_C, ADRESSE1_C, TEL_C, NIF, STAT, EMAIL) values ('$_RAISSO_C', '$_ADRESSE_C', '$_ADRESSE1_C', '$_TEL_C', '$_NIF',  '$_STAT', '$_EMAIL')";
     
     $result=mysqli_query($link,$sqlquery) or die(panel('panel-danger','Erreur d\'enregistrement','<p> <img src="../images/ERREUR.gif"><strong>Echec de l\'enregistrement</strong></p>'));
    
