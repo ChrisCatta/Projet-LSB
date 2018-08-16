@@ -45,8 +45,9 @@
 //$c=$retour[0];
             $link = $retour[0];
 
-            ?>
-            <div class="container-imp">
+        ?>
+        <div class="container-imp">
+              <div class="row">
                 <div class="col-xs-12 ">
                     <?php
 
@@ -724,6 +725,7 @@ $montTTC=$montHT+$montTVA;
 
                         </table>
                     </div>
+              </div>
                     <div class="row saut">
                         <div class="montant">Le montant de la présente facture est arreté à la somme de : <h5><?= $lettres ?> (<?php echo number_format($montTTC, 0, ',', ' ') . " Ar" ?>)</h5></div>
                         <div class="montant">
@@ -739,6 +741,7 @@ $montTTC=$montHT+$montTVA;
                             </div>
                         </div>
                     </div>
+                    <div class="row saut">
                 <div class="foot">
                     <?php include('../modeles/pied-imp.php'); ?>
                 </div>
@@ -747,5 +750,6 @@ $montTTC=$montHT+$montTVA;
             });
         </script>
     </div>
+        </div>
 </body>
 </html>

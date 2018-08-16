@@ -238,10 +238,11 @@ tr.selected
 .success{
   background-color: transparent;
 }
-  table{
-      width: 100%;
-      color:#333
-    }
+table{
+    width: 100%;
+    color:#333;
+    font-size:12px;
+}
 td{
       border: 1px dotted #f4f2f2;
       padding-left: 2px;
@@ -266,6 +267,8 @@ th.masque,
 .row{
     padding-left: 15px;
     padding-right: 15px;
+    margin-right: 0px;
+    margin-left: -15px;
    }
 .btn-default,
 .btn-primary{
@@ -328,13 +331,13 @@ background-color:rgba(255,176,25,0.4);
 #Stock .stockDown{
 background-color:rgba(229,0,1,0.4);
 }
-table {
+table.info {
     margin-bottom: 15px;
     border-collapse: collapse;
     margin-left: auto;
     margin-right: auto;
     font-size:0.8em;
-    width:700px;
+    width:650px;
 }
 table.info td , table.info th{
   border: 1px solid #3a3a3a;

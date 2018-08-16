@@ -686,7 +686,8 @@ $link=$retour[0];
 <script type="text/javascript">
     
     
-           window.onload =remise          
+           window.onload =remise  ;  
+           
    function remise() {
             var txremise= document.getElementById("remise").value;
             var tht = document.getElementById("tht").value;
@@ -709,12 +710,12 @@ var t3=["","","Vingt","Trente","Quarante","Cinquante","Soixante","Soixante","Qua
  
  
  
-window.onload=calcule
+window.onload=calcule;
  
 function calcule(){
   document.getElementById("t").onfocus=function(){
-  document.getElementById("lettres").value =trans(this.value)
-  }
+  document.getElementById("lettres").value =trans(this.value);
+  };
 }
  
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////

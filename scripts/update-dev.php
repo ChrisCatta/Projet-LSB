@@ -14,28 +14,12 @@ if (isset($_POST['Submit'])){
    	$id_count = count($_POST['ID_DV_LIGNE']);
 	$LIGNES=$_POST['ID_DV_LIGNE'];
 	$QTES= $_POST['QTE_DV'];
-	$LONG= $_POST['LONGUEUR'];
-      
-	/*$LONG2= $_POST['TEMP'];
-        $FAM=$_POST['ID_FAMILLE'];
-    //this runs once for each id we have*/
-    for ($i=0; $i<$id_count; $i++){
         
-        $postrabot=isset($_POST['RABOT'][$i]);
-        $postsec=isset($_POST['SEC']);
-        if(isset($_POST['RABOT'][$i])){
-        $rabot=1;
-        }
-        else{
-            $rabot=0;
-        }
-        if(isset($_POST['SEC'][$i])){
-        $sec=1;
-        }
-        else{
-            $sec=0;
-        }
-        
+    for($i=0;$i<$id_count;$i++){ 
+       $rabot=$_POST['rabot'.$i];
+       
+         $sec=$_POST['sec'.$i];
+         
         	$sql = "UPDATE contenir_dv SET QTE_DV=$QTES[$i], RABOT=$rabot, SEC=$sec WHERE ID_DV_LIGNE=$LIGNES[$i]";
           
           //}

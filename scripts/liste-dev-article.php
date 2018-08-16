@@ -6,9 +6,6 @@ $retour = connexion();
 //$c=$retour[0];
 $link = $retour[0];
 
-?>
-<?php
-
 if (isset($_GET['idDV'])) {
     $iddv = (int) $_GET['idDV'];
 } else {
@@ -16,83 +13,146 @@ if (isset($_GET['idDV'])) {
 }
 $req = "SELECT L.ID_DV_LIGNE, L.ID_DV, L.ID_A, L.QTE_DV, L.RABOT, L.SEC, A.ID_A, A.DESIGNATION, A.ID_TYPE, A.ID_FAMILLE,A.LONGUEUR,A.LARGEUR, A.EPAISSEUR, A.DIAMETRE, A.QTE_STO  FROM contenir_dv  L, ARTICLE A WHERE L.ID_DV='$iddv' AND A.ID_A=L.ID_A";
 $res = mysqli_query($link, $req) or exit(mysql_error());
+
 ?>
-<div id="ligne-devis">
-    <table  border="1"> 
-        <thead>
-            <tr>
-                <th><strong>supp</strong></th>
-                <th><strong>Id Art</strong></th>
-                <th><strong>Désignation</strong></th>
-                <th><strong>Long</strong></th>
-                <th><strong>Larg</strong></th>
-                <th><strong>Ep</strong></th>
-                <th><strong>Diam</strong></th>
-                <th><strong>QTe DISPO</strong></th>
-                <th><strong>QTe DV</strong></th>
-                <th><strong>R</strong></th>
-                <th><strong>S</strong></th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
+        <form name="listArt" id="listArt" method="POST" action="update-dev.php">
+<div class="row">
+    <div class="col-xs-12">
+            <div id="ligne-devis">
+                <table  border="1"> 
+                    <thead>
+                        <tr>
+                            <th><strong>supp</strong></th>
+                            <th><strong>Id Art</strong></th>
+                            <th><strong>Désignation</strong></th>
+                            <th><strong>Long</strong></th>
+                            <th><strong>Larg</strong></th>
+                            <th><strong>Ep</strong></th>
+                            <th><strong>Diam</strong></th>
+                            <th><strong>QTe DISPO</strong></th>
+                            <th><strong>QTe DV</strong></th>
+                            <th><strong>R</strong></th>
+                            <th><strong>S</strong></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
 
-            while ($row = mysqli_fetch_array($res, MYSQLI_ASSOC)) {
-                $article = $row['ID_A'];
+                        $num = 0;
+                        while ($row = mysqli_fetch_array($res, MYSQLI_ASSOC)) {
+                            $article = $row['ID_A'];
 
-                $req1 = "SELECT ID_A, SUM(QTE_BON_L) AS QTE_ENTREE from contenir_bon_l where ID_A='$article'";
-                $res1 = mysqli_query($link, $req1);
-                $row1 = mysqli_fetch_array($res1, MYSQLI_ASSOC);
+                            $req1 = "SELECT ID_A, SUM(QTE_BON_L) AS QTE_ENTREE from contenir_bon_l where ID_A='$article'";
+                            $res1 = mysqli_query($link, $req1);
+                            $row1 = mysqli_fetch_array($res1, MYSQLI_ASSOC);
 
-                $req2 = "SELECT ID_A, SUM(QTE_CO) AS QTE_SORTIE from contenir_co where ID_A='$article'";
-                $res2 = mysqli_query($link, $req2);
-                $row2 = mysqli_fetch_array($res2, MYSQLI_ASSOC);
+                            $req2 = "SELECT ID_A, SUM(QTE_CO) AS QTE_SORTIE from contenir_co where ID_A='$article'";
+                            $res2 = mysqli_query($link, $req2);
+                            $nb = mysqli_num_rows($res2);
+                            $row2 = mysqli_fetch_array($res2, MYSQLI_ASSOC);
 
-                $dispo = $row['QTE_STO'] + $row1['QTE_ENTREE'] - $row2['QTE_SORTIE'];
-                if ($dispo >= 5) {
-                    $color = "stockOK";
-                } else {
-                    if ((0 < $dispo) & ($dispo < 5)) {
-                        $color = "stockLimite";
-                    } else {
-                        $color = "stockDown";
+                            $dispo = $row['QTE_STO'] + $row1['QTE_ENTREE'] - $row2['QTE_SORTIE'];
+                            if ($dispo >= 5) {
+                                $color = "stockOK";
+                            } else {
+                                if ((0 < $dispo) & ($dispo < 5)) {
+                                    $color = "stockLimite";
+                                } else {
+                                    $color = "stockDown";
+                                }
+                            }
+
+                            ?>
+                            <tr class="<?= $color ?>" id="<?php echo $row['ID_DV'] . '-' . $row['ID_DV_LIGNE'] ?>" name="ID_DV">
+                                <td ><button type="button" class="supprime supprimeLDV"  id="<?= $row['ID_DV_LIGNE'] ?>" name="ID_DV_LIGNE" ></button></td>
+                                <td> <input  class="chiffre" name="ID_A" maxlength="30" value="<?php echo $row['ID_A'] ?>" disabled="disabled"></td>
+                                <td> <input   maxlength="30" value="<?= $row['DESIGNATION'] ?>" disabled="disabled"></td>
+                                <td> <input  class="chiffre"  maxlength="10" value="<?php echo $row['LONGUEUR'] ?>" ></td>
+                                <td> <input  class="chiffre"  maxlength="10" value="<?php echo $row['LARGEUR'] ?>" disabled="disabled"></td>
+                                <td> <input  class="chiffre"  maxlength="10" value="<?php echo $row['EPAISSEUR'] ?>" disabled="disabled"></td>
+                                <td> <input  class="chiffre"  maxlength="10" value="<?php echo $row['DIAMETRE'] ?>" disabled="disabled"></td>
+                                <td><?php echo $dispo ?></td>
+                                <td><input id="spinner" type="spinner" name="QTE_DV[]" class="ui-spinner chiffre" max="<?= $dispo ?>" value="<?= $row['QTE_DV'] ?>" ></td>
+
+                                <?php
+
+                                if ($row['ID_TYPE'] == "1") {
+                                    echo '<td><input id="r' . $num . '" type="checkbox" name="r[]"  onchange="rabot(this,' . $num . ')"';
+
+                                    if ($row['RABOT'] == '1') {
+                                        echo 'value="1" checked="checked" >';
+                                        echo '<input type="hidden" id="rabot' . $num . '" name="rabot' . $num . '" value="1"></td>';
+                                    } else {
+                                        echo ' >';
+                                        echo '<input type="hidden" id="rabot' . $num . '" name="rabot' . $num . '" value="0"></td>';
+                                    }
+                                    echo '<td><input id="s' . $num . '" type="checkbox" name="s[]"  onchange="sec(this,' . $num . ')"';
+
+                                    if ($row['SEC'] == '1') {
+                                        echo 'value="1" checked="checked" >';
+                                        echo '<input type="hidden" id="sec' . $num . '" name="sec' . $num . '" value="1"></td>';
+                                    } else {
+                                        echo '  >';
+                                        echo '<input type="hidden" id="sec' . $num . '" name="sec' . $num . '" value="0"></td>';
+                                    }
+                                } else {
+                                    echo '
+                         <input type="hidden" id="rabot' . $num . '" name="rabot' . $num . '" value="0">
+                         <input type="hidden" id="sec' . $num . '" name="sec' . $num . '" value="0">';
+                                }
+
+                                ?> 
+
+
+                        <input id="spinner" type="hidden" name="ID_DV_LIGNE[]"  value="<?php echo $row['ID_DV_LIGNE'] ?>">
+
+                        <input id="spinner" type="hidden" name="ID_TYPE[]"  value="<?php echo $row['ID_TYPE'] ?>">
+
+                        <?php
+
+                        $num ++;
                     }
-                }
 
-                ?>
-                <tr class="<?= $color ?>" id="<?php echo $row['ID_DV'] ?>" name="ID_DV">
-                    <td ><button type="button" class="supprime supprimeLDV"  id="<?= $row['ID_DV_LIGNE'] ?>" name="ID_DV_LIGNE" ></button></td>
-                    <td> <input  class="chiffre" name="ID_A" maxlength="30" value="<?php echo $row['ID_A']?>" disabled="disabled"></td>
-                    <td> <input  name="DESIGNATION" maxlength="30" value="<?= $row['DESIGNATION'] ?>" disabled="disabled"></td>
-                    <td> <input  class="chiffre" name="LONGUEUR[]" maxlength="10" value="<?php echo $row['LONGUEUR'] ?>" ></td>
-                    <td> <input  class="chiffre" name="LARGEUR" maxlength="10" value="<?php echo $row['LARGEUR'] ?>" disabled="disabled"></td>
-                    <td> <input  class="chiffre" name="EPAISSEUR" maxlength="10" value="<?php echo $row['EPAISSEUR'] ?>" disabled="disabled"></td>
-                    <td> <input  class="chiffre" name="DIAMETRE" maxlength="10" value="<?php echo $row['DIAMETRE'] ?>" disabled="disabled"></td>
-                    <td><?php echo $dispo ?></td>
-                    <td><input id="spinner" type="spinner" name="QTE_DV[]" class="ui-spinner chiffre" max="<?php echo $dispo ?>" value="<?php echo $row['QTE_DV'] ?>"></td>
-                    <td><?php if ($row['ID_TYPE']==="1"){ 
-                    if ($row['RABOT']=='1'){  echo '<input type="checkbox" name="RABOT[]" value="r" checked="checked">'; } 
-                    else{
-                        echo '<input type="checkbox" name="RABOT[]" value="r" >';
-                    } }?>
-                        <input id="spinner" type="hidden" name="ID_DV_LIGNE[]"  value="<?php echo $row['ID_DV_LIGNE'] ?>"></td> 
-                    <td><?php if ($row['ID_TYPE']==="1"){  
-                    if ($row['SEC']=='1'){ 
-                    echo '<input type="checkbox" name="SEC[]" value="s" checked="checked">';}
-                    else {
-                        echo '<input type="checkbox" name="SEC[]" value="s">';
-                        
-                    } }?>
-                    <input id="spinner" type="hidden" name="ID_FAMILLE[]"  value="<?php echo $row['ID_FAMILLE'] ?>"></td>
+                    ?>
+                    </tr>
+                    </tbody>
 
-                    <?php
-
-                }
-
-                ?>
-            </tr>
-        </tbody>
-
-    </table>
-    <input type="hidden" id="iddv" name="iddv" value="<?php echo $row['ID_DV'] ?>"/>
+                </table>
+                <input type="hidden" id="iddv" name="ID_DV" value="<?php echo $row['ID_DV'] ?>">
+            </div>
+    </div>
 </div>
+
+<div class="row">
+    <div class="col-xs-12">     
+        <div class="form-group">
+            <div class="col-xs-2">
+                <button id="ajouter" type="button" name="idDV" value="Ajouter" onclick="afficheDevis(<?= $row['ID_DV'] ?>)" class=" pull-left btn btn-primary">Ajouter</button>
+            </div>
+            <div class="col-xs-offset-8 col-xs-2">
+                <button type="submit" name="Submit" value="Valider" class=" btn btn-primary">Valider</button> 
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+<script type="text/javascript">
+
+    function rabot(rabotage, num) {
+        var rep = document.getElementById('rabot' + num).value;
+        if (rabotage.checked === true) {
+            document.getElementById('rabot' + num).value = '1';
+        } else {
+            document.getElementById('rabot' + num).value = '0';
+        }
+    }
+
+    function sec(seche, num) {
+        if (seche.checked === true) {
+            var reps = document.getElementById('sec' + num).value;
+            document.getElementById('sec' + num).value = '1';
+        } else {
+            document.getElementById('sec' + num).value = '0';
+        }
+    }
+</script>

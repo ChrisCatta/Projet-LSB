@@ -72,15 +72,13 @@ session_start();
           </div>
       </div>     
       
-    <form name="listArt" method="POST" action="update-dev.php">
-      <div class="row">
-          <div class="col-xs-10">
               Liste livraison articles :
                 <div  id="div-dev-art">
                  </div>
           </div>
       </div>
-      <div class="row">
+       
+     <!-- <div class="row">
      <div class="form-group">
             <div class="col-xs-2">
                   <button id="ajouter" type="button" name="idDV" value="Ajouter" onclick="afficheDevis(<?=$row1['ID_DV']?>)" class=" pull-left btn btn-primary">Ajouter</button>
@@ -90,7 +88,7 @@ session_start();
             </div>
         </div>
         </div>
-      </form>
+      </form>-->
  
     <!--Div de la fonction panel_tab-->
     </div>
@@ -100,5 +98,6 @@ session_start();
   var idDV='<?=$row1['ID_DV']?>';
   afficheDevis(idDV);
   </script>
+  
 <?php 
 include('../modeles/pied.php'); ?>

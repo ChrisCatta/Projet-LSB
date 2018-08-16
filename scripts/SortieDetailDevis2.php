@@ -97,7 +97,6 @@
                             </div>
                         </div>
                         <div class="col-xs-3"> 
-                            <!-- <h2 style="text-align: center;"><strong>Devis</strong></h2>-->
                         </div>
                         <div class="col-xs-4 ">
                             <span class="ligneCommande" style="text-align: left; top:0px;">Fianarantsoa le :<?php echo $newFormat; ?></span>
@@ -165,15 +164,23 @@
 
                                             $MONTANTNLC = 0;
                                             $VOLUMENLC = 0;
-                                            $suppNLC=0;
+                                            $supprabotNLC=0;
+                                            $suppsecNLC=0;
+                                            $VolrabotNLC=0;
+                                            $VolsecNLC=0;
                                             while ($rowNLC = mysqli_fetch_array($resNLC, MYSQLI_ASSOC)) {
-
                                                     if($rowNLC['RABOT']==1){
                                                         $text= " (Raboté) ";
                                                     }
                                                      else {
                                                         $text="";
-                                                    }   
+                                                    }    
+                                                    if($rowNLC['SEC']==1){
+                                                        $text=$text. " (Sec) ";
+                                                    }
+                                                     else {
+                                                        $text=$text."";
+                                                    }                                                    
                                                 ?>
                                                 <tr>
                                                     <td><?= $rowNLC['FAMILLE'].$text ?></td>
@@ -184,68 +191,89 @@
                                                     <td></td>
                                                     <td style="text-align:right"> <?php echo number_format($rowNLC['VOL'] * $rowNLC['QTE_DV'], 3, ',', ' ') ?></td>
                                                     <td style="text-align:right"><?php echo number_format($rowNLC['PV_HT'], 0, ',', ' ') . " Ar" ?></td>
+                                                    <td style="text-align:right"><?php echo number_format($rowNLC['MONTANT'], 0, ',', ' ') . " Ar" ?></td>
                                                     <?php if ($rowNLC['ID_TYPE']==="1") {
-                    if ($rowNLC['RABOT']=='1'){  
                     $reqrab="SELECT * FROM TARIFS WHERE TARIF='Rabotage'";
                     $resrab=mysqli_query($link,$reqrab);
                     $rowrab= mysqli_fetch_array($resrab);
                     $montsupprabot=$rowrab['MONTANTHT'];
                     $textsupprabot='Rabotage ';
+                    
+                    if ($rowNLC['RABOT']=='1'){  
+                    $volrabot=$rowNLC['VOL']*$rowNLC['QTE_DV'];
+                    $supprabot=$montsupprabot*$volrabot;
                     $montsupprabot=number_format($montsupprabot, 0, ',', ' ') .' Ar';
                     } 
                     else{
-                     $montsupprabot=''  ;
-                    $textsupprabot='';
-                    } 
-                    if ($rowNLC['SEC']=='1'){ 
+                    $supprabot='';
+                    $volrabot='';    
+                    }
                    
-                    $textsuppsec='Bois sec';
-                    $reqsec="SELECT * FROM TARIFS WHERE ID_TARIF=102";
+                    $reqsec="SELECT * FROM TARIFS WHERE TARIF='Bois sec'";
                     $ressec=mysqli_query($link,$reqsec);
                     $rowsec= mysqli_fetch_array($ressec);
                     $montsuppsec=$rowsec['MONTANTHT'];
                     $textsuppsec='Bois sec ';
-                     $montsuppsec= number_format($montsuppsec, 0, ',', ' ') .' Ar';
+                    if ($rowNLC['SEC']=='1'){
+                    $volsec=($rowNLC['VOL']*$rowNLC['QTE_DV']);
+                    $suppsec=$montsuppsec*$volsec;
+                    $montsuppsec= number_format($montsuppsec, 0, ',', ' ') .' Ar';
+                    }
+                    else{
+                    $suppsec ='';
+                    $volsec ='';
+                    }
                     }
                     else {
-                    $montsuppsec  =''; 
-                    $textsuppsec='';
-                        
-                    } 
-                    
-                    }?>
-                                                  
-                                                    <td style="text-align:right"><?php echo number_format($rowNLC['MONTANT'], 0, ',', ' ') . " Ar" ?></td>
-                                                </tr>
-                                                <?php
-
-                                                $VOLUMENLC = $VOLUMENLC + $rowNLC['VOL'] * $rowNLC['QTE_DV'];
-                                                $suppNLC = $suppNLC + $rowNLC['VOL'] * $rowNLC['QTE_DV'] * 70000;
-                                                                }
+                    $supprabot ='';
+                    $suppsec ='';
+                    $volrabot ='';    
+                    $volsec ='';
+                    }                
+                            $VOLUMENLC = $VOLUMENLC + $rowNLC['VOL'] * $rowNLC['QTE_DV'];
+                            $supprabotNLC = $supprabotNLC + $supprabot ;
+                            $VolrabotNLC = $VolrabotNLC + $volrabot;
+                            $suppsecNLC = $suppsecNLC + $suppsec ;
+                            $VolsecNLC = $VolsecNLC +  $volsec;
+                                                
+                 }
                                                                 $sqlquery3NLC = "SELECT  A.UNITE, sum((L.QTE_DV*A.QTE)*A.PV_HT) as 'THT', sum((L.QTE_DV*A.QTE)*A.PV_HT*(1+0.20)) as 'TTC', sum(A.VOL*L.QTE_DV) as 'VOLDV'
                from CONTENIR_DV L, ARTICLE A
                where L.ID_DV='$ID_DV' AND A.ID_A=L.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$type1'";
                                                                 $result3NLC = mysqli_query($link, $sqlquery3NLC);
                                                                 $row3NLC = mysqli_fetch_array($result3NLC, MYSQLI_ASSOC);
-
-                                                                ?>
-                                                                <tr>
-                                                                    <td colspan="6" class="success"><strong> <?=$textsupprabot.$textsuppsec?> </strong></td>
-                                                                    <td></td>
-                                                                    <td class="" style="text-align:right"><strong><?=$montsupprabot.$montsuppsec?></strong></td>
-                                                                    <td class="" style="text-align:right"><strong><?php echo number_format($suppNLC, 0, ',', ' ') . " Ar" ?></strong></td>
-                                                                </tr>
+                             if($supprabotNLC!='')        {                           
+                                 ?>
+                       <tr>
+                            <td colspan="6" class="success"><strong> <?=$textsupprabot?> </strong></td>
+                            <td class="" style="text-align:right"><?php echo number_format($VolrabotNLC, 3, ',', ' ')?></td>
+                            <td class="" style="text-align:right"><strong><?=$montsupprabot?></strong></td>
+                            <td class="" style="text-align:right"><strong><?php echo number_format($supprabotNLC, 0, ',', ' ') . " Ar" ?></strong></td>
+                        </tr>
+                        <?php
+                             }
+                             if($suppsecNLC!='')        {  
+                             ?>
+                                  
+                        <tr>
+                            <td colspan="6" class="success"><strong> <?=$textsuppsec?> </strong></td>
+                            <td class="" style="text-align:right"><?php echo number_format($VolsecNLC, 3, ',', ' ')?></td>
+                            <td class="" style="text-align:right"><strong><?=$montsuppsec?></strong></td>
+                            <td class="" style="text-align:right"><strong><?php echo number_format($suppsecNLC, 0, ',', ' ') . " Ar" ?></strong></td>
+                        </tr> 
+                        <?php
+                             }
+                             ?>
                                                                 <tr>
                                                                     <td colspan="6" class="success"><strong>Total</strong></td>
                                                                     <td class="" style="text-align:right"><strong><?php echo number_format($VOLUMENLC, 3, ',', ' ') ?></strong></td>
                                                                     <td></td>
-                                                                    <td class="" style="text-align:right"><strong><?php echo number_format($row3NLC['THT'] + $suppNLC, 0, ',', ' ') . " Ar" ?></strong></td>
+                                                                    <td class="" style="text-align:right"><strong><?php echo number_format($row3NLC['THT'] + $supprabotNLC +$suppsecNLC, 0, ',', ' ') . " Ar" ?></strong></td>
                                                                 </tr>
                                                         </table>
                                                         <?php
 
                                                     }
-
 
                                                     $type6 = 6;
 
@@ -690,31 +718,31 @@ $montTTC=$montHT+$montTVA;
                         <table class="info saut" border="1" >
                        <!--  <tr><td colspan="9">&nbsp;</td></tr>-->
                             <tr>
-                                <td style="width:60%" class="success"><strong>TOTAL</strong></td>
+                                <td style="width:63%" class="success"><strong>TOTAL</strong></td>
                                 <td style="text-align:right ;width:7%"><strong><?php echo $row2['VOLDV'] ?></strong></td>
                                 <td  style="width:15%"></td>
                                 <td  style="text-align:right; width:15%"><strong><?php echo number_format($row2['THT'], 0, ',', ' ') . " Ar" ?></strong></td>
                             </tr>
                             <tr>
-                                <td style="width:60%" class="success noborder" style="border-right: none;"><strong>Remise <?=$txremise?>% </strong></td>
+                                <td style="width:63%" class="success noborder" style="border-right: none;"><strong>Remise <?=$txremise?>% </strong></td>
                                 <td  style="width:7%" class="noborder"></td>
                                 <td  style="width:15%" class="noborder"></td>
                                 <td style="width:15%; text-align:right"><strong><?php echo number_format($remise, 0, ',', ' ') . " Ar" ?></strong></td>
                             </tr>
                             <tr>
-                                <td style="width:60%" class="success noborder" style="border-right: none;"><strong>Total après Remise</strong></td>
+                                <td style="width:63%" class="success noborder" style="border-right: none;"><strong>Total après Remise</strong></td>
                                 <td  style="width:7%" class="noborder"></td>
                                 <td  style="width:15%" class="noborder"></td>
                                 <td style="width:15%; text-align:right"><strong><?php echo number_format($montHT, 0, ',', ' ') . " Ar" ?></strong></td>
                             </tr>
                             <tr>
-                                <td style="width:60%" class="success noborder" style="border-right: none;"><strong>TVA 20%</strong></td>
+                                <td style="width:63%" class="success noborder" style="border-right: none;"><strong>TVA 20%</strong></td>
                                 <td  style="width:7%" class="noborder"></td>
                                 <td  style="width:15%" class="noborder"></td>
                                 <td style="width:15%; text-align:right"><strong><?php echo number_format($montTVA, 0, ',', ' ') . " Ar" ?></strong></td>
                             </tr>
                             <tr>
-                                <td style="width:60%" class="success noborder"><strong>TOTAL TTC</strong></td>
+                                <td style="width:63%" class="success noborder"><strong>TOTAL TTC</strong></td>
                                 <td  style="width:7%"  class="noborder"></td>
                                 <td  style="width:15%"  class="noborder"></td>
                                 <td style="width:15%; text-align:right"><strong><?php echo number_format($montTTC, 0, ',', ' ') . " Ar" ?></strong></td>

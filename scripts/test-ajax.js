@@ -295,3 +295,5 @@ function remise() {
          document.getElementById("t").value= montttc;
          document.getElementById("lettres").value = trans(montttc);
      }
+     
+  
