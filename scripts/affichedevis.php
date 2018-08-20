@@ -408,7 +408,7 @@ session_start();
                                                     $VOLUME = $VOLUME + $rowAV['VOL'] * $rowAV['QTE_DV'];
                                                     $SURFACE = $SURFACE + $rowAV['QTE'] * $rowAV['QTE_DV'];
                                                 }
-                                                $sqlqueryAV3 = "SELECT  A.UNITE, sum((L.QTE_DV*A.QTE)*A.PV_HT) as 'THT', sum((L.QTE_DV*A.QTE)*A.PV_HT*(1+0.20)) as 'TTC', sum(A.VOL*L.QTE_DV) as 'VOLDV'
+                                                $sqlqueryAV3 = "SELECT L.ID_DV, A.ID_FAMILLE, A.UNITE, sum((L.QTE_DV*A.QTE)*A.PV_HT) as 'THT', sum((L.QTE_DV*A.QTE)*A.PV_HT*(1+0.20)) as 'TTC', sum(A.VOL*L.QTE_DV) as 'VOLDV'
                from CONTENIR_DV L, ARTICLE A
                where L.ID_DV='$ID_DV' AND A.ID_A=L.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$type3' AND A.ID_FAMILLE='$i'";
                                                 $resultAV3 = mysqli_query($link, $sqlqueryAV3);
@@ -483,10 +483,10 @@ session_start();
 
                                                     $LONGUEURML = $LONGUEURML + $rowML['LONGUEUR'] * $rowML['QTE_DV'];
                                                 }
-                                                $sqlquery3ML = "SELECT  sum((L.QTE_DV*A.LONGUEUR)*A.PV_HT) as 'THT', sum((L.QTE_DV*A.LONGUEUR)*A.PV_HT*(1+0.20)) as 'TTC', sum(A.VOL*L.QTE_DV) as 'VOLDV', sum(A.QTE*L.QTE_DV) as 'QTEDV'
+                                                $sqlquery3ML = "SELECT A.ID_A, A.ID_TYPE, L.ID_DV, A.UNITE, A.ID_FAMILLE, sum((L.QTE_DV*A.LONGUEUR)*A.PV_HT) as 'THT', sum((L.QTE_DV*A.LONGUEUR)*A.PV_HT*(1+0.20)) as 'TTC', sum(A.VOL*L.QTE_DV) as 'VOLDV', sum(A.QTE*L.QTE_DV) as 'QTEDV'
                from CONTENIR_DV L, ARTICLE A
                where L.ID_DV='$ID_DV' AND A.ID_A=L.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$typeML3' AND A.ID_FAMILLE='$i'";
-                                                if ($result3ML == mysqli_query($link, $sqlquery3ML)) {
+                                                if ($result3ML = mysqli_query($link, $sqlquery3ML)) {
                                                     $row3ML = mysqli_fetch_array($result3ML, MYSQLI_ASSOC);
                                                 }
 

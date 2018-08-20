@@ -491,7 +491,7 @@ session_start();
                                                 $sqlquery3ML = "SELECT  sum((L.QTE_CO*A.LONGUEUR)*A.PV_HT) as 'THT', sum((L.QTE_CO*A.LONGUEUR)*A.PV_HT*(1+0.20)) as 'TTC', sum(A.VOL*L.QTE_CO) as 'VOLCO', sum(A.QTE*L.QTE_CO) as 'QTEDV'
                from CONTENIR_CO L, ARTICLE A
                where L.ID_CO='$ID_CO' AND A.ID_A=L.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$typeML3' AND A.ID_FAMILLE='$i'";
-                                                if ($result3ML == mysqli_query($link, $sqlquery3ML)) {
+                                                if ($result3ML = mysqli_query($link, $sqlquery3ML)) {
                                                     $row3ML = mysqli_fetch_array($result3ML, MYSQLI_ASSOC);
                                                 }
 
