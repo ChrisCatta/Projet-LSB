@@ -231,6 +231,7 @@ session_start();
                    <label  class="col-xs-2">Qte/U</label>
                       <div class=" col-xs-4">
                          <input min="0" max="2000000000" step="0.001" maxlength="10" class="spinner" id="QTE" name="QTE"  value="<?=$row['QTE']?>"/>
+                         <input min="0" max="2000000000" step="0.001" maxlength="10" class="spinner" id="QTE" name="QTE"  value="<?=$row['VOL']?>"/>
                       </div>
                 </div>
              </div>

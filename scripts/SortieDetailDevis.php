@@ -293,14 +293,14 @@ include('../modeles/enteteAdmin.php');
                                     $type9 = 9;
                                     for ($i = 35; $i <= 40; $i++) {
 
-                                        $reqAP = "SELECT A.UNITE, A.QTE, A.VOL, A.ID_A, A.ID_TYPE, A.DESIGNATION, A.LONGUEUR, A.LARGEUR, A.UNITE, A.EPAISSEUR, A.DIAMETRE, A.PV_HT, A.FAMILLE, A.TYPE, C.ID_DV, C.ID_DV_LIGNE, C.QTE_DV, (C.QTE_DV*A.QTE)*A.PV_HT as 'MONTANT'
+                                        $reqAP9 = "SELECT A.UNITE, A.QTE, A.VOL, A.ID_A, A.ID_TYPE, A.DESIGNATION, A.LONGUEUR, A.LARGEUR, A.UNITE, A.EPAISSEUR, A.DIAMETRE, A.PV_HT, A.FAMILLE, A.TYPE,C.ID_A, C.ID_DV, C.ID_DV_LIGNE, C.QTE_DV, (C.QTE_DV*A.QTE)*A.PV_HT as 'MONTANT'
       FROM  ARTICLE A, CONTENIR_DV C
       WHERE  C.ID_DV='$ID_DV' AND A.ID_A=C.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$type9' AND A.ID_FAMILLE='$i' order by A.LONGUEUR DESC, A.LARGEUR DESC, A.EPAISSEUR DESC";
 
-                                        $resAP = mysqli_query($link, $reqAP);
-                                        $nombreAP = mysqli_num_rows($resAP);
+                                        $resAP9 = mysqli_query($link, $reqAP9);
+                                        $nombreAP9 = mysqli_num_rows($resAP9);
 
-                                        if ($nombreAP > 0) {
+                                        if ($nombreAP9 > 0) {
 
                                             ?>          
                                             <table class="info saut" border="1" style="width:100%">
@@ -324,37 +324,37 @@ include('../modeles/enteteAdmin.php');
                                                 $MONTANT = 0;
                                                 $VOLUME = 0;
                                                 $SURFACE = 0;
-                                                while ($rowAP = mysqli_fetch_array($resAP, MYSQLI_ASSOC)) {
+                                                while ($rowAP9 = mysqli_fetch_array($resAP9, MYSQLI_ASSOC)) {
 
                                                     ?>
                                                     <tr>
-                                                        <td><?= $rowAP['FAMILLE'] ?></td>
-                                                        <td><?php echo $rowAP['QTE_DV'] ?></td>
-                                                        <td><?php echo $rowAP['LONGUEUR'] ?></td>
-                                                        <td><?php echo $rowAP['LARGEUR'] ?></td>
-                                                        <td><?php echo $rowAP['EPAISSEUR'] ?></td>
-                                                        <td style="text-align:right"> <?php echo number_format($rowAP['QTE'] * $rowAP['QTE_DV'], 3, ',', ' ') ?></td>
-                                                        <td style="text-align:right"> <?php echo number_format($rowAP['VOL'] * $rowAP['QTE_DV'], 3, ',', ' ') ?></td>
-                                                        <td style="text-align:right"><?php echo number_format($rowAP['PV_HT'], 0, ',', ' ') . " Ar"  ?></td>
-                                                        <td style="text-align:right"><?php echo number_format($rowAP['MONTANT'], 0, ',', ' ') . " Ar"  ?></td>
+                                                        <td><?= $rowAP9['FAMILLE'] ?></td>
+                                                        <td><?php echo $rowAP9['QTE_DV'] ?></td>
+                                                        <td><?php echo $rowAP9['LONGUEUR'] ?></td>
+                                                        <td><?php echo $rowAP9['LARGEUR'] ?></td>
+                                                        <td><?php echo $rowAP9['EPAISSEUR'] ?></td>
+                                                        <td style="text-align:right"> <?php echo number_format($rowAP9['QTE'] * $rowAP9['QTE_DV'], 3, ',', ' ') ?></td>
+                                                        <td style="text-align:right"> <?php echo number_format($rowAP9['VOL'] * $rowAP9['QTE_DV'], 3, ',', ' ') ?></td>
+                                                        <td style="text-align:right"><?php echo number_format($rowAP9['PV_HT'], 0, ',', ' ') . " Ar"  ?></td>
+                                                        <td style="text-align:right"><?php echo number_format($rowAP9['MONTANT'], 0, ',', ' ') . " Ar"  ?></td>
                                                     </tr>
                                                     <?php
 
-                                                    $VOLUME = $VOLUME + $rowAP['VOL'] * $rowAP['QTE_DV'];
-                                                    $SURFACE = $SURFACE + $rowAP['QTE'] * $rowAP['QTE_DV'];
+                                                    $VOLUME = $VOLUME + $rowAP9['VOL'] * $rowAP9['QTE_DV'];
+                                                    $SURFACE = $SURFACE + $rowAP9['QTE'] * $rowAP9['QTE_DV'];
                                                 }
-                                                $sqlqueryAP3 = "SELECT  A.UNITE, sum((L.QTE_DV*A.QTE)*A.PV_HT) as 'THT', sum((L.QTE_DV*A.QTE)*A.PV_HT*(1+0.20)) as 'TTC', sum(A.VOL*L.QTE_DV) as 'VOLDV'
+                                                $sqlqueryAP9 = "SELECT  A.UNITE, sum((L.QTE_DV*A.QTE)*A.PV_HT) as 'THT', sum((L.QTE_DV*A.QTE)*A.PV_HT*(1+0.20)) as 'TTC', sum(A.VOL*L.QTE_DV) as 'VOLDV'
                from CONTENIR_DV L, ARTICLE A
                where L.ID_DV='$ID_DV' AND A.ID_A=L.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$type9' AND A.ID_FAMILLE='$i'";
-                                                if ($resultAP3 = mysqli_query($link, $sqlqueryAP3)) {
-                                                    $rowAP3 = mysqli_fetch_array($resultAP3, MYSQLI_ASSOC);
+                                                if ($resultAP9 = mysqli_query($link, $sqlqueryAP9)) {
+                                                    $rowAP9 = mysqli_fetch_array($resultAP9, MYSQLI_ASSOC);
                                                 }
 
                                                 ?>
                                                 <td colspan="6" class="success"><strong>Total</strong></td>
                                                 <td class="" style="text-align:right"><strong><?php echo number_format($VOLUME, 3, ',', ' ') ?></strong></td>
                                                 <td></td>
-                                                <td class="" style="text-align:right"><strong><?php echo number_format($rowAP3['THT'], 0, ',', ' ') . " Ar"  ?></strong></td>
+                                                <td class="" style="text-align:right"><strong><?php echo number_format($rowAP9['THT'], 0, ',', ' ') . " Ar"  ?></strong></td>
                                                 </tr>
                                             </table>
                                             
@@ -366,14 +366,14 @@ include('../modeles/enteteAdmin.php');
                                     $type3 = 3;
                                     for ($i = 7; $i <= 14; $i++) {
 
-                                        $reqAV = "SELECT A.UNITE, A.QTE, A.VOL, A.ID_A, A.ID_TYPE, A.DESIGNATION, A.LONGUEUR, A.LARGEUR, A.UNITE, A.EPAISSEUR, A.DIAMETRE, A.PV_HT, A.FAMILLE, A.TYPE, C.ID_DV, C.ID_DV_LIGNE, C.QTE_DV, (C.QTE_DV*A.QTE)*A.PV_HT as 'MONTANT'
+                                        $reqAV3 = "SELECT A.UNITE, A.QTE, A.VOL, A.ID_A, A.ID_TYPE, A.DESIGNATION, A.LONGUEUR, A.LARGEUR, A.UNITE, A.EPAISSEUR, A.DIAMETRE, A.PV_HT, A.FAMILLE, A.TYPE, C.ID_DV, C.ID_DV_LIGNE, C.QTE_DV, (C.QTE_DV*A.QTE)*A.PV_HT as 'MONTANT'
       FROM  ARTICLE A, CONTENIR_DV C
       WHERE  C.ID_DV='$ID_DV' AND A.ID_A=C.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$type3' AND A.ID_FAMILLE='$i'  order by A.LONGUEUR DESC, A.LARGEUR DESC, A.EPAISSEUR DESC";
 
-                                        $resAV = mysqli_query($link, $reqAV);
-                                        $nombreAV = mysqli_num_rows($resAV);
+                                        $resAV3 = mysqli_query($link, $reqAV3);
+                                        $nombreAV3 = mysqli_num_rows($resAV3);
 
-                                        if ($nombreAV > 0) {
+                                        if ($nombreAV3 > 0) {
 
                                             ?>          
                                             <table class="info saut" border="1" style="width:100%">
@@ -397,24 +397,24 @@ include('../modeles/enteteAdmin.php');
                                                 $MONTANT = 0;
                                                 $VOLUME = 0;
                                                 $SURFACE = 0;
-                                                while ($rowAV = mysqli_fetch_array($resAV, MYSQLI_ASSOC)) {
+                                                while ($rowAV3 = mysqli_fetch_array($resAV3, MYSQLI_ASSOC)) {
 
                                                     ?>
                                                     <tr>
-                                                        <td><?= $rowAV['FAMILLE'] ?></td>
-                                                        <td><?php echo $rowAV['QTE_DV'] ?></td>
-                                                        <td><?php echo $rowAV['LONGUEUR'] ?></td>
-                                                        <td><?php echo $rowAV['LARGEUR'] ?></td>
-                                                        <td><?php echo $rowAV['EPAISSEUR'] ?></td>
-                                                        <td style="text-align:right"> <?php echo number_format($rowAV['QTE'] * $rowAV['QTE_DV'], 3, ',', ' ') ?></td>
-                                                        <td style="text-align:right"> <?php echo number_format($rowAV['VOL'] * $rowAV['QTE_DV'], 3, ',', ' ') ?></td>
-                                                        <td style="text-align:right"><?php echo number_format($rowAV['PV_HT'], 0, ',', ' ') . " Ar"  ?></td>
-                                                        <td style="text-align:right"><?php echo number_format($rowAV['MONTANT'], 0, ',', ' ') . " Ar"  ?></td>
+                                                        <td><?= $rowAV3['FAMILLE'] ?></td>
+                                                        <td><?php echo $rowAV3['QTE_DV'] ?></td>
+                                                        <td><?php echo $rowAV3['LONGUEUR'] ?></td>
+                                                        <td><?php echo $rowAV3['LARGEUR'] ?></td>
+                                                        <td><?php echo $rowAV3['EPAISSEUR'] ?></td>
+                                                        <td style="text-align:right"> <?php echo number_format($rowAV3['QTE'] * $rowAV3['QTE_DV'], 3, ',', ' ') ?></td>
+                                                        <td style="text-align:right"> <?php echo number_format($rowAV3['VOL'] * $rowAV3['QTE_DV'], 3, ',', ' ') ?></td>
+                                                        <td style="text-align:right"><?php echo number_format($rowAV3['PV_HT'], 0, ',', ' ') . " Ar"  ?></td>
+                                                        <td style="text-align:right"><?php echo number_format($rowAV3['MONTANT'], 0, ',', ' ') . " Ar"  ?></td>
                                                     </tr>
                                                     <?php
 
-                                                    $VOLUME = $VOLUME + $rowAV['VOL'] * $rowAV['QTE_DV'];
-                                                    $SURFACE = $SURFACE + $rowAV['QTE'] * $rowAV['QTE_DV'];
+                                                    $VOLUME = $VOLUME + $rowAV3['VOL'] * $rowAV3['QTE_DV'];
+                                                    $SURFACE = $SURFACE + $rowAV3['QTE'] * $rowAV3['QTE_DV'];
                                                 }
                                                 $sqlqueryAV3 = "SELECT  A.UNITE, sum((L.QTE_DV*A.QTE)*A.PV_HT) as 'THT', sum((L.QTE_DV*A.QTE)*A.PV_HT*(1+0.20)) as 'TTC', sum(A.VOL*L.QTE_DV) as 'VOLDV'
                from CONTENIR_DV L, ARTICLE A
@@ -440,14 +440,14 @@ include('../modeles/enteteAdmin.php');
                                     $typeML3 = 3;
                                     for ($i = 14; $i <= 21; $i++) {
 
-                                        $reqML = "SELECT A.UNITE, A.QTE, A.VOL, A.ID_A, A.ID_FAMILLE, A.DESIGNATION, A.LONGUEUR, A.LARGEUR, A.UNITE, A.EPAISSEUR, A.DIAMETRE, A.PV_HT, A.FAMILLE, A.TYPE, C.ID_DV, C.ID_DV_LIGNE, C.QTE_DV, (C.QTE_DV*A.LONGUEUR)*A.PV_HT as 'MONTANT'
+                                        $reqML3 = "SELECT A.UNITE, A.QTE, A.VOL, A.ID_A, A.ID_FAMILLE, A.DESIGNATION, A.LONGUEUR, A.LARGEUR, A.UNITE, A.EPAISSEUR, A.DIAMETRE, A.PV_HT, A.FAMILLE, A.TYPE, C.ID_DV, C.ID_DV_LIGNE, C.QTE_DV, (C.QTE_DV*A.LONGUEUR)*A.PV_HT as 'MONTANT'
               FROM  ARTICLE A, CONTENIR_DV C
               WHERE  C.ID_DV='$ID_DV' AND A.ID_A=C.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$typeML3' AND A.ID_FAMILLE='$i' order by A.LONGUEUR DESC, A.LARGEUR DESC, A.EPAISSEUR DESC";
 
-                                        $resML = mysqli_query($link, $reqML);
-                                        $nombreML = mysqli_num_rows($resML);
+                                        $resML3 = mysqli_query($link, $reqML3);
+                                        $nombreML3 = mysqli_num_rows($resML3);
 
-                                        if ($nombreML > 0) {
+                                        if ($nombreML3 > 0) {
 
                                             ?>          
                                             <table class="info saut" border="1" style="width:100%">
@@ -458,7 +458,7 @@ include('../modeles/enteteAdmin.php');
                                                         <th width="7%"><strong>Long</strong></th>
                                                         <th width="7%"><strong>Larg</strong></th>
                                                         <th width="7%"><strong>Ep</strong></th>
-                                                        <th width="7%"><strong>ML</strong></th>
+                                                        <th width="7%"><strong>ML3</strong></th>
                                                         <th width="7%" style="text-align:right"><strong>M3</strong></th>
                                                         <th width="15%" style="text-align:right"><strong>Prix unitaire</strong></th>
                                                         <th width="15%" style="text-align:right"><strong>Montant</strong></th>
@@ -468,28 +468,28 @@ include('../modeles/enteteAdmin.php');
                                                 </thead>
                                                 <?php
 
-                                                $MONTANTML = 0;
-                                                $VOLUMEML = 0;
-                                                $LONGUEURML = 0;
-                                                while ($rowML = mysqli_fetch_array($resML, MYSQLI_ASSOC)) {
+                                                $MONTANTML3 = 0;
+                                                $VOLUMEML3 = 0;
+                                                $LONGUEURML3 = 0;
+                                                while ($rowML3 = mysqli_fetch_array($resML3, MYSQLI_ASSOC)) {
 
                                                     ?>
                                                     <tr>
-                                                        <td><?= $rowML['FAMILLE'] ?></td>
-                                                        <td><?php echo $rowML['QTE_DV'] ?></td>
-                                                        <td><?php echo $rowML['LONGUEUR'] ?></td>
-                                                        <td><?php echo $rowML['LARGEUR'] ?></td>
-                                                        <td><?php echo $rowML['EPAISSEUR'] ?></td>
-                                                        <td style="text-align:right"> <?php echo number_format($rowML['LONGUEUR'] * $rowML['QTE_DV'], 3, ',', ' ') ?></td>
-                                                        <td style="text-align:right"> <?php echo number_format($rowML['VOL'] * $rowML['QTE_DV'], 3, ',', ' ') ?></td>
-                                                        <td style="text-align:right"><?php echo number_format($rowML['PV_HT'], 0, ',', ' ') . " Ar" ?></td>
-                                                        <td style="text-align:right"><?php echo number_format($rowML['MONTANT'], 0, ',', ' ') . " Ar" ?></td>
+                                                        <td><?= $rowML3['FAMILLE'] ?></td>
+                                                        <td><?php echo $rowML3['QTE_DV'] ?></td>
+                                                        <td><?php echo $rowML3['LONGUEUR'] ?></td>
+                                                        <td><?php echo $rowML3['LARGEUR'] ?></td>
+                                                        <td><?php echo $rowML3['EPAISSEUR'] ?></td>
+                                                        <td style="text-align:right"> <?php echo number_format($rowML3['LONGUEUR'] * $rowML3['QTE_DV'], 3, ',', ' ') ?></td>
+                                                        <td style="text-align:right"> <?php echo number_format($rowML3['VOL'] * $rowML3['QTE_DV'], 3, ',', ' ') ?></td>
+                                                        <td style="text-align:right"><?php echo number_format($rowML3['PV_HT'], 0, ',', ' ') . " Ar" ?></td>
+                                                        <td style="text-align:right"><?php echo number_format($rowML3['MONTANT'], 0, ',', ' ') . " Ar" ?></td>
                                                     </tr>
                                                     <?php
 
-                                                    $VOLUMEML = $VOLUMEML + $rowML['VOL'] * $rowML['QTE_DV'];
+                                                    $VOLUMEML3 = $VOLUMEML3 + $rowML3['VOL'] * $rowML3['QTE_DV'];
 
-                                                    $LONGUEURML = $LONGUEURML + $rowML['LONGUEUR'] * $rowML['QTE_DV'];
+                                                    $LONGUEURML3 = $LONGUEURML3 + $rowML3['LONGUEUR'] * $rowML3['QTE_DV'];
                                                 }
                                                 $sqlquery3ML = "SELECT  sum((L.QTE_DV*A.LONGUEUR)*A.PV_HT) as 'THT', sum((L.QTE_DV*A.LONGUEUR)*A.PV_HT*(1+0.20)) as 'TTC', sum(A.VOL*L.QTE_DV) as 'VOLDV', sum(A.QTE*L.QTE_DV) as 'QTEDV'
                from CONTENIR_DV L, ARTICLE A
@@ -500,8 +500,8 @@ include('../modeles/enteteAdmin.php');
 
                                                 ?>
                                                 <td colspan="5" class="success"><strong>Total</strong></td>
-                                                <td class="" style="text-align:right"><strong><?php echo number_format($LONGUEURML, 3, ',', ' ') ?></strong></td>
-                                                <td class="" style="text-align:right"><strong><?php echo number_format($VOLUMEML, 3, ',', ' ') ?></strong></td>
+                                                <td class="" style="text-align:right"><strong><?php echo number_format($LONGUEURML3, 3, ',', ' ') ?></strong></td>
+                                                <td class="" style="text-align:right"><strong><?php echo number_format($VOLUMEML3, 3, ',', ' ') ?></strong></td>
                                                 <td></td>
                                                 <td class="" style="text-align:right"><strong><?php echo number_format($row3ML['THT'], 0, ',', ' ') . " Ar" ?></strong></td>
                                                 </tr>
@@ -655,6 +655,17 @@ include('../modeles/enteteAdmin.php');
                                     }
                                     break;
                             }
+                        }
+                        
+                        if(isset($suppsecNLC)){
+                            $suppsecNLC=$suppsecNLC;
+                        }else{
+                            $suppsecNLC=0;
+                        }
+                        if(isset($supprabotNLC)){
+                            $supprabotNLC=$supprabotNLC;
+                        }else{
+                            $supprabotNLC=0;
                         }
                         $totHT=$row2['THT']+$supprabotNLC+$suppsecNLC;
                         $totTVA=$totHT*0.2;

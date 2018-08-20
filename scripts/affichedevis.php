@@ -411,9 +411,9 @@ session_start();
                                                 $sqlqueryAV3 = "SELECT L.ID_DV, A.ID_FAMILLE, A.UNITE, sum((L.QTE_DV*A.QTE)*A.PV_HT) as 'THT', sum((L.QTE_DV*A.QTE)*A.PV_HT*(1+0.20)) as 'TTC', sum(A.VOL*L.QTE_DV) as 'VOLDV'
                from CONTENIR_DV L, ARTICLE A
                where L.ID_DV='$ID_DV' AND A.ID_A=L.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$type3' AND A.ID_FAMILLE='$i'";
-                                                $resultAV3 = mysqli_query($link, $sqlqueryAV3);
+                                              if(  $resultAV3 = mysqli_query($link, $sqlqueryAV3)){
                                                 $rowAV3 = mysqli_fetch_array($resultAV3, MYSQLI_ASSOC);
-
+                                              }
                                                 ?>
                                                 <td colspan="6" class="success"><strong>Total</strong></td>
                                                 <td class="" style="text-align:right"><strong><?php echo number_format($VOLUME, 3, ',', ' ') ?></strong></td>
@@ -483,7 +483,7 @@ session_start();
 
                                                     $LONGUEURML = $LONGUEURML + $rowML['LONGUEUR'] * $rowML['QTE_DV'];
                                                 }
-                                                $sqlquery3ML = "SELECT A.ID_A, A.ID_TYPE, L.ID_DV, A.UNITE, A.ID_FAMILLE, sum((L.QTE_DV*A.LONGUEUR)*A.PV_HT) as 'THT', sum((L.QTE_DV*A.LONGUEUR)*A.PV_HT*(1+0.20)) as 'TTC', sum(A.VOL*L.QTE_DV) as 'VOLDV', sum(A.QTE*L.QTE_DV) as 'QTEDV'
+                                                $sqlquery3ML = "SELECT  sum((L.QTE_DV*A.LONGUEUR)*A.PV_HT) as 'THT', sum((L.QTE_DV*A.LONGUEUR)*A.PV_HT*(1+0.20)) as 'TTC', sum(A.VOL*L.QTE_DV) as 'VOLDV', sum(A.QTE*L.QTE_DV) as 'QTEDV'
                from CONTENIR_DV L, ARTICLE A
                where L.ID_DV='$ID_DV' AND A.ID_A=L.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$typeML3' AND A.ID_FAMILLE='$i'";
                                                 if ($result3ML = mysqli_query($link, $sqlquery3ML)) {
@@ -648,6 +648,17 @@ session_start();
                                     break;
                             }
                         }
+                        if(isset($suppsecNLC)){
+                            $suppsecNLC=$suppsecNLC;
+                        }else{
+                            $suppsecNLC=0;
+                        }
+                        if(isset($supprabotNLC)){
+                            $supprabotNLC=$supprabotNLC;
+                        }else{
+                            $supprabotNLC=0;
+                        }
+                        
                         $totHT=$row2['THT']+$supprabotNLC+$suppsecNLC;
                         $totTVA=$totHT*0.2;
                         $totTTC=$totHT+$totTVA;

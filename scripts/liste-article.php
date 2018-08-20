@@ -5,7 +5,7 @@
               if(isset($_GET['ID_FAMILLE']))
               {
                     $famille=$_GET['ID_FAMILLE'];
-                    $req="select *  FROM ARTICLE WHERE  ID_FAMILLE= '$famille'";
+                    $req="select *  FROM ARTICLE WHERE  ID_FAMILLE= '$famille' oRDER BY LONGUEUR DESC";
                     $res = mysqli_query($link,$req) or exit(mysql_error());
                }
                else{
@@ -16,7 +16,7 @@
                     $res = mysqli_query($link,$req) or exit(mysql_error());
                      }
                      else{
-                          $req="SELECT *  FROM ARTICLE ";
+                          $req="SELECT *  FROM ARTICLE oRDER BY LONGUEUR DESC";
                           $res = mysqli_query($link,$req) or exit(mysql_error());
                      }
                 }

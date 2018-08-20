@@ -15,7 +15,6 @@ $req = "SELECT L.ID_DV_LIGNE, L.ID_DV, L.ID_A, L.QTE_DV, L.RABOT, L.SEC, A.ID_A,
 $res = mysqli_query($link, $req) or exit(mysql_error());
 
 ?>
-        <form name="listArt" id="listArt" method="POST" action="update-dev.php">
 <div class="row">
     <div class="col-xs-12">
             <div id="ligne-devis">
@@ -127,19 +126,6 @@ $res = mysqli_query($link, $req) or exit(mysql_error());
     </div>
 </div>
 
-<div class="row">
-    <div class="col-xs-12">     
-        <div class="form-group">
-            <div class="col-xs-2">
-                <button id="ajouter" type="button" name="idDV" value="Ajouter" onclick="afficheDevis(<?= $row['ID_DV'] ?>)" class=" pull-left btn btn-primary">Ajouter</button>
-            </div>
-            <div class="col-xs-offset-8 col-xs-2">
-                <button type="submit" name="Submit" value="Valider" class=" btn btn-primary">Valider</button> 
-            </div>
-        </div>
-    </div>
-</div>
-</form>
 <script type="text/javascript">
 
     function rabot(rabotage, num) {

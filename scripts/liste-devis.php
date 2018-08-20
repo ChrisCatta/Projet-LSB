@@ -6,14 +6,14 @@
                     if(isset($_GET['idtype']))
                     {
                       $type=$_GET['idtype'];
-                      $req="select *  FROM ARTICLE WHERE  ID_TYPE=$type ORDER BY ID_FAMILLE ASC";
+                      $req="select *  FROM ARTICLE WHERE  ID_TYPE=$type oRDER BY LONGUEUR DESC";
                       $res = mysqli_query($link,$req) or exit(mysql_error());
                       }
                     else{
                         if(isset($_GET['idfamille']))
                               {
                               $famille=$_GET['idfamille'];
-                              $req="select *  FROM ARTICLE WHERE  ID_FAMILLE= '$famille'";
+                              $req="select *  FROM ARTICLE WHERE  ID_FAMILLE= '$famille' oRDER BY LONGUEUR DESC";
                               $res = mysqli_query($link,$req) or exit(mysql_error());
                               }
                        else{

@@ -117,7 +117,7 @@ function afficheDevis(ID_DV){
 }
 function suppligneCommande(idCO,idtd){
 	$.get('supprimerLigneCommande.php?idco='+idCO+'&idLCO='+idtd, function(repligne){
-    $('#ligne-commande').html(repligne);
+        $('#ligne-commande').html(repligne);
   	});
 }
 function suppligneDevis(idDV,idtd){
@@ -136,18 +136,21 @@ function ajoutLivraison(ID_BONL,QTE_BON_L,ID_A){
 }
 function ajoutCommande(ID_CO,QTE_CO,ID_A){
 	$.get('ajout-comm-article.php?idCO='+ID_CO+'&qteCO='+QTE_CO+'&idA='+ID_A, function(repcom){
+         $('#Commandes').html(repcom);
+            afficheCommande(ID_CO);
   	});
 }
 function ajoutDevis(ID_DV,QTE_DV,ID_A){
 	$.get('ajout-dev-article.php?idDV='+ID_DV+'&qteDV='+QTE_DV+'&idA='+ID_A, function(repcom){
-  	$('#div-dev-art').html(repcom);
+         $('#Devis').html(repcom);
+            afficheDevis(ID_DV);
   	});
 }
 
 $(function() { 
 	
 	$(document).on("change", "#livraison tr", function(e) {
-		idtr = this.id;
+	var	idtr = this.id;
     var idbl =document.getElementById('idbl').value;
     var qtebl =document.getElementById("qte"+idtr).value;
 		if ($(this).hasClass('selected')) {

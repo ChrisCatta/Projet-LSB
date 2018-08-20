@@ -68,13 +68,27 @@ session_start();
                 <div  id="div-list-dev">
                  </div>
       
+        <form name="listArt" id="listArt" method="POST" action="update-dev.php">   
               Liste livraison articles :
                 <div  id="div-dev-art">
                  </div>
+    
+<div class="row">
+    <div class="col-xs-12">     
+        <div class="form-group">
+            <div class="col-xs-2">
+                <button id="ajouter" type="button" name="idDV" value="Ajouter" onclick="afficheDevis(<?= $row1['ID_DV'] ?>)" class=" pull-left btn btn-primary">Ajouter</button>
+            </div>
+            <div class="col-xs-offset-8 col-xs-2">
+                <button type="submit" name="Submit" value="Valider" class=" btn btn-primary">Valider</button> 
+            </div>
+        </div>
+    </div>
+</div>
+</form>
               
           </div>
       </div>     
-       
      <!-- <div class="row">
      <div class="form-group">
             <div class="col-xs-2">
