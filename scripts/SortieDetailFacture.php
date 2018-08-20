@@ -90,26 +90,35 @@ $link=$retour[0];
                                                     <th width="7%"><strong>Long</strong></th>
                                                     <th width="7%"><strong>Larg</strong></th>
                                                     <th width="7%"><strong>Ep</strong></th>
-                                                    <th width="7%"><strong></strong></th>
-                                                    <th width="7%"><strong>M3</strong></th>
-                                                    <th width="15%"><strong>Prix unitaire</strong></th>
-                                                    <th width="15%"><strong>Montant</strong></th>
+                                                    <th width="7%" style="text-align:right"><strong></strong></th>
+                                                    <th width="7%" style="text-align:right"><strong>M3</strong></th>
+                                                    <th width="15%" style="text-align:right"><strong>Prix unitaire</strong></th>
+                                                    <th width="15%" style="text-align:right"><strong>Montant</strong></th>
 
 
                                                 </tr>
                                             </thead>
                                             <?php
 
-                                            $MONTANTNLC = 0;
+                                             $MONTANTNLC = 0;
                                             $VOLUMENLC = 0;
-                                            $suppNLC=0;
+                                            $supprabotNLC=0;
+                                            $suppsecNLC=0;
+                                            $VolrabotNLC=0;
+                                            $VolsecNLC=0;
                                             while ($rowNLC = mysqli_fetch_array($resNLC, MYSQLI_ASSOC)) {
-                                                    if($rowNLC['RABOT']==1){
-                                                        $text= " (Raboté) ";
-                                                    }
-                                                     else {
-                                                        $text="";
-                                                    }                                         
+                if($rowNLC['RABOT']==1){
+                    $text= " (Raboté) ";
+                }
+                 else {
+                    $text="";
+                }    
+                if($rowNLC['SEC']==1){
+                    $text=$text. " (Sec) ";
+                }
+                 else {
+                    $text=$text;
+                }                                          
                                                 ?>
                                                 <tr>
                                                     <td><?= $rowNLC['FAMILLE'].$text ?></td>
@@ -119,63 +128,85 @@ $link=$retour[0];
                                                     <td><?php echo $rowNLC['EPAISSEUR'] ?></td>
                                                     <td></td>
                                                     <td style="text-align:right"> <?php echo number_format($rowNLC['VOL'] * $rowNLC['QTE_CO'], 3, ',', ' ') ?></td>
-                                                    <td style="text-align:right"><?php echo number_format($rowNLC['PV_HT'], 0, ',', ' ') . " Ar" ?></td>
+                                                    <td style="text-align:right"><?php echo number_format($rowNLC['PV_HT'], 0, ',', ' ') . " Ar" ?></td>                 
+                                                    <td style="text-align:right"><?php echo number_format($rowNLC['MONTANT'], 0, ',', ' ') . " Ar" ?></td>
                                                     <?php if ($rowNLC['ID_TYPE']==="1") {
-                    if ($rowNLC['RABOT']=='1'){  
                     $reqrab="SELECT * FROM TARIFS WHERE TARIF='Rabotage'";
                     $resrab=mysqli_query($link,$reqrab);
                     $rowrab= mysqli_fetch_array($resrab);
                     $montsupprabot=$rowrab['MONTANTHT'];
                     $textsupprabot='Rabotage ';
+                    
+                    if ($rowNLC['RABOT']=='1'){  
+                    $volrabot=$rowNLC['VOL']*$rowNLC['QTE_CO'];
+                    $supprabot=$montsupprabot*$volrabot;
                     $montsupprabot=number_format($montsupprabot, 0, ',', ' ') .' Ar';
                     } 
                     else{
-                     $montsupprabot=''  ;
-                    $textsupprabot='';
-                    } 
-                    if ($rowNLC['SEC']=='1'){ 
+                    $supprabot='';
+                    $volrabot='';    
+                    }
                    
-                    $textsuppsec='Bois sec';
-                    $reqsec="SELECT * FROM TARIFS WHERE ID_TARIF=102";
+                    $reqsec="SELECT * FROM TARIFS WHERE TARIF='Bois sec'";
                     $ressec=mysqli_query($link,$reqsec);
                     $rowsec= mysqli_fetch_array($ressec);
                     $montsuppsec=$rowsec['MONTANTHT'];
                     $textsuppsec='Bois sec ';
+                    if ($rowNLC['SEC']=='1'){
+                    $volsec=($rowNLC['VOL']*$rowNLC['QTE_CO']);
+                    $suppsec=$montsuppsec*$volsec;
                     $montsuppsec= number_format($montsuppsec, 0, ',', ' ') .' Ar';
                     }
+                    else{
+                    $suppsec ='';
+                    $volsec ='';
+                    }
+                    }
                     else {
-                    $montsuppsec  =''; 
-                    $textsuppsec='';
-                        
-                    } 
-                    
-                    }?>
-                                                  
-                                                    <td style="text-align:right"><?php echo number_format($rowNLC['MONTANT'], 0, ',', ' ') . " Ar" ?></td>
-                                                </tr>
-                                                <?php
-
-                                                $VOLUMENLC = $VOLUMENLC + $rowNLC['VOL'] * $rowNLC['QTE_CO'];
-                                                $suppNLC = $suppNLC + $rowNLC['VOL'] * $rowNLC['QTE_CO'] * 70000;
-                                                                }
-                                                                $sqlquery3NLC = "SELECT  A.UNITE, sum((L.QTE_CO*A.QTE)*A.PV_HT) as 'THT', sum((L.QTE_CO*A.QTE)*A.PV_HT*(1+0.20)) as 'TTC', sum(A.VOL*L.QTE_CO) as 'VOLCO'
+                    $supprabot ='';
+                    $suppsec ='';
+                    $volrabot ='';    
+                    $volsec ='';
+                    }                
+                            $VOLUMENLC = $VOLUMENLC + $rowNLC['VOL'] * $rowNLC['QTE_CO'];
+                            $supprabotNLC = $supprabotNLC + $supprabot ;
+                            $VolrabotNLC = $VolrabotNLC + $volrabot;
+                            $suppsecNLC = $suppsecNLC + $suppsec ;
+                            $VolsecNLC = $VolsecNLC +  $volsec;
+                                                
+                 }
+                                                                $sqlquery3NLC = "SELECT  A.UNITE, sum((L.QTE_CO*A.QTE)*A.PV_HT) as 'THT', sum((L.QTE_CO*A.QTE)*A.PV_HT*(1+0.20)) as 'TTC', sum(A.VOL*L.QTE_CO) as 'VOLDV'
                from CONTENIR_CO L, ARTICLE A
                where L.ID_CO='$ID_CO' AND A.ID_A=L.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$type1'";
                                                                 $result3NLC = mysqli_query($link, $sqlquery3NLC);
                                                                 $row3NLC = mysqli_fetch_array($result3NLC, MYSQLI_ASSOC);
-
-                                                                ?>
-                                                                <tr>
-                                                                    <td colspan="6" class="success"><strong>Supplement (<?=$textsupprabot.$textsuppsec?>)</strong></td>
-                                                                    <td></td>
-                                                                    <td class="" style="text-align:right"><strong><?=$montsupprabot.$montsuppsec?></strong></td>
-                                                                    <td class="" style="text-align:right"><strong><?php echo number_format($suppNLC, 0, ',', ' ') . " Ar" ?></strong></td>
-                                                                </tr>
+                             if($supprabotNLC!='')        {                           
+                                 ?>
+                       <tr>
+                            <td colspan="6" class="success"><strong> <?=$textsupprabot?> </strong></td>
+                            <td class="" style="text-align:right"><?php echo number_format($VolrabotNLC, 3, ',', ' ')?></td>
+                            <td class="" style="text-align:right"><strong><?=$montsupprabot?></strong></td>
+                            <td class="" style="text-align:right"><strong><?php echo number_format($supprabotNLC, 0, ',', ' ') . " Ar" ?></strong></td>
+                        </tr>
+                        <?php
+                             }
+                             if($suppsecNLC!='')        {  
+                             ?>
+                                  
+                        <tr>
+                            <td colspan="6" class="success"><strong> <?=$textsuppsec?> </strong></td>
+                            <td class="" style="text-align:right"><?php echo number_format($VolsecNLC, 3, ',', ' ')?></td>
+                            <td class="" style="text-align:right"><strong><?=$montsuppsec?></strong></td>
+                            <td class="" style="text-align:right"><strong><?php echo number_format($suppsecNLC, 0, ',', ' ') . " Ar" ?></strong></td>
+                        </tr> 
+                        <?php
+                             }
+                             ?>
                                                                 <tr>
                                                                     <td colspan="6" class="success"><strong>Total</strong></td>
                                                                     <td class="" style="text-align:right"><strong><?php echo number_format($VOLUMENLC, 3, ',', ' ') ?></strong></td>
                                                                     <td></td>
-                                                                    <td class="" style="text-align:right"><strong><?php echo number_format($row3NLC['THT'] + $suppNLC, 0, ',', ' ') . " Ar" ?></strong></td>
+                                                                    <td class="" style="text-align:right"><strong><?php echo number_format($row3NLC['THT'] + $supprabotNLC +$suppsecNLC, 0, ',', ' ') . " Ar" ?></strong></td>
                                                                 </tr>
                                                         </table>
                                                         <?php
@@ -203,10 +234,10 @@ $link=$retour[0];
                                                     <th width="7%"><strong>Long</strong></th>
                                                     <th width="7%"><strong>Larg</strong></th>
                                                     <th width="7%"><strong>Ep</strong></th>
-                                                    <th width="7%"><strong></strong></th>
-                                                    <th width="7%"><strong>M3</strong></th>
-                                                    <th width="15%"><strong>Prix unitaire</strong></th>
-                                                    <th width="15%"><strong>Montant</strong></th>
+                                                    <th width="7%" style="text-align:right"><strong></strong></th>
+                                                    <th width="7%" style="text-align:right"><strong>M3</strong></th>
+                                                    <th width="15%" style="text-align:right"><strong>Prix unitaire</strong></th>
+                                                    <th width="15%" style="text-align:right"><strong>Montant</strong></th>
                                                 </tr>
                                             </thead>
                                             <?php
@@ -274,10 +305,10 @@ $link=$retour[0];
                                                         <th width="7%"><strong>Long</strong></th>
                                                         <th width="7%"><strong>Larg</strong></th>
                                                         <th width="7%"><strong>Ep</strong></th>
-                                                        <th width="7%"><strong>M2</strong></th>
-                                                        <th width="7%"><strong>M3</strong></th>
-                                                        <th width="15%"><strong>Prix unitaire</strong></th>
-                                                        <th width="15%"><strong>Montant</strong></th>
+                                                        <th width="7%" style="text-align:right"><strong>M2</strong></th>
+                                                        <th width="7%" style="text-align:right"><strong>M3</strong></th>
+                                                        <th width="15%" style="text-align:right"><strong>Prix unitaire</strong></th>
+                                                        <th width="15%" style="text-align:right"><strong>Montant</strong></th>
 
 
                                                     </tr>
@@ -298,8 +329,8 @@ $link=$retour[0];
                                                         <td><?php echo $rowAP['EPAISSEUR'] ?></td>
                                                         <td style="text-align:right"> <?php echo number_format($rowAP['QTE'] * $rowAP['QTE_CO'], 3, ',', ' ') ?></td>
                                                         <td style="text-align:right"> <?php echo number_format($rowAP['VOL'] * $rowAP['QTE_CO'], 3, ',', ' ') ?></td>
-                                                        <td style="text-align:right"><?php echo number_format($rowAP['PV_HT'], 0, ',', ' ') ?></td>
-                                                        <td style="text-align:right"><?php echo number_format($rowAP['MONTANT'], 0, ',', ' ') ?></td>
+                                                        <td style="text-align:right"><?php echo number_format($rowAP['PV_HT'], 0, ',', ' '). " Ar"  ?></td>
+                                                        <td style="text-align:right"><?php echo number_format($rowAP['MONTANT'], 0, ',', ' '). " Ar"  ?></td>
                                                     </tr>
                                                     <?php
 
@@ -317,7 +348,7 @@ $link=$retour[0];
                                                 <td colspan="6" class="success"><strong>Total</strong></td>
                                                 <td class="" style="text-align:right"><strong><?php echo number_format($VOLUME, 3, ',', ' ') ?></strong></td>
                                                 <td></td>
-                                                <td class="" style="text-align:right"><strong><?php echo number_format($rowAP3['THT'], 0, ',', ' ') ?></strong></td>
+                                                <td class="" style="text-align:right"><strong><?php echo number_format($rowAP3['THT'], 0, ',', ' '). " Ar"  ?></strong></td>
                                                 </tr>
                                             </table>
                                             
@@ -347,10 +378,10 @@ $link=$retour[0];
                                                         <th width="7%"><strong>Long</strong></th>
                                                         <th width="7%"><strong>Larg</strong></th>
                                                         <th width="7%"><strong>Ep</strong></th>
-                                                        <th width="7%"><strong>M2</strong></th>
-                                                        <th width="7%"><strong>M3</strong></th>
-                                                        <th width="15%"><strong>Prix unitaire</strong></th>
-                                                        <th width="15%"><strong>Montant</strong></th>
+                                                        <th width="7%" style="text-align:right"><strong>M2</strong></th>
+                                                        <th width="7%" style="text-align:right"><strong>M3</strong></th>
+                                                        <th width="15%" style="text-align:right"><strong>Prix unitaire</strong></th>
+                                                        <th width="15%" style="text-align:right"><strong>Montant</strong></th>
 
 
                                                     </tr>
@@ -371,8 +402,8 @@ $link=$retour[0];
                                                         <td><?php echo $rowAV['EPAISSEUR'] ?></td>
                                                         <td style="text-align:right"> <?php echo number_format($rowAV['QTE'] * $rowAV['QTE_CO'], 3, ',', ' ') ?></td>
                                                         <td style="text-align:right"> <?php echo number_format($rowAV['VOL'] * $rowAV['QTE_CO'], 3, ',', ' ') ?></td>
-                                                        <td style="text-align:right"><?php echo number_format($rowAV['PV_HT'], 0, ',', ' ') ?></td>
-                                                        <td style="text-align:right"><?php echo number_format($rowAV['MONTANT'], 0, ',', ' ') ?></td>
+                                                        <td style="text-align:right"><?php echo number_format($rowAV['PV_HT'], 0, ',', ' '). " Ar"  ?></td>
+                                                        <td style="text-align:right"><?php echo number_format($rowAV['MONTANT'], 0, ',', ' '). " Ar"  ?></td>
                                                     </tr>
                                                     <?php
 
@@ -389,7 +420,7 @@ $link=$retour[0];
                                                 <td colspan="6" class="success"><strong>Total</strong></td>
                                                 <td class="" style="text-align:right"><strong><?php echo number_format($VOLUME, 3, ',', ' ') ?></strong></td>
                                                 <td></td>
-                                                <td class="" style="text-align:right"><strong><?php echo number_format($rowAV3['THT'], 0, ',', ' ') ?></strong></td>
+                                                <td class="" style="text-align:right"><strong><?php echo number_format($rowAV3['THT'], 0, ',', ' '). " Ar"  ?></strong></td>
                                                 </tr>
                                             </table>
                                             
@@ -421,10 +452,10 @@ $link=$retour[0];
                                                         <th width="7%"><strong>Long</strong></th>
                                                         <th width="7%"><strong>Larg</strong></th>
                                                         <th width="7%"><strong>Ep</strong></th>
-                                                        <th width="7%"><strong>ML</strong></th>
-                                                        <th width="7%"><strong>M3</strong></th>
-                                                        <th width="15%"><strong>Prix unitaire</strong></th>
-                                                        <th width="15%"><strong>Montant</strong></th>
+                                                        <th width="7%" style="text-align:right"><strong>ML</strong></th>
+                                                        <th width="7%" style="text-align:right"><strong>M3</strong></th>
+                                                        <th width="15%" style="text-align:right"><strong>Prix unitaire</strong></th>
+                                                        <th width="15%" style="text-align:right"><strong>Montant</strong></th>
 
 
                                                     </tr>
@@ -496,10 +527,10 @@ $link=$retour[0];
                                                         <th width="7%"><strong>Long</strong></th>
                                                         <th width="7%"><strong>Larg</strong></th>
                                                         <th width="7%"><strong></strong></th>
-                                                        <th width="7%"><strong>ML</strong></th>
-                                                        <th width="7%"><strong>M3</strong></th>
-                                                        <th width="15%"><strong>Prix unitaire</strong></th>
-                                                        <th width="15%"><strong>Montant</strong></th>
+                                                        <th width="7%" style="text-align:right"><strong>ML</strong></th>
+                                                        <th width="7%" style="text-align:right"><strong>M3</strong></th>
+                                                        <th width="15%" style="text-align:right"><strong>Prix unitaire</strong></th>
+                                                        <th width="15%" style="text-align:right"><strong>Montant</strong></th>
                                                     </tr>
                                                 </thead>
                                                 <?php
@@ -566,10 +597,10 @@ $link=$retour[0];
                                                         <th width="7%"><strong>Long</strong></th>
                                                         <th width="7%"><strong>Diam</strong></th>
                                                         <th width="7%"><strong></strong></th>
-                                                        <th width="7%"><strong>ML</strong></th>
-                                                        <th width="7%"><strong>M3</strong></th>
-                                                        <th width="15%"><strong>Prix unitaire</strong></th>
-                                                        <th width="15%"><strong>Montant</strong></th>
+                                                        <th width="7%" style="text-align:right"><strong>ML</strong></th>
+                                                        <th width="7%" style="text-align:right"><strong>M3</strong></th>
+                                                        <th width="15%" style="text-align:right"><strong>Prix unitaire</strong></th>
+                                                        <th width="15%" style="text-align:right"><strong>Montant</strong></th>
                                                     </tr>
                                                 </thead>
                                                 <?php
@@ -619,54 +650,56 @@ $link=$retour[0];
                                     break;
                             }
                         }
-                        $totHT=$row2['THT']+$suppNLC;
-                        $totTVA=($row2['THT']+$suppNLC)*0.2;
+                        $totHT=$row2['THT']+$supprabotNLC+$suppsecNLC;
+                        $totTVA=$totHT*0.2;
                         $totTTC=$totHT+$totTVA;
                         ?>
     <table class="info saut" border="1" style="width:100%">
    <!--  <tr><td colspan="9">&nbsp;</td></tr>-->
         <tr>
-            <td style="width:70%" class="success noborder"><strong>TOTAL</strong></td>
-            <td style="width:10%"></td>
-            <td style="width:10%"><strong><?php echo $row2['VOLCO'] ?></strong></td>
-            <td style="text-align:right; width:10%"><?php echo number_format($totHT, 0, ',', ' ') . " Ar" ?>"<input type="hidden" id="tht" value="<?= $row2['THT'] ?>"></td>
+            <td style="width:60%" class="success"><strong>TOTAL</strong></td>
+            <td style="text-align:right ;width:7%"><strong><?php echo $row2['VOLCO'] ?></strong></td>
+            <td style="width:15%"></td>
+            <td style="text-align:right; width:15%"><?php echo number_format($totHT, 0, ',', ' ') . " Ar" ?>"<input type="hidden" id="montht" value="<?=$totHT?>"></td>
         </tr>
         <tr>
-            <td style="width:70%" class="success noborder" style="border-right: none;"><strong>TVA 20%</strong></td>
-            <td style="width:10%" class="noborder"></td>
-            <td style="width:10%" class="noborder"></td>
-            <td style="width:10%; text-align:right"><strong><?php echo number_format($totTVA, 0, ',', ' ') . " Ar" ?></strong></td>
+            <td style="width:60%" class="success noborder"><strong>REMISE</strong></td>
+            <td style="width:7%"  class="noborder"><button id="test" name="remise" onclick="remise()">Calcul</button></td>
+            <td style="width:15%"  class="noborder"></td>
+            <td style="width:15%; text-align:right"><input id="txremise" placeholder="taux remise" value="0"</td>
         </tr>
         <tr>
-            <td style="width:70%" class="success noborder"><strong>REMISE</strong></td>
-            <td style="width:10%"  class="noborder"><button id="test" name="remise" onclick="remise()">Calcul</button></td>
-            <td style="width:10%"  class="noborder"></td>
-            <td style="width:10%; text-align:right"><input id="remise" placeholder="taux remise" value=""</td>
-        <tr>
-        <tr>
-            <td style="width:70%" class="success noborder"><strong>TOTAL TTC</strong></td>
-            <td style="width:10%"  class="noborder"></td>
-            <td style="width:10%"  class="noborder"></td>
-            <td style="width:10%; text-align:right"><strong><?php echo number_format($totTTC, 0, ',', ' ') . " Ar" ?></strong></td>
+            <td style="width:60%" class="success noborder" style="border-right: none;"><strong>TVA 20%</strong></td>
+            <td style="width:7%" class="noborder"></td>
+            <td style="width:15%" class="noborder"></td>
+            <td style="width:15%; text-align:right"><strong><?php echo number_format($totTVA, 0, ',', ' ') . " Ar" ?></strong></td>
         </tr>
         <tr>
-            <td style="width:70%">  
-                <form name="lettrespdf" type="post" target="_blank" action="SortieDetailFacture2.php"> 
-                <input id="monttht" type="text" value=""/>
-                <input id="txremise" type="text" name="txremise" value=""/>
+            <td style="width:60%" class="success noborder"><strong>TOTAL TTC</strong></td>
+            <td  style="width:7%"  class="noborder"></td>
+            <td  style="width:15%"  class="noborder"></td>
+            <td style="width:15%; text-align:right"><strong><?php echo number_format($totTTC, 0, ',', ' ') . " Ar" ?></strong></td>
+        </tr>
+        <tr>
+            <td style="width:60%">  
+                <form name="lettrespdf" type="post" target="_blank" action="SortieDetailfacture2.php"> 
+                <input id="monthtAR" type="text" value=""/>
+                <input id="txremise1" type="text" name="txremise" value="0"/>
+                <input id="montTVA" name="montTVA"type="text" value="0"/>
             </td>
-            <td style="width:10%">
-                <input id="montremise" name="montremise"type="text" value=""/>
+            <td style="width:7%">
+                <input id="montremise" name="montremise"type="text" value="0"/>
             </td>
-            <td style="width:10%">
+            <td style="width:15%">
                 <input id="t" type="text" value="<?php echo round($totTTC, 0) ?>"/> 
             </td>
-            <td style="width:10%">  
-                <input id='lettres'  type="text" name="lettres" value="" >
-            </td>
-        </tr>
-    </table>
+            <td style="width:15%">  
+                    <input id='lettres'  type="text" name="lettres" value="&nbsp;" style='font-family:verdana; font-size:11px;'>
+                    </td>
+                    </tr>
+                    </table>
                     <div class="row">
+                      
                         <div class="col-xs-4">
                             <label for="text" >Conditions de paiement</label>
                         </div>
@@ -676,137 +709,136 @@ $link=$retour[0];
                     </div>
                     <!--Div de la fonction panel_tab-->
                     </div>
-                    <a href="../scripts/SortieFacture.php"><input type="image" src="../images/retour2.PNG" width="70" heigth="70" title="Retour aux Facture"></a>
+                    <a href="../scripts/SortieDevis.php"><input type="image" src="../images/retour2.PNG" width="70" heigth="70" title="Retour aux Devis"></a>
                     <Button type="submit" name="ID_CO"  class="pull-right"  value="<?= $row1['ID_CO'] ?>"><img src="../images/avant.PNG" width="70" heigth="70" style="background:transparent ;" /></Button></form>
                 </div>
                 </div>
 
 
 
-<script type="text/javascript">
-    
-    
-           window.onload =remise  ;  
-           
+                <script type="text/javascript">
+                    
+           window.onload =remise          
    function remise() {
-            var txremise= document.getElementById("remise").value;
-            var tht = document.getElementById("tht").value;
-            var montremise=Math.round(tht*(txremise/100));
-            var monttht= Math.round(tht-montremise,0);
-            var monttva =Math.round(monttht*0.2,0);
-            var montttc= Math.round(monttht +monttva,0);
-            document.getElementById("monttht").value=monttht;
+            var txremise= document.getElementById("txremise").value;
+            var montht = document.getElementById("montht").value;
+            var montremise=Math.round(montht*(txremise/100));
+            var monthtAR= Math.round(montht-montremise,0);
+            var monttva =Math.round(monthtAR*0.2,0);
+            var montttc= Math.round(monthtAR +monttva,0);
+            document.getElementById("monthtAR").value=monthtAR;
+            document.getElementById("montTVA").value=monttva;
             document.getElementById("montremise").value=montremise;
-            document.getElementById("txremise").value= txremise;
+            document.getElementById("txremise1").value= txremise;
             document.getElementById("t").value= montttc;
             document.getElementById("lettres").value = trans(montttc);
         }
- 
-var res, plus, diz, s, un, mil, mil2, ent, deci, centi, pl, pl2, conj;
- 
-var t=["","Un","Deux","Trois","Quatre","Cinq","Six","Sept","Huit","Neuf"];
-var t2=["Dix","Onze","Douze","Treize","Quatorze","Quinze","Seize","Dix-sept","Dix-huit","Dix-neuf"];
-var t3=["","","Vingt","Trente","Quarante","Cinquante","Soixante","Soixante","Quatre-vingt","Quatre-vingt"];
- 
- 
- 
-window.onload=calcule;
- 
-function calcule(){
-  document.getElementById("t").onfocus=function(){
-  document.getElementById("lettres").value =trans(this.value);
-  };
-}
- 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// traitement des deux parties du nombre;
-function decint(n){
- 
-  switch(n.length){
-    case 1 : return dix(n);
-    case 2 : return dix(n);
-    case 3 : return cent(n.charAt(0)) + " " + decint(n.substring(1));
-    default: mil=n.substring(0,n.length-3);
-      if(mil.length<4){
-        un= (mil==1) ? "" : decint(mil);
-        return un + mille(mil)+ " " + decint(n.substring(mil.length));
-      }
-      else{ 
-        mil2=mil.substring(0,mil.length-3);
-        return decint(mil2) + million(mil2) + " " + decint(n.substring(mil2.length));
-      }
-  }
-}
- 
- 
- 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// traitement des nombres entre 0 et 99, pour chaque tranche de 3 chiffres;
-function dix(n){
-  if(n<10){
-    return t[parseInt(n)]
-  }
-  else if(n>9 && n<20){
-    return t2[n.charAt(1)]
-  }
-  else {
-    plus= n.charAt(1)==0 && n.charAt(0)!=7 && n.charAt(0)!=9 ? "" : (n.charAt(1)==1 && n.charAt(0)<8) ? " et " : "-";
-    diz= n.charAt(0)==7 || n.charAt(0)==9 ? t2[n.charAt(1)] : t[n.charAt(1)];
-    s= n==80 ? "s" : "";
- 
-    return t3[n.charAt(0)] + s + plus + diz;
-  }
-}
- 
- 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// traitement des mots "cent", "mille" et "million"
-function cent(n){
-return n>1 ? t[n]+ " Cent" : (n==1) ? " Cent" : "";
-}
- 
-function mille(n){
-return n>=1 ? " Mille" : "";
-}
- 
-function million(n){
-return n>=1 ? " Millions" : " Million";
-}
- 
- 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// conversion du nombre
-function trans(n){
- 
-  // vérification de la valeur saisie
-  if(!/^\d+[.,]?\d*$/.test(n)){
-    return "L'expression entrée n'est pas un nombre."
-  }
- 
-  // séparation entier + décimales
-  n=n.replace(/(^0+)|(\.0+$)/g,"");
-  n=n.replace(/([.,]\d{2})\d+/,"$1");
-  n1=n.replace(/[,.]\d*/,"");
-  n2= n1!=n ? n.replace(/\d*[,.]/,"") : false;
- 
-  // variables de mise en forme
-  ent= !n1 ? "" : decint(n1);
-  deci= !n2 ? "" : decint(n2);
-  if(!n1 && !n2){
-    return  "Entrez une valeur non nulle!"
-  }
-  conj= !n2 || !n1 ? "" : "  et ";
-  euro= !n1 ? "" : !/[23456789]00$/.test(n1) ? " Ariary" : " ";
-  centi= !n2 ? "" : " centime";
-  pl=  n1>1 ? "" : "";
-  pl2= n2>1 ? "s" : "";
- 
-  // expression complète en toutes lettres
-  return (" " + ent + euro + pl + conj + deci + centi + pl2).replace(/\s+/g," ").replace("cent s E","cents E") ;
- 
-}
- 
-</script>
-<?php 
+   
 
-include('../modeles/pied.php'); ?>
+                    var res, plus, diz, s, un, mil, mil2, ent, deci, centi, pl, pl2, conj;
+
+                    var t = ["", "Un", "Deux", "Trois", "Quatre", "Cinq", "Six", "Sept", "Huit", "Neuf"];
+                    var t2 = ["Dix", "Onze", "Douze", "Treize", "Quatorze", "Quinze", "Seize", "Dix-sept", "Dix-huit", "Dix-neuf"];
+                    var t3 = ["", "", "Vingt", "Trente", "Quarante", "Cinquante", "Soixante", "Soixante", "Quatre-vingt", "Quatre-vingt"];
+                  
+                   
+
+                    window.onload = calcule
+
+                    function calcule() {
+                        document.getElementById("t").onfocus = function () {
+                            document.getElementById("lettres").value = trans(this.value)
+                        }
+                    }
+
+                ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                // traitement des deux parties du nombre;
+                    function decint(n) {
+
+                        switch (n.length) {
+                            case 1 :
+                                return dix(n);
+                            case 2 :
+                                return dix(n);
+                            case 3 :
+                                return cent(n.charAt(0)) + " " + decint(n.substring(1));
+                            default:
+                                mil = n.substring(0, n.length - 3);
+                                if (mil.length < 4) {
+                                    un = (mil == 1) ? "" : decint(mil);
+                                    return un + mille(mil) + " " + decint(n.substring(mil.length));
+                                } else {
+                                    mil2 = mil.substring(0, mil.length - 3);
+                                    return decint(mil2) + million(mil2) + " " + decint(n.substring(mil2.length));
+                                }
+                        }
+                    }
+
+
+
+                ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                // traitement des nombres entre 0 et 99, pour chaque tranche de 3 chiffres;
+                    function dix(n) {
+                        if (n < 10) {
+                            return t[parseInt(n)]
+                        } else if (n > 9 && n < 20) {
+                            return t2[n.charAt(1)]
+                        } else {
+                            plus = n.charAt(1) == 0 && n.charAt(0) != 7 && n.charAt(0) != 9 ? "" : (n.charAt(1) == 1 && n.charAt(0) < 8) ? " et " : "-";
+                            diz = n.charAt(0) == 7 || n.charAt(0) == 9 ? t2[n.charAt(1)] : t[n.charAt(1)];
+                            s = n == 80 ? "s" : "";
+
+                            return t3[n.charAt(0)] + s + plus + diz;
+                        }
+                    }
+
+
+                ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                // traitement des mots "cent", "mille" et "million"
+                    function cent(n) {
+                        return n > 1 ? t[n] + " Cent" : (n == 1) ? " Cent" : "";
+                    }
+
+                    function mille(n) {
+                        return n >= 1 ? " Mille" : "";
+                    }
+
+                    function million(n) {
+                        return n >= 1 ? " Millions" : " Million";
+                    }
+
+
+                ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                // conversion du nombre
+                    function trans(n) {
+
+                        // vérification de la valeur saisie
+                        if (!/^\d+[.,]?\d*$/.test(n)) {
+                            return "L'expression entrée n'est pas un nombre."
+                        }
+
+                        // séparation entier + décimales
+                        n = n.replace(/(^0+)|(\.0+$)/g, "");
+                        n = n.replace(/([.,]\d{2})\d+/, "$1");
+                        n1 = n.replace(/[,.]\d*/, "");
+                        n2 = n1 != n ? n.replace(/\d*[,.]/, "") : false;
+
+                        // variables de mise en forme
+                        ent = !n1 ? "" : decint(n1);
+                        deci = !n2 ? "" : decint(n2);
+                        if (!n1 && !n2) {
+                            return  "Entrez une valeur non nulle!"
+                        }
+                        conj = !n2 || !n1 ? "" : "  et ";
+                        euro = !n1 ? "" : !/[23456789]00$/.test(n1) ? " Ariary" : " ";
+                        centi = !n2 ? "" : " centime";
+                        pl = n1 > 1 ? "" : "";
+                        pl2 = n2 > 1 ? "s" : "";
+
+                        // expression complète en toutes lettres
+                        return (" " + ent + euro + pl + conj + deci  + pl2).replace(/\s+/g, " ").replace("cent s E", "cents E");
+
+                    }
+
+                </script>
+                <?php include('../modeles/pied.php'); ?>

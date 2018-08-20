@@ -78,25 +78,12 @@ session_start();
           </div>
       </div>
         
-   <div class="row"> 
-     <div class="form-group">
-        <div class="col-xs-2">
-          <button id="ajouter" type="button" name="Ajouter" value="Ajouter" onclick="afficheCommande(<?=$row1['ID_CO']?>)" class=" btn btn-primary">Ajouter</button>
-        </div>
-      <div class="col-xs-offset-8 col-xs-2">
-        <button type="submit" name="Submit" value="Valider" class=" btn btn-primary">Valider</button> 
-      </div>
-    </div>
   </div>
-      </form>
- 
-    <!--Div de la fonction panel_tab-->
     </div>
 </div>
-<script>
+<script type="text/javascript">
   var idco='<?=$row1['ID_CO']?>';
   afficheCommande(idco);
   </script>
 <?php 
 include('../modeles/pied.php'); ?>
-  </div>

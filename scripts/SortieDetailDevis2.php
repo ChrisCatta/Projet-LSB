@@ -93,7 +93,7 @@
                                 <p><img src="../images/logo-lsb.png"  width="200px"/></p>
                                 <div class="entete"> 
                                     B.P. 1140 - 301-Fianarantsoa <br>Madagascar<br>  
-                                    +261 20 75 522 44 / 032 03 421 03<br>da.lsb@moov.mg - compta.lsb@moov.mg</div>
+                                    +261 20 75 522 44 / 032 03 421 03<br>da.lsb@moov.mg / compta.lsb@moov.mg</div>
                             </div>
                         </div>
                         <div class="col-xs-3"> 
@@ -147,15 +147,15 @@
                                         <table class="info saut" border="1">
                                             <thead>  
                                                 <tr class="info">
-                                                    <th width="25%"><strong>Produit</strong></th>
-                                                    <th width="6%"><strong>Quantité</strong></th>
-                                                    <th width="7%"><strong>Longueur</strong></th>
-                                                    <th width="7%"><strong>Largeur</strong></th>
-                                                    <th width="7%"><strong>Epaisseur</strong></th>
-                                                    <th width="7%"><strong></strong></th>
-                                                    <th width="7%"><strong>M3</strong></th>
-                                                    <th width="15%"><strong>Prix unitaire</strong></th>
-                                                    <th width="15%"><strong>Montant</strong></th>
+                                                    <th width="22%"><strong>Produit</strong></th>
+                                                    <th width="7%"><strong>Quantité</strong></th>
+                                                    <th width="8%"><strong>Longueur</strong></th>
+                                                    <th width="8%"><strong>Largeur</strong></th>
+                                                    <th width="8%"><strong>Epaisseur</strong></th>
+                                                    <th width="7%" style="text-align:right"><strong></strong></th>
+                                                    <th width="7%" style="text-align:right"><strong>M3</strong></th>
+                                                    <th width="14%" style="text-align:right"><strong>Prix unitaire</strong></th>
+                                                    <th width="15%" style="text-align:right"><strong>Montant</strong></th>
 
 
                                                 </tr>
@@ -290,15 +290,15 @@
                                         <table class="info saut" border="1">
                                             <thead>  
                                                 <tr class="info">
-                                                    <th width="25%"><strong>Produit</strong></th>
-                                                    <th width="6%"><strong>Quantité</strong></th>
-                                                    <th width="7%"><strong>Longueur</strong></th>
-                                                    <th width="7%"><strong>Largeur</strong></th>
-                                                    <th width="7%"><strong>Epaisseur</strong></th>
-                                                    <th width="7%"><strong></strong></th>
-                                                    <th width="7%"><strong>M3</strong></th>
-                                                    <th width="15%"><strong>Prix unitaire</strong></th>
-                                                    <th width="15%"><strong>Montant</strong></th>
+                                                    <th width="22%"><strong>Produit</strong></th>
+                                                    <th width="7%"><strong>Quantité</strong></th>
+                                                    <th width="8%"><strong>Longueur</strong></th>
+                                                    <th width="8%"><strong>Largeur</strong></th>
+                                                    <th width="8%"><strong>Epaisseur</strong></th>
+                                                    <th width="7%" style="text-align:right"><strong></strong></th>
+                                                    <th width="7%" style="text-align:right"><strong>M3</strong></th>
+                                                    <th width="14%" style="text-align:right"><strong>Prix unitaire</strong></th>
+                                                    <th width="15%" style="text-align:right"><strong>Montant</strong></th>
                                                 </tr>
                                             </thead>
                                             <?php
@@ -359,17 +359,17 @@
 
                                             ?>          
                                             <table class="info saut" border="1">
-                                                <thead>  
+                                                <thead>   
                                                     <tr class="info">
-                                                        <th width="25%"><strong>Produit, qualité à peindre</strong></th>
-                                                        <th width="6%"><strong>Quantité</strong></th>
-                                                        <th width="7%"><strong>Longueur</strong></th>
-                                                        <th width="7%"><strong>Largeur</strong></th>
-                                                        <th width="7%"><strong>Epaisseur</strong></th>
-                                                        <th width="7%"><strong>M2</strong></th>
-                                                        <th width="7%"><strong>M3</strong></th>
-                                                        <th width="15%"><strong>Prix unitaire</strong></th>
-                                                        <th width="15%"><strong>Montant</strong></th>
+                                                        <th width="22%"><strong>Produit, qualité à peindre</strong></th>
+                                                        <th width="7%"><strong>Quantité</strong></th>
+                                                        <th width="8%"><strong>Longueur</strong></th>
+                                                        <th width="8%"><strong>Largeur</strong></th>
+                                                        <th width="8%"><strong>Epaisseur</strong></th>
+                                                        <th width="7%" style="text-align:right"><strong>M2</strong></th>
+                                                        <th width="7%" style="text-align:right"><strong>M3</strong></th>
+                                                        <th width="14%" style="text-align:right"><strong>Prix unitaire</strong></th>
+                                                        <th width="15%" style="text-align:right"><strong>Montant</strong></th>
 
 
                                                     </tr>
@@ -390,8 +390,8 @@
                                                         <td><?php echo $rowAP['EPAISSEUR'] ?></td>
                                                         <td style="text-align:right"> <?php echo number_format($rowAP['QTE'] * $rowAP['QTE_DV'], 3, ',', ' ') ?></td>
                                                         <td style="text-align:right"> <?php echo number_format($rowAP['VOL'] * $rowAP['QTE_DV'], 3, ',', ' ') ?></td>
-                                                        <td style="text-align:right"><?php echo number_format($rowAP['PV_HT'], 0, ',', ' ') ?></td>
-                                                        <td style="text-align:right"><?php echo number_format($rowAP['MONTANT'], 0, ',', ' ') ?></td>
+                                                        <td style="text-align:right"><?php echo number_format($rowAP['PV_HT'], 0, ',', ' ')  . " Ar"?></td>
+                                                        <td style="text-align:right"><?php echo number_format($rowAP['MONTANT'], 0, ',', ' ') . " Ar" ?></td>
                                                     </tr>
                                                     <?php
 
@@ -409,7 +409,7 @@
                                                 <td colspan="6" class="success"><strong>Total</strong></td>
                                                 <td class="" style="text-align:right"><strong><?php echo number_format($VOLUME, 3, ',', ' ') ?></strong></td>
                                                 <td></td>
-                                                <td class="" style="text-align:right"><strong><?php echo number_format($rowAP3['THT'], 0, ',', ' ') ?></strong></td>
+                                                <td class="" style="text-align:right"><strong><?php echo number_format($rowAP3['THT'], 0, ',', ' ') . " Ar" ?></strong></td>
                                                 </tr>
                                             </table>
                                             
@@ -434,15 +434,15 @@
                                             <table class="info saut" border="1">
                                                 <thead>  
                                                     <tr class="info">
-                                                        <th width="25%"><strong>Produit, qualité à vernir</strong></th>
-                                                        <th width="6%"><strong>Quantité</strong></th>
-                                                        <th width="7%"><strong>Longueur</strong></th>
-                                                        <th width="7%"><strong>Largeur</strong></th>
-                                                        <th width="7%"><strong>Epaisseur</strong></th>
-                                                        <th width="7%"><strong>M2</strong></th>
-                                                        <th width="7%"><strong>M3</strong></th>
-                                                        <th width="15%"><strong>Prix unitaire</strong></th>
-                                                        <th width="15%"><strong>Montant</strong></th>
+                                                        <th width="22%"><strong>Produit, qualité à vernir</strong></th>
+                                                        <th width="7%"><strong>Quantité</strong></th>
+                                                        <th width="8%"><strong>Longueur</strong></th>
+                                                        <th width="8%"><strong>Largeur</strong></th>
+                                                        <th width="8%"><strong>Epaisseur</strong></th>
+                                                        <th width="7%" style="text-align:right"><strong>M2</strong></th>
+                                                        <th width="7%" style="text-align:right"><strong>M3</strong></th>
+                                                        <th width="14%" style="text-align:right"><strong>Prix unitaire</strong></th>
+                                                        <th width="15%" style="text-align:right"><strong>Montant</strong></th>
 
 
                                                     </tr>
@@ -463,8 +463,8 @@
                                                         <td><?php echo $rowAV['EPAISSEUR'] ?></td>
                                                         <td style="text-align:right"> <?php echo number_format($rowAV['QTE'] * $rowAV['QTE_DV'], 3, ',', ' ') ?></td>
                                                         <td style="text-align:right"> <?php echo number_format($rowAV['VOL'] * $rowAV['QTE_DV'], 3, ',', ' ') ?></td>
-                                                        <td style="text-align:right"><?php echo number_format($rowAV['PV_HT'], 0, ',', ' ') ?></td>
-                                                        <td style="text-align:right"><?php echo number_format($rowAV['MONTANT'], 0, ',', ' ') ?></td>
+                                                        <td style="text-align:right"><?php echo number_format($rowAV['PV_HT'], 0, ',', ' ') . " Ar" ?></td>
+                                                        <td style="text-align:right"><?php echo number_format($rowAV['MONTANT'], 0, ',', ' ') . " Ar" ?></td>
                                                     </tr>
                                                     <?php
 
@@ -481,7 +481,7 @@
                                                 <td colspan="6" class="success"><strong>Total</strong></td>
                                                 <td class="" style="text-align:right"><strong><?php echo number_format($VOLUME, 3, ',', ' ') ?></strong></td>
                                                 <td></td>
-                                                <td class="" style="text-align:right"><strong><?php echo number_format($rowAV3['THT'], 0, ',', ' ') ?></strong></td>
+                                                <td class="" style="text-align:right"><strong><?php echo number_format($rowAV3['THT'], 0, ',', ' ') . " Ar" ?></strong></td>
                                                 </tr>
                                             </table>
                                             
@@ -508,15 +508,15 @@
                                             <table class="info saut" border="1">
                                                 <thead>  
                                                     <tr class="info">
-                                                        <th width="25%"><strong>Produit, qualité à vernir</strong></th>
-                                                        <th width="6%"><strong>Quantité</strong></th>
-                                                        <th width="7%"><strong>Longueur</strong></th>
-                                                        <th width="7%"><strong>Largeur</strong></th>
-                                                        <th width="7%"><strong>Epaisseur</strong></th>
-                                                        <th width="7%"><strong>ML</strong></th>
-                                                        <th width="7%"><strong>M3</strong></th>
-                                                        <th width="15%"><strong>Prix unitaire</strong></th>
-                                                        <th width="15%"><strong>Montant</strong></th>
+                                                        <th width="22%"><strong>Produit, qualité à vernir</strong></th>
+                                                        <th width="7%"><strong>Quantité</strong></th>
+                                                        <th width="8%"><strong>Longueur</strong></th>
+                                                        <th width="8%"><strong>Largeur</strong></th>
+                                                        <th width="8%"><strong>Epaisseur</strong></th>
+                                                        <th width="7%" style="text-align:right"><strong>ML</strong></th>
+                                                        <th width="7%" style="text-align:right"><strong>M3</strong></th>
+                                                        <th width="14%" style="text-align:right"><strong>Prix unitaire</strong></th>
+                                                        <th width="15%" style="text-align:right"><strong>Montant</strong></th>
 
 
                                                     </tr>
@@ -583,15 +583,15 @@
                                             <table class="info saut" border="1">
                                                 <thead>  
                                                     <tr class="info">
-                                                        <th width="25%"><strong>Produit, qualité à peindre</strong></th>
-                                                        <th width="6%"><strong>Quantité</strong></th>
-                                                        <th width="7%"><strong>Longueur</strong></th>
-                                                        <th width="7%"><strong>Largeur</strong></th>
-                                                        <th width="7%"><strong></strong></th>
-                                                        <th width="7%"><strong>ML</strong></th>
-                                                        <th width="7%"><strong>M3</strong></th>
-                                                        <th width="15%"><strong>Prix unitaire</strong></th>
-                                                        <th width="15%"><strong>Montant</strong></th>
+                                                        <th width="22%"><strong>Produit, qualité à peindre</strong></th>
+                                                        <th width="7%"><strong>Quantité</strong></th>
+                                                        <th width="8%"><strong>Longueur</strong></th>
+                                                        <th width="8%"><strong>Largeur</strong></th>
+                                                        <th width="8%"><strong></strong></th>
+                                                        <th width="7%" style="text-align:right"><strong>ML</strong></th>
+                                                        <th width="7%" style="text-align:right"><strong>M3</strong></th>
+                                                        <th width="14%" style="text-align:right"><strong>Prix unitaire</strong></th>
+                                                        <th width="15%" style="text-align:right"><strong>Montant</strong></th>
                                                     </tr>
                                                 </thead>
                                                 <?php
@@ -653,15 +653,15 @@
                                             <table class="info saut" border="1">
                                                 <thead>  
                                                     <tr class="info">
-                                                        <th width="25%"><strong>Produit</strong></th>
-                                                        <th width="6%"><strong>Quantité</strong></th>
-                                                        <th width="7%"><strong>Longueur</strong></th>
-                                                        <th width="7%"><strong>Diametre</strong></th>
-                                                        <th width="7%"><strong></strong></th>
-                                                        <th width="7%"><strong>ML</strong></th>
-                                                        <th width="7%"><strong>M3</strong></th>
-                                                        <th width="15%"><strong>Prix unitaire</strong></th>
-                                                        <th width="15%"><strong>Montant</strong></th>
+                                                        <th width="22%"><strong>Produit</strong></th>
+                                                        <th width="7%"><strong>Quantité</strong></th>
+                                                        <th width="8%"><strong>Longueur</strong></th>
+                                                        <th width="8%"><strong>Diametre</strong></th>
+                                                        <th width="8%"><strong></strong></th>
+                                                        <th width="7%" style="text-align:right"><strong>ML</strong></th>
+                                                        <th width="7%" style="text-align:right"><strong>M3</strong></th>
+                                                        <th width="14%" style="text-align:right"><strong>Prix unitaire</strong></th>
+                                                        <th width="15%" style="text-align:right"><strong>Montant</strong></th>
                                                     </tr>
                                                 </thead>
                                                 <?php
@@ -711,9 +711,10 @@
                                     break;
                             }
                         }
-$montHT=$row2['THT']-$remise;
-$montTVA=($row2['THT']-$remise)*0.2;
-$montTTC=$montHT+$montTVA;
+$montHT=$row2['THT']+$supprabotNLC+$suppsecNLC;
+$montHTAR=$montHT-$remise;
+$montTVA=($montHTAR)*0.2;
+$montTTC=$montHTAR+$montTVA;
                         ?>
                         <table class="info saut" border="1" >
                        <!--  <tr><td colspan="9">&nbsp;</td></tr>-->
@@ -721,7 +722,7 @@ $montTTC=$montHT+$montTVA;
                                 <td style="width:63%" class="success"><strong>TOTAL</strong></td>
                                 <td style="text-align:right ;width:7%"><strong><?php echo $row2['VOLDV'] ?></strong></td>
                                 <td  style="width:15%"></td>
-                                <td  style="text-align:right; width:15%"><strong><?php echo number_format($row2['THT'], 0, ',', ' ') . " Ar" ?></strong></td>
+                                <td  style="text-align:right; width:15%"><strong><?php echo number_format($montHT, 0, ',', ' ') . " Ar" ?></strong></td>
                             </tr>
                             <tr>
                                 <td style="width:63%" class="success noborder" style="border-right: none;"><strong>Remise <?=$txremise?>% </strong></td>
@@ -733,7 +734,7 @@ $montTTC=$montHT+$montTVA;
                                 <td style="width:63%" class="success noborder" style="border-right: none;"><strong>Total après Remise</strong></td>
                                 <td  style="width:7%" class="noborder"></td>
                                 <td  style="width:15%" class="noborder"></td>
-                                <td style="width:15%; text-align:right"><strong><?php echo number_format($montHT, 0, ',', ' ') . " Ar" ?></strong></td>
+                                <td style="width:15%; text-align:right"><strong><?php echo number_format($montHTAR, 0, ',', ' ') . " Ar" ?></strong></td>
                             </tr>
                             <tr>
                                 <td style="width:63%" class="success noborder" style="border-right: none;"><strong>TVA 20%</strong></td>

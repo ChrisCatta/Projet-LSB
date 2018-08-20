@@ -15,8 +15,7 @@
         }
         $qte = (int)$_GET['qteDV'];
 
-                $reqref= "SELECT  ID_DV, ID_A FROM contenir_dv  WHERE ID_DV='$iddv' AND ID_A='$idA' ";  
-                var_dump($reqref);          
+                $reqref= "SELECT  ID_DV, ID_A FROM contenir_dv  WHERE ID_DV='$iddv' AND ID_A='$idA' ";      
                 $resref = mysqli_query($link,$reqref);
                 $nombreref= mysqli_num_rows($resref);
                 if($nombreref==1)

@@ -20,9 +20,10 @@ session_start();
     
     include('../modeles/bar_menu.php'); 
     bar_sortie();
-    echo ' </div> 
-
-    <div class="col-xs-9 ">';
+?>
+    </div>  
+    <div class="col-xs-9 well3">
+        <?php
    $ID_DV=$_POST['ID_DV'];
    $sqlquery1="SELECT *
               FROM DEVIS 
@@ -31,7 +32,6 @@ session_start();
    $row1=mysqli_fetch_array($result1,MYSQLI_ASSOC);
    
    ?>
-   <div class="well3">
                               <div class="row ">
                                     <div class="col-xs-12"> 
 
@@ -40,43 +40,40 @@ session_start();
                                       <strong><img src="../images/ajoutcommande.PNG" width="100" heigth="100" class="img-circle">&nbsp;&nbsp;&nbsp;Liste Des lignes de devis</strong>
                                       </h2> 
                                      </div>
-                                  </div>
+                              </div>
                               <div class="row">
                                 <div class=" col-xs-6 ">Devis N° :  <em class="ligneCommande"><?=$row1['ID_DV']?></em> </div>
                                 <div class=" col-xs-6">Date :  <em class="ligneCommande"><?=$row1['DATE_DV'].' - '.$row1['REF_DV']?></em> </div>
                               </div>
-                                   <fieldset>
-                                    <div class="row">
-                                            <div class="col-xs-2">
-                                                    Select Type :
-                                            </div>
-                                            <div class="col-xs-3">
-                                                      <div id="div-type">
-                                                      </div>
-                                            </div>    
-                                            <div class="col-xs-2">
-                                                  Select Famille :
-                                            </div>    
-                                            <div class="col-xs-3">
-                                                      <div id="div-famille">
-                                                      </div>
-                                              </div>
+                    <fieldset>
+                     <div class="row">
+                             <div class="col-xs-2">
+                                     Select Type :
+                             </div>
+                             <div class="col-xs-3">
+                                       <div id="div-type">
                                        </div>
-                                  </fieldset>
+                             </div>    
+                             <div class="col-xs-2">
+                                   Select Famille :
+                             </div>    
+                             <div class="col-xs-3">
+                                       <div id="div-famille">
+                                       </div>
+                               </div>
+                        </div>
+                   </fieldset>
 
-      <div class="row">
-          <div class="col-xs-12">
               List articles :
                 <div  id="div-list-dev">
                  </div>
-          </div>
-      </div>     
       
               Liste livraison articles :
                 <div  id="div-dev-art">
                  </div>
+              
           </div>
-      </div>
+      </div>     
        
      <!-- <div class="row">
      <div class="form-group">
@@ -92,8 +89,6 @@ session_start();
  
     <!--Div de la fonction panel_tab-->
     </div>
-  </div>
-</div>
 <script type="text/javascript">
   var idDV='<?=$row1['ID_DV']?>';
   afficheDevis(idDV);

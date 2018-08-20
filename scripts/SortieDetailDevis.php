@@ -56,7 +56,7 @@ include('../modeles/enteteAdmin.php');
         <div class="col-xs-12"> <h2 class="text-center"><img src="../images/facture.gif" width="100px" heigth="100" class="img-circle">&nbsp;&nbsp;&nbsp;&nbsp;<strong>Liste du devis</strong></h2> </div>
     </div>
     <div class="row">
-        <div class=" col-xs-4 ">Devis :  <em class="ligneCommande"><?php echo $row1['REF_DV'] . '/' . $year ?></em> </div>
+        <div class=" col-xs-4 ">Devis :  <em class="ligneCommande"><?php echo $row1['REF_DV'].'/'.$month. '/' . $year ?></em> </div>
         <div class=" col-xs-4 ">Date :  <em class="ligneCommande"><?= $newFormat ?></em> </div>
         <div class="col-xs-4">Client :  <em class="ligneCommande"><?= $row1['RAISSO_C'] ?></em> </div>
 
@@ -95,34 +95,34 @@ include('../modeles/enteteAdmin.php');
                                                     <th width="7%"><strong>Larg</strong></th>
                                                     <th width="7%"><strong>Ep</strong></th>
                                                     <th width="7%"><strong></strong></th>
-                                                    <th width="7%"><strong>M3</strong></th>
-                                                    <th width="15%"><strong>Prix unitaire</strong></th>
-                                                    <th width="15%"><strong>Montant</strong></th>
+                                                    <th width="7%" style="text-align:right" ><strong>M3</strong></th>
+                                                    <th width="15%" style="text-align:right"><strong>Prix unitaire</strong></th>
+                                                    <th width="15%" style="text-align:right"><strong>Montant</strong></th>
 
 
                                                 </tr>
                                             </thead>
-                                            <?php
+        <?php
 
-                                            $MONTANTNLC = 0;
-                                            $VOLUMENLC = 0;
-                                            $supprabotNLC=0;
-                                            $suppsecNLC=0;
-                                            $VolrabotNLC=0;
-                                            $VolsecNLC=0;
-                                            while ($rowNLC = mysqli_fetch_array($resNLC, MYSQLI_ASSOC)) {
-                                                    if($rowNLC['RABOT']==1){
-                                                        $text= " (Raboté) ";
-                                                    }
-                                                     else {
-                                                        $text="";
-                                                    }    
-                                                    if($rowNLC['SEC']==1){
-                                                        $text=$text. " (Sec) ";
-                                                    }
-                                                     else {
-                                                        $text=$text."";
-                                                    }                                                    
+        $MONTANTNLC = 0;
+        $VOLUMENLC = 0;
+        $supprabotNLC=0;
+        $suppsecNLC=0;
+        $VolrabotNLC=0;
+        $VolsecNLC=0;
+        while ($rowNLC = mysqli_fetch_array($resNLC, MYSQLI_ASSOC)) {
+                if($rowNLC['RABOT']==1){
+                    $text= " (Raboté) ";
+                }
+                 else {
+                    $text="";
+                }    
+                if($rowNLC['SEC']==1){
+                    $text=$text. " (Sec) ";
+                }
+                 else {
+                    $text=$text;
+                }                                                      
                                                 ?>
                                                 <tr>
                                                     <td><?= $rowNLC['FAMILLE'].$text ?></td>
@@ -241,9 +241,9 @@ include('../modeles/enteteAdmin.php');
                                                     <th width="7%"><strong>Larg</strong></th>
                                                     <th width="7%"><strong>Ep</strong></th>
                                                     <th width="7%"><strong></strong></th>
-                                                    <th width="7%"><strong>M3</strong></th>
-                                                    <th width="15%"><strong>Prix unitaire</strong></th>
-                                                    <th width="15%"><strong>Montant</strong></th>
+                                                    <th width="7%" style="text-align:right"><strong>M3</strong></th>
+                                                    <th width="15%" style="text-align:right"><strong>Prix unitaire</strong></th>
+                                                    <th width="15%" style="text-align:right"><strong>Montant</strong></th>
                                                 </tr>
                                             </thead>
                                             <?php
@@ -312,9 +312,9 @@ include('../modeles/enteteAdmin.php');
                                                         <th width="7%"><strong>Larg</strong></th>
                                                         <th width="7%"><strong>Ep</strong></th>
                                                         <th width="7%"><strong>M2</strong></th>
-                                                        <th width="7%"><strong>M3</strong></th>
-                                                        <th width="15%"><strong>Prix unitaire</strong></th>
-                                                        <th width="15%"><strong>Montant</strong></th>
+                                                        <th width="7%" style="text-align:right"><strong>M3</strong></th>
+                                                        <th width="15%" style="text-align:right"><strong>Prix unitaire</strong></th>
+                                                        <th width="15%" style="text-align:right"><strong>Montant</strong></th>
 
 
                                                     </tr>
@@ -335,8 +335,8 @@ include('../modeles/enteteAdmin.php');
                                                         <td><?php echo $rowAP['EPAISSEUR'] ?></td>
                                                         <td style="text-align:right"> <?php echo number_format($rowAP['QTE'] * $rowAP['QTE_DV'], 3, ',', ' ') ?></td>
                                                         <td style="text-align:right"> <?php echo number_format($rowAP['VOL'] * $rowAP['QTE_DV'], 3, ',', ' ') ?></td>
-                                                        <td style="text-align:right"><?php echo number_format($rowAP['PV_HT'], 0, ',', ' ') ?></td>
-                                                        <td style="text-align:right"><?php echo number_format($rowAP['MONTANT'], 0, ',', ' ') ?></td>
+                                                        <td style="text-align:right"><?php echo number_format($rowAP['PV_HT'], 0, ',', ' ') . " Ar"  ?></td>
+                                                        <td style="text-align:right"><?php echo number_format($rowAP['MONTANT'], 0, ',', ' ') . " Ar"  ?></td>
                                                     </tr>
                                                     <?php
 
@@ -354,7 +354,7 @@ include('../modeles/enteteAdmin.php');
                                                 <td colspan="6" class="success"><strong>Total</strong></td>
                                                 <td class="" style="text-align:right"><strong><?php echo number_format($VOLUME, 3, ',', ' ') ?></strong></td>
                                                 <td></td>
-                                                <td class="" style="text-align:right"><strong><?php echo number_format($rowAP3['THT'], 0, ',', ' ') ?></strong></td>
+                                                <td class="" style="text-align:right"><strong><?php echo number_format($rowAP3['THT'], 0, ',', ' ') . " Ar"  ?></strong></td>
                                                 </tr>
                                             </table>
                                             
@@ -385,9 +385,9 @@ include('../modeles/enteteAdmin.php');
                                                         <th width="7%"><strong>Larg</strong></th>
                                                         <th width="7%"><strong>Ep</strong></th>
                                                         <th width="7%"><strong>M2</strong></th>
-                                                        <th width="7%"><strong>M3</strong></th>
-                                                        <th width="15%"><strong>Prix unitaire</strong></th>
-                                                        <th width="15%"><strong>Montant</strong></th>
+                                                        <th width="7%" style="text-align:right"><strong>M3</strong></th>
+                                                        <th width="15%" style="text-align:right"><strong>Prix unitaire</strong></th>
+                                                        <th width="15%" style="text-align:right"><strong>Montant</strong></th>
 
 
                                                     </tr>
@@ -408,8 +408,8 @@ include('../modeles/enteteAdmin.php');
                                                         <td><?php echo $rowAV['EPAISSEUR'] ?></td>
                                                         <td style="text-align:right"> <?php echo number_format($rowAV['QTE'] * $rowAV['QTE_DV'], 3, ',', ' ') ?></td>
                                                         <td style="text-align:right"> <?php echo number_format($rowAV['VOL'] * $rowAV['QTE_DV'], 3, ',', ' ') ?></td>
-                                                        <td style="text-align:right"><?php echo number_format($rowAV['PV_HT'], 0, ',', ' ') ?></td>
-                                                        <td style="text-align:right"><?php echo number_format($rowAV['MONTANT'], 0, ',', ' ') ?></td>
+                                                        <td style="text-align:right"><?php echo number_format($rowAV['PV_HT'], 0, ',', ' ') . " Ar"  ?></td>
+                                                        <td style="text-align:right"><?php echo number_format($rowAV['MONTANT'], 0, ',', ' ') . " Ar"  ?></td>
                                                     </tr>
                                                     <?php
 
@@ -426,7 +426,7 @@ include('../modeles/enteteAdmin.php');
                                                 <td colspan="6" class="success"><strong>Total</strong></td>
                                                 <td class="" style="text-align:right"><strong><?php echo number_format($VOLUME, 3, ',', ' ') ?></strong></td>
                                                 <td></td>
-                                                <td class="" style="text-align:right"><strong><?php echo number_format($rowAV3['THT'], 0, ',', ' ') ?></strong></td>
+                                                <td class="" style="text-align:right"><strong><?php echo number_format($rowAV3['THT'], 0, ',', ' ') . " Ar"  ?></strong></td>
                                                 </tr>
                                             </table>
                                             
@@ -459,9 +459,9 @@ include('../modeles/enteteAdmin.php');
                                                         <th width="7%"><strong>Larg</strong></th>
                                                         <th width="7%"><strong>Ep</strong></th>
                                                         <th width="7%"><strong>ML</strong></th>
-                                                        <th width="7%"><strong>M3</strong></th>
-                                                        <th width="15%"><strong>Prix unitaire</strong></th>
-                                                        <th width="15%"><strong>Montant</strong></th>
+                                                        <th width="7%" style="text-align:right"><strong>M3</strong></th>
+                                                        <th width="15%" style="text-align:right"><strong>Prix unitaire</strong></th>
+                                                        <th width="15%" style="text-align:right"><strong>Montant</strong></th>
 
 
                                                     </tr>
@@ -494,7 +494,7 @@ include('../modeles/enteteAdmin.php');
                                                 $sqlquery3ML = "SELECT  sum((L.QTE_DV*A.LONGUEUR)*A.PV_HT) as 'THT', sum((L.QTE_DV*A.LONGUEUR)*A.PV_HT*(1+0.20)) as 'TTC', sum(A.VOL*L.QTE_DV) as 'VOLDV', sum(A.QTE*L.QTE_DV) as 'QTEDV'
                from CONTENIR_DV L, ARTICLE A
                where L.ID_DV='$ID_DV' AND A.ID_A=L.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$typeML3' AND A.ID_FAMILLE='$i'";
-                                                if ($result3ML = mysqli_query($link, $sqlquery3ML)) {
+                                                if ($result3ML == mysqli_query($link, $sqlquery3ML)) {
                                                     $row3ML = mysqli_fetch_array($result3ML, MYSQLI_ASSOC);
                                                 }
 
@@ -534,9 +534,9 @@ include('../modeles/enteteAdmin.php');
                                                         <th width="7%"><strong>Larg</strong></th>
                                                         <th width="7%"><strong></strong></th>
                                                         <th width="7%"><strong>ML</strong></th>
-                                                        <th width="7%"><strong>M3</strong></th>
-                                                        <th width="15%"><strong>Prix unitaire</strong></th>
-                                                        <th width="15%"><strong>Montant</strong></th>
+                                                        <th width="7%" style="text-align:right"><strong>M3</strong></th>
+                                                        <th width="15%" style="text-align:right"><strong>Prix unitaire</strong></th>
+                                                        <th width="15%" style="text-align:right"><strong>Montant</strong></th>
                                                     </tr>
                                                 </thead>
                                                 <?php
@@ -604,9 +604,9 @@ include('../modeles/enteteAdmin.php');
                                                         <th width="7%"><strong>Diam</strong></th>
                                                         <th width="7%"><strong></strong></th>
                                                         <th width="7%"><strong>ML</strong></th>
-                                                        <th width="7%"><strong>M3</strong></th>
-                                                        <th width="15%"><strong>Prix unitaire</strong></th>
-                                                        <th width="15%"><strong>Montant</strong></th>
+                                                        <th width="7%" style="text-align:right"><strong>M3</strong></th>
+                                                        <th width="15%" style="text-align:right"><strong>Prix unitaire</strong></th>
+                                                        <th width="15%" style="text-align:right"><strong>Montant</strong></th>
                                                     </tr>
                                                 </thead>
                                                 <?php
@@ -666,7 +666,13 @@ include('../modeles/enteteAdmin.php');
             <td style="width:60%" class="success"><strong>TOTAL</strong></td>
             <td style="text-align:right ;width:7%"><strong><?php echo $row2['VOLDV'] ?></strong></td>
             <td style="width:15%"></td>
-            <td style="text-align:right; width:15%"><?php echo number_format($totHT, 0, ',', ' ') . " Ar" ?>"<input type="hidden" id="tht" value="<?=$row2['THT']?>"></td>
+            <td style="text-align:right; width:15%"><?php echo number_format($totHT, 0, ',', ' ') . " Ar" ?>"<input type="hidden" id="montht" value="<?=$totHT?>"></td>
+        </tr>
+        <tr>
+            <td style="width:60%" class="success noborder"><strong>REMISE</strong></td>
+            <td style="width:7%"  class="noborder"><button id="test" name="remise" onclick="remise()">Calcul</button></td>
+            <td style="width:15%"  class="noborder"></td>
+            <td style="width:15%; text-align:right"><input id="txremise" placeholder="taux remise" value="0"</td>
         </tr>
         <tr>
             <td style="width:60%" class="success noborder" style="border-right: none;"><strong>TVA 20%</strong></td>
@@ -674,12 +680,6 @@ include('../modeles/enteteAdmin.php');
             <td style="width:15%" class="noborder"></td>
             <td style="width:15%; text-align:right"><strong><?php echo number_format($totTVA, 0, ',', ' ') . " Ar" ?></strong></td>
         </tr>
-        <tr>
-            <td style="width:60%" class="success noborder"><strong>REMISE</strong></td>
-            <td style="width:7%"  class="noborder"><button id="test" name="remise" onclick="remise()">Calcul</button></td>
-            <td style="width:15%"  class="noborder"></td>
-            <td style="width:15%; text-align:right"><input id="remise" placeholder="taux remise" value="0"</td>
-        <tr>
         <tr>
             <td style="width:60%" class="success noborder"><strong>TOTAL TTC</strong></td>
             <td  style="width:7%"  class="noborder"></td>
@@ -689,8 +689,9 @@ include('../modeles/enteteAdmin.php');
         <tr>
             <td style="width:60%">  
                 <form name="lettrespdf" type="post" target="_blank" action="SortieDetailDevis2.php"> 
-                <input id="monttht" type="text" value=""/>
-                <input id="txremise" type="text" name="txremise" value="0"/>
+                <input id="monthtAR" type="text" value=""/>
+                <input id="txremise1" type="text" name="txremise" value="0"/>
+                <input id="montTVA" name="montTVA"type="text" value="0"/>
             </td>
             <td style="width:7%">
                 <input id="montremise" name="montremise"type="text" value="0"/>
@@ -740,15 +741,16 @@ include('../modeles/enteteAdmin.php');
                     
            window.onload =remise          
    function remise() {
-            var txremise= document.getElementById("remise").value;
-            var tht = document.getElementById("tht").value;
-            var montremise=Math.round(tht*(txremise/100));
-            var monttht= Math.round(tht-montremise,0);
-            var monttva =Math.round(monttht*0.2,0);
-            var montttc= Math.round(monttht +monttva,0);
-            document.getElementById("monttht").value=monttht;
+            var txremise= document.getElementById("txremise").value;
+            var montht = document.getElementById("montht").value;
+            var montremise=Math.round(montht*(txremise/100));
+            var monthtAR= Math.round(montht-montremise,0);
+            var monttva =Math.round(monthtAR*0.2,0);
+            var montttc= Math.round(monthtAR +monttva,0);
+            document.getElementById("monthtAR").value=monthtAR;
+            document.getElementById("montTVA").value=monttva;
             document.getElementById("montremise").value=montremise;
-            document.getElementById("txremise").value= txremise;
+            document.getElementById("txremise1").value= txremise;
             document.getElementById("t").value= montttc;
             document.getElementById("lettres").value = trans(montttc);
         }

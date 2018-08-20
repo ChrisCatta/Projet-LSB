@@ -41,6 +41,8 @@ $res = mysqli_query($link, $req) or exit(mysql_error());
                         $num = 0;
                         while ($row = mysqli_fetch_array($res, MYSQLI_ASSOC)) {
                             $article = $row['ID_A'];
+                      $type =$row['ID_TYPE'];
+                      $famille=$row['ID_FAMILLE'];
 
                             $req1 = "SELECT ID_A, SUM(QTE_BON_L) AS QTE_ENTREE from contenir_bon_l where ID_A='$article'";
                             $res1 = mysqli_query($link, $req1);
@@ -61,7 +63,9 @@ $res = mysqli_query($link, $req) or exit(mysql_error());
                                     $color = "stockDown";
                                 }
                             }
-
+                    $req3="SELECT * from FAMILLE where ID_FAM='$famille'";
+                                $res3=mysqli_query($link,$req3);
+                               $row3=mysqli_fetch_array($res3,MYSQLI_ASSOC);
                             ?>
                             <tr class="<?= $color ?>" id="<?php echo $row['ID_DV'] . '-' . $row['ID_DV_LIGNE'] ?>" name="ID_DV">
                                 <td ><button type="button" class="supprime supprimeLDV"  id="<?= $row['ID_DV_LIGNE'] ?>" name="ID_DV_LIGNE" ></button></td>

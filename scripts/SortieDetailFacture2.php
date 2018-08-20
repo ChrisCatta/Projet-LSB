@@ -95,16 +95,15 @@
                         <div class="col-xs-5 ">
                             <div class="adresse">
                                 <p><img src="../images/logo-lsb.png"  width="200px"/></p>
-                                <div class="pied"> 
+                                <div class="entete"> 
                                     B.P. 1140 - 301-Fianarantsoa <br>Madagascar<br>  
-                                    +261 20 75 522 44 / 032 03 421 03<br>da.lsb@moov.mg - compta.lsb@moov.mg</div>
+                                    +261 20 75 522 44 / 032 03 421 03<br>da.lsb@moov.mg / compta.lsb@moov.mg</div>
                             </div>
                         </div>
-                        <div class="col-xs-3">     
-                            <!--<h2 style="text-align: center;"><strong>Facture</strong></h2>-->
+                        <div class="col-xs-3"> 
                         </div>
                         <div class="col-xs-4 ">
-                            <p style="text-align: right; top:0px;">Fianarantsoa le : <span class="ligneCommande"><?php echo $newFormat; ?></span></p>
+                            <span class="ligneCommande" style="text-align: left; top:0px;">Fianarantsoa le :<?php echo $newFormat; ?></span>
                         </div>
                     </div>
                     <div class="row">
@@ -150,15 +149,15 @@
                                         <table class="info saut" border="1">
                                             <thead>  
                                                 <tr class="info">
-                                                    <th width="25%"><strong>Produit</strong></th>
-                                                    <th width="6%"><strong>Quantité</strong></th>
-                                                    <th width="7%"><strong>Longueur</strong></th>
-                                                    <th width="7%"><strong>Largeur</strong></th>
-                                                    <th width="7%"><strong>Epaisseur</strong></th>
-                                                    <th width="7%"><strong></strong></th>
-                                                    <th width="7%"><strong>M3</strong></th>
-                                                    <th width="15%"><strong>Prix unitaire</strong></th>
-                                                    <th width="15%"><strong>Montant</strong></th>
+                                                    <th width="22%"><strong>Produit</strong></th>
+                                                    <th width="7%"><strong>Quantité</strong></th>
+                                                    <th width="8%"><strong>Longueur</strong></th>
+                                                    <th width="8%"><strong>Largeur</strong></th>
+                                                    <th width="8%"><strong>Epaisseur</strong></th>
+                                                    <th width="7%" style="text-align:right"><strong></strong></th>
+                                                    <th width="7%" style="text-align:right"><strong>M3</strong></th>
+                                                    <th width="14%" style="text-align:right"><strong>Prix unitaire</strong></th>
+                                                    <th width="15%" style="text-align:right"><strong>Montant</strong></th>
 
 
                                                 </tr>
@@ -167,7 +166,10 @@
 
                                             $MONTANTNLC = 0;
                                             $VOLUMENLC = 0;
-                                            $suppNLC=0;
+                                            $supprabotNLC=0;
+                                            $suppsecNLC=0;
+                                            $VolrabotNLC=0;
+                                            $VolsecNLC=0;
                                             while ($rowNLC = mysqli_fetch_array($resNLC, MYSQLI_ASSOC)) {
 
                                                     if($rowNLC['RABOT']==1){
@@ -175,7 +177,13 @@
                                                     }
                                                      else {
                                                         $text="";
-                                                    }   
+                                                    }  
+                                                    if($rowNLC['SEC']==1){
+                                                        $text=$text. " (Sec) ";
+                                                    }
+                                                     else {
+                                                        $text=$text."";
+                                                    }    
                                                 ?>
                                                 <tr>
                                                     <td><?= $rowNLC['FAMILLE'].$text ?></td>
@@ -185,70 +193,90 @@
                                                     <td><?php echo $rowNLC['EPAISSEUR'] ?></td>
                                                     <td></td>
                                                     <td style="text-align:right"> <?php echo number_format($rowNLC['VOL'] * $rowNLC['QTE_CO'], 3, ',', ' ') ?></td>
-                                                    <td style="text-align:right"><?php echo number_format($rowNLC['PV_HT'], 0, ',', ' ') . " Ar" ?></td>
+                                                    <td style="text-align:right"><?php echo number_format($rowNLC['PV_HT'], 0, ',', ' ') . " Ar" ?></td>                  
+                                                    <td style="text-align:right"><?php echo number_format($rowNLC['MONTANT'], 0, ',', ' ') . " Ar" ?></td>
                                                     <?php if ($rowNLC['ID_TYPE']==="1") {
-                    if ($rowNLC['RABOT']=='1'){  
                     $reqrab="SELECT * FROM TARIFS WHERE TARIF='Rabotage'";
                     $resrab=mysqli_query($link,$reqrab);
                     $rowrab= mysqli_fetch_array($resrab);
                     $montsupprabot=$rowrab['MONTANTHT'];
                     $textsupprabot='Rabotage ';
+                    
+                    if ($rowNLC['RABOT']=='1'){  
+                    $volrabot=$rowNLC['VOL']*$rowNLC['QTE_CO'];
+                    $supprabot=$montsupprabot*$volrabot;
                     $montsupprabot=number_format($montsupprabot, 0, ',', ' ') .' Ar';
                     } 
                     else{
-                    $montsupprabot='0'  ;
-                    $textsupprabot='';
-                    } 
-                    if ($rowNLC['SEC']=='1'){ 
+                    $supprabot='';
+                    $volrabot='';    
+                    }
                    
-                    $reqsec="SELECT * FROM TARIFS WHERE ID_TARIF=102";
+                    $reqsec="SELECT * FROM TARIFS WHERE TARIF='Bois sec'";
                     $ressec=mysqli_query($link,$reqsec);
                     $rowsec= mysqli_fetch_array($ressec);
                     $montsuppsec=$rowsec['MONTANTHT'];
                     $textsuppsec='Bois sec ';
+                    if ($rowNLC['SEC']=='1'){
+                    $volsec=($rowNLC['VOL']*$rowNLC['QTE_CO']);
+                    $suppsec=$montsuppsec*$volsec;
                     $montsuppsec= number_format($montsuppsec, 0, ',', ' ') .' Ar';
                     }
+                    else{
+                    $suppsec ='';
+                    $volsec ='';
+                    }
+                    }
                     else {
-                    $montsuppsec  =''; 
-                    $textsuppsec='';
-                        
-                    } 
-                    
-                    }?>
-                                                  
-                                                    <td style="text-align:right"><?php echo number_format($rowNLC['MONTANT'], 0, ',', ' ') . " Ar" ?></td>
-                                                </tr>
-                                                <?php
-
-                                                $VOLUMENLC = $VOLUMENLC + $rowNLC['VOL'] * $rowNLC['QTE_CO'];
-                                                if($rowNLC['RABOT']==1){
-                                                $suppNLC = $suppNLC + $rowNLC['VOL'] * $rowNLC['QTE_CO'] * 70000;
-                                                                }
-                                            }
+                    $supprabot ='';
+                    $suppsec ='';
+                    $volrabot ='';    
+                    $volsec ='';
+                    }                
+                            $VOLUMENLC = $VOLUMENLC + $rowNLC['VOL'] * $rowNLC['QTE_CO'];
+                            $supprabotNLC = $supprabotNLC + $supprabot ;
+                            $VolrabotNLC = $VolrabotNLC + $volrabot;
+                            $suppsecNLC = $suppsecNLC + $suppsec ;
+                            $VolsecNLC = $VolsecNLC +  $volsec;
+                                                
+                 }
                                                                 $sqlquery3NLC = "SELECT  A.UNITE, sum((L.QTE_CO*A.QTE)*A.PV_HT) as 'THT', sum((L.QTE_CO*A.QTE)*A.PV_HT*(1+0.20)) as 'TTC', sum(A.VOL*L.QTE_CO) as 'VOLCO'
                from CONTENIR_CO L, ARTICLE A
                where L.ID_CO='$ID_CO' AND A.ID_A=L.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$type1'";
                                                                 $result3NLC = mysqli_query($link, $sqlquery3NLC);
                                                                 $row3NLC = mysqli_fetch_array($result3NLC, MYSQLI_ASSOC);
-
-                                                                ?>
-                                                                <tr>
-                                                                    <td colspan="6" class="success"><strong> <?=$textsupprabot.$textsuppsec?> </strong></td>
-                                                                    <td></td>
-                                                                    <td class="" style="text-align:right"><strong><?=$montsupprabot.$montsuppsec?></strong></td>
-                                                                    <td class="" style="text-align:right"><strong><?php echo number_format($suppNLC, 0, ',', ' ') . " Ar" ?></strong></td>
-                                                                </tr>
+                             if($supprabotNLC!='')        {                           
+                                 ?>
+                       <tr>
+                            <td colspan="6" class="success"><strong> <?=$textsupprabot?> </strong></td>
+                            <td class="" style="text-align:right"><?php echo number_format($VolrabotNLC, 3, ',', ' ')?></td>
+                            <td class="" style="text-align:right"><strong><?=$montsupprabot?></strong></td>
+                            <td class="" style="text-align:right"><strong><?php echo number_format($supprabotNLC, 0, ',', ' ') . " Ar" ?></strong></td>
+                        </tr>
+                        <?php
+                             }
+                             if($suppsecNLC!='')        {  
+                             ?>
+                                  
+                        <tr>
+                            <td colspan="6" class="success"><strong> <?=$textsuppsec?> </strong></td>
+                            <td class="" style="text-align:right"><?php echo number_format($VolsecNLC, 3, ',', ' ')?></td>
+                            <td class="" style="text-align:right"><strong><?=$montsuppsec?></strong></td>
+                            <td class="" style="text-align:right"><strong><?php echo number_format($suppsecNLC, 0, ',', ' ') . " Ar" ?></strong></td>
+                        </tr> 
+                        <?php
+                             }
+                             ?>
                                                                 <tr>
                                                                     <td colspan="6" class="success"><strong>Total</strong></td>
                                                                     <td class="" style="text-align:right"><strong><?php echo number_format($VOLUMENLC, 3, ',', ' ') ?></strong></td>
                                                                     <td></td>
-                                                                    <td class="" style="text-align:right"><strong><?php echo number_format($row3NLC['THT'] + $suppNLC, 0, ',', ' ') . " Ar" ?></strong></td>
+                                                                    <td class="" style="text-align:right"><strong><?php echo number_format($row3NLC['THT'] + $supprabotNLC +$suppsecNLC, 0, ',', ' ') . " Ar" ?></strong></td>
                                                                 </tr>
                                                         </table>
                                                         <?php
 
                                                     }
-
 
                                                     $type6 = 6;
 
@@ -265,15 +293,15 @@
                                         <table class="info saut" border="1">
                                             <thead>  
                                                 <tr class="info">
-                                                    <th width="25%"><strong>Produit</strong></th>
-                                                    <th width="6%"><strong>Quantité</strong></th>
-                                                    <th width="7%"><strong>Longueur</strong></th>
-                                                    <th width="7%"><strong>Largeur</strong></th>
-                                                    <th width="7%"><strong>Epaisseur</strong></th>
-                                                    <th width="7%"><strong></strong></th>
-                                                    <th width="7%"><strong>M3</strong></th>
-                                                    <th width="15%"><strong>Prix unitaire</strong></th>
-                                                    <th width="15%"><strong>Montant</strong></th>
+                                                    <th width="22%"><strong>Produit</strong></th>
+                                                    <th width="7%"><strong>Quantité</strong></th>
+                                                    <th width="8%"><strong>Longueur</strong></th>
+                                                    <th width="8%"><strong>Largeur</strong></th>
+                                                    <th width="8%"><strong>Epaisseur</strong></th>
+                                                    <th width="7%" style="text-align:right"><strong></strong></th>
+                                                    <th width="7%" style="text-align:right"><strong>M3</strong></th>
+                                                    <th width="14%" style="text-align:right"><strong>Prix unitaire</strong></th>
+                                                    <th width="15%" style="text-align:right"><strong>Montant</strong></th>
                                                 </tr>
                                             </thead>
                                             <?php
@@ -298,7 +326,7 @@
 
                                                 $VOLUMELC = $VOLUMELC + $rowLC['VOL'] * $rowLC['QTE_CO'];
                                             }
-                                            $sqlquery3LC = "SELECT  A.UNITE, A.ID_TYPE ,  sum((L.QTE_CO*A.QTE)*A.PV_HT) as 'THT', sum((L.QTE_CO*A.QTE)*A.PV_HT*(1+0.20)) as 'TTC', sum(A.VOL*L.QTE_CO) as 'VOLCO'
+                                            $sqlquery3LC = "SELECT  A.UNITE, A.ID_TYPE ,  sum((L.QTE_CO*A.QTE)*A.PV_HT) as 'THT', sum((L.QTE_CO*A.QTE)*A.PV_HT*(1+0.20)) as 'TTC', sum(A.VOL*L.QTE_CO) as 'VOLDV'
                from CONTENIR_CO L, ARTICLE A
                where L.ID_CO='$ID_CO' AND A.ID_A=L.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$type6'";
                                             if ($result3LC = mysqli_query($link, $sqlquery3LC)) {
@@ -336,15 +364,15 @@
                                             <table class="info saut" border="1">
                                                 <thead>  
                                                     <tr class="info">
-                                                        <th width="25%"><strong>Produit, qualité à peindre</strong></th>
-                                                        <th width="6%"><strong>Quantité</strong></th>
-                                                        <th width="7%"><strong>Longueur</strong></th>
-                                                        <th width="7%"><strong>Largeur</strong></th>
-                                                        <th width="7%"><strong>Epaisseur</strong></th>
-                                                        <th width="7%"><strong>M2</strong></th>
-                                                        <th width="7%"><strong>M3</strong></th>
-                                                        <th width="15%"><strong>Prix unitaire</strong></th>
-                                                        <th width="15%"><strong>Montant</strong></th>
+                                                        <th width="22%"><strong>Produit, qualité à peindre</strong></th>
+                                                        <th width="7%"><strong>Quantité</strong></th>
+                                                        <th width="8%"><strong>Longueur</strong></th>
+                                                        <th width="8%"><strong>Largeur</strong></th>
+                                                        <th width="8%"><strong>Epaisseur</strong></th>
+                                                        <th width="7%" style="text-align:right"><strong>M2</strong></th>
+                                                        <th width="7%" style="text-align:right"><strong>M3</strong></th>
+                                                        <th width="14%" style="text-align:right"><strong>Prix unitaire</strong></th>
+                                                        <th width="15%" style="text-align:right"><strong>Montant</strong></th>
 
 
                                                     </tr>
@@ -365,15 +393,15 @@
                                                         <td><?php echo $rowAP['EPAISSEUR'] ?></td>
                                                         <td style="text-align:right"> <?php echo number_format($rowAP['QTE'] * $rowAP['QTE_CO'], 3, ',', ' ') ?></td>
                                                         <td style="text-align:right"> <?php echo number_format($rowAP['VOL'] * $rowAP['QTE_CO'], 3, ',', ' ') ?></td>
-                                                        <td style="text-align:right"><?php echo number_format($rowAP['PV_HT'], 0, ',', ' ') ?></td>
-                                                        <td style="text-align:right"><?php echo number_format($rowAP['MONTANT'], 0, ',', ' ') ?></td>
+                                                        <td style="text-align:right"><?php echo number_format($rowAP['PV_HT'], 0, ',', ' ')  . " Ar"?></td>
+                                                        <td style="text-align:right"><?php echo number_format($rowAP['MONTANT'], 0, ',', ' ') . " Ar" ?></td>
                                                     </tr>
                                                     <?php
 
                                                     $VOLUME = $VOLUME + $rowAP['VOL'] * $rowAP['QTE_CO'];
                                                     $SURFACE = $SURFACE + $rowAP['QTE'] * $rowAP['QTE_CO'];
                                                 }
-                                                $sqlqueryAP3 = "SELECT  A.UNITE, sum((L.QTE_CO*A.QTE)*A.PV_HT) as 'THT', sum((L.QTE_CO*A.QTE)*A.PV_HT*(1+0.20)) as 'TTC', sum(A.VOL*L.QTE_CO) as 'VOLCO'
+                                                $sqlqueryAP3 = "SELECT  A.UNITE, sum((L.QTE_CO*A.QTE)*A.PV_HT) as 'THT', sum((L.QTE_CO*A.QTE)*A.PV_HT*(1+0.20)) as 'TTC', sum(A.VOL*L.QTE_DV) as 'VOLDV'
                from CONTENIR_CO L, ARTICLE A
                where L.ID_CO='$ID_CO' AND A.ID_A=L.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$type9' AND A.ID_FAMILLE='$i'";
                                                 if ($resultAP3 = mysqli_query($link, $sqlqueryAP3)) {
@@ -384,7 +412,7 @@
                                                 <td colspan="6" class="success"><strong>Total</strong></td>
                                                 <td class="" style="text-align:right"><strong><?php echo number_format($VOLUME, 3, ',', ' ') ?></strong></td>
                                                 <td></td>
-                                                <td class="" style="text-align:right"><strong><?php echo number_format($rowAP3['THT'], 0, ',', ' ') ?></strong></td>
+                                                <td class="" style="text-align:right"><strong><?php echo number_format($rowAP3['THT'], 0, ',', ' ') . " Ar" ?></strong></td>
                                                 </tr>
                                             </table>
                                             
@@ -409,15 +437,15 @@
                                             <table class="info saut" border="1">
                                                 <thead>  
                                                     <tr class="info">
-                                                        <th width="25%"><strong>Produit,qualité à vernir</strong></th>
-                                                        <th width="6%"><strong>Quantité</strong></th>
-                                                        <th width="7%"><strong>Longueur</strong></th>
-                                                        <th width="7%"><strong>Largeur</strong></th>
-                                                        <th width="7%"><strong>Epaisseur</strong></th>
-                                                        <th width="7%"><strong>M2</strong></th>
-                                                        <th width="7%"><strong>M3</strong></th>
-                                                        <th width="15%"><strong>Prix unitaire</strong></th>
-                                                        <th width="15%"><strong>Montant</strong></th>
+                                                        <th width="22%"><strong>Produit, qualité à vernir</strong></th>
+                                                        <th width="7%"><strong>Quantité</strong></th>
+                                                        <th width="8%"><strong>Longueur</strong></th>
+                                                        <th width="8%"><strong>Largeur</strong></th>
+                                                        <th width="8%"><strong>Epaisseur</strong></th>
+                                                        <th width="7%" style="text-align:right"><strong>M2</strong></th>
+                                                        <th width="7%" style="text-align:right"><strong>M3</strong></th>
+                                                        <th width="14%" style="text-align:right"><strong>Prix unitaire</strong></th>
+                                                        <th width="15%" style="text-align:right"><strong>Montant</strong></th>
 
 
                                                     </tr>
@@ -438,15 +466,15 @@
                                                         <td><?php echo $rowAV['EPAISSEUR'] ?></td>
                                                         <td style="text-align:right"> <?php echo number_format($rowAV['QTE'] * $rowAV['QTE_CO'], 3, ',', ' ') ?></td>
                                                         <td style="text-align:right"> <?php echo number_format($rowAV['VOL'] * $rowAV['QTE_CO'], 3, ',', ' ') ?></td>
-                                                        <td style="text-align:right"><?php echo number_format($rowAV['PV_HT'], 0, ',', ' ') ?></td>
-                                                        <td style="text-align:right"><?php echo number_format($rowAV['MONTANT'], 0, ',', ' ') ?></td>
+                                                        <td style="text-align:right"><?php echo number_format($rowAV['PV_HT'], 0, ',', ' ') . " Ar" ?></td>
+                                                        <td style="text-align:right"><?php echo number_format($rowAV['MONTANT'], 0, ',', ' ') . " Ar" ?></td>
                                                     </tr>
                                                     <?php
 
                                                     $VOLUME = $VOLUME + $rowAV['VOL'] * $rowAV['QTE_CO'];
                                                     $SURFACE = $SURFACE + $rowAV['QTE'] * $rowAV['QTE_CO'];
                                                 }
-                                                $sqlqueryAV3 = "SELECT  A.UNITE, sum((L.QTE_CO*A.QTE)*A.PV_HT) as 'THT', sum((L.QTE_CO*A.QTE)*A.PV_HT*(1+0.20)) as 'TTC', sum(A.VOL*L.QTE_CO) as 'VOLCO'
+                                                $sqlqueryAV3 = "SELECT  A.UNITE, sum((L.QTE_CO*A.QTE)*A.PV_HT) as 'THT', sum((L.QTE_CO*A.QTE)*A.PV_HT*(1+0.20)) as 'TTC', sum(A.VOL*L.QTE_CO) as 'VOLDV'
                from CONTENIR_CO L, ARTICLE A
                where L.ID_CO='$ID_CO' AND A.ID_A=L.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$type3' AND A.ID_FAMILLE='$i'";
                                                 $resultAV3 = mysqli_query($link, $sqlqueryAV3);
@@ -456,7 +484,7 @@
                                                 <td colspan="6" class="success"><strong>Total</strong></td>
                                                 <td class="" style="text-align:right"><strong><?php echo number_format($VOLUME, 3, ',', ' ') ?></strong></td>
                                                 <td></td>
-                                                <td class="" style="text-align:right"><strong><?php echo number_format($rowAV3['THT'], 0, ',', ' ') ?></strong></td>
+                                                <td class="" style="text-align:right"><strong><?php echo number_format($rowAV3['THT'], 0, ',', ' ') . " Ar" ?></strong></td>
                                                 </tr>
                                             </table>
                                             
@@ -472,7 +500,7 @@
 
                                         $reqML = "SELECT A.UNITE, A.QTE, A.VOL, A.ID_A, A.ID_FAMILLE, A.DESIGNATION, A.LONGUEUR, A.LARGEUR, A.UNITE, A.EPAISSEUR, A.DIAMETRE, A.PV_HT, A.FAMILLE, A.TYPE, C.ID_CO, C.ID_CO_LIGNE, C.QTE_CO, (C.QTE_CO*A.LONGUEUR)*A.PV_HT as 'MONTANT'
               FROM  ARTICLE A, CONTENIR_CO C
-              WHERE  C.ID_CO='$ID_CO' AND A.ID_A=C.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$typeML3' AND A.ID_FAMILLE='$i' order by A.LONGUEUR DESC, A.LARGEUR DESC, A.EPAISSEUR DESC";
+              WHERE  C.ID_CO='$ID_CO' AND A.ID_A=C.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$typeML3' AND A.ID_FAMILLE='$i' order by A.LONGUEUR DESC,A.LARGEUR DESC, A.EPAISSEUR DESC";
 
                                         $resML = mysqli_query($link, $reqML);
                                         $nombreML = mysqli_num_rows($resML);
@@ -483,15 +511,15 @@
                                             <table class="info saut" border="1">
                                                 <thead>  
                                                     <tr class="info">
-                                                        <th width="25%"><strong>Produit, qualité à vernir</strong></th>
-                                                        <th width="6%"><strong>Quantité</strong></th>
-                                                        <th width="7%"><strong>Longueur</strong></th>
-                                                        <th width="7%"><strong>Largeur</strong></th>
-                                                        <th width="7%"><strong>Epaisseur</strong></th>
-                                                        <th width="7%"><strong>ML</strong></th>
-                                                        <th width="7%"><strong>M3</strong></th>
-                                                        <th width="15%"><strong>Prix unitaire</strong></th>
-                                                        <th width="15%"><strong>Montant</strong></th>
+                                                        <th width="22%"><strong>Produit, qualité à vernir</strong></th>
+                                                        <th width="7%"><strong>Quantité</strong></th>
+                                                        <th width="8%"><strong>Longueur</strong></th>
+                                                        <th width="8%"><strong>Largeur</strong></th>
+                                                        <th width="8%"><strong>Epaisseur</strong></th>
+                                                        <th width="7%" style="text-align:right"><strong>ML</strong></th>
+                                                        <th width="7%" style="text-align:right"><strong>M3</strong></th>
+                                                        <th width="14%" style="text-align:right"><strong>Prix unitaire</strong></th>
+                                                        <th width="15%" style="text-align:right"><strong>Montant</strong></th>
 
 
                                                     </tr>
@@ -521,7 +549,7 @@
 
                                                     $LONGUEURML = $LONGUEURML + $rowML['LONGUEUR'] * $rowML['QTE_CO'];
                                                 }
-                                                $sqlquery3ML = "SELECT  sum((L.QTE_CO*A.LONGUEUR)*A.PV_HT) as 'THT', sum((L.QTE_CO*A.LONGUEUR)*A.PV_HT*(1+0.20)) as 'TTC', sum(A.VOL*L.QTE_CO) as 'VOLCO', sum(A.QTE*L.QTE_CO) as 'QTECO'
+                                                $sqlquery3ML = "SELECT  sum((L.QTE_CO*A.LONGUEUR)*A.PV_HT) as 'THT', sum((L.QTE_CO*A.LONGUEUR)*A.PV_HT*(1+0.20)) as 'TTC', sum(A.VOL*L.QTE_CO) as 'VOLDV', sum(A.QTE*L.QTE_CO) as 'QTEDV'
                from CONTENIR_CO L, ARTICLE A
                where L.ID_CO='$ID_CO' AND A.ID_A=L.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$typeML3' AND A.ID_FAMILLE='$i'";
                                                 if ($result3ML = mysqli_query($link, $sqlquery3ML)) {
@@ -542,7 +570,7 @@
                                         }
                                     }
 
-                                    //pour ML à peindre type=9
+                                    //pour ML à vernir type=9
                                     $typeML9 = 9;
                                     for ($i = 41; $i <= 48; $i++) {
                                         $reqT9 = "SELECT A.UNITE, A.QTE, A.VOL, A.ID_A, A.ID_FAMILLE, A.DESIGNATION, A.LONGUEUR, A.LARGEUR, A.UNITE, A.EPAISSEUR, A.DIAMETRE, A.PV_HT, A.FAMILLE, A.TYPE, C.ID_CO, C.ID_CO_LIGNE, C.QTE_CO, (C.QTE_CO*A.QTE)*A.PV_HT as 'MONTANT'
@@ -558,15 +586,15 @@
                                             <table class="info saut" border="1">
                                                 <thead>  
                                                     <tr class="info">
-                                                        <th width="25%"><strong>Produit, qualité à peindre</strong></th>
-                                                        <th width="6%"><strong>Quantité</strong></th>
-                                                        <th width="7%"><strong>Longueur</strong></th>
-                                                        <th width="7%"><strong>Largeur</strong></th>
-                                                        <th width="7%"><strong></strong></th>
-                                                        <th width="7%"><strong>ML</strong></th>
-                                                        <th width="7%"><strong>M3</strong></th>
-                                                        <th width="15%"><strong>Prix unitaire</strong></th>
-                                                        <th width="15%"><strong>Montant</strong></th>
+                                                        <th width="22%"><strong>Produit, qualité à peindre</strong></th>
+                                                        <th width="7%"><strong>Quantité</strong></th>
+                                                        <th width="8%"><strong>Longueur</strong></th>
+                                                        <th width="8%"><strong>Largeur</strong></th>
+                                                        <th width="8%"><strong></strong></th>
+                                                        <th width="7%" style="text-align:right"><strong>ML</strong></th>
+                                                        <th width="7%" style="text-align:right"><strong>M3</strong></th>
+                                                        <th width="14%" style="text-align:right"><strong>Prix unitaire</strong></th>
+                                                        <th width="15%" style="text-align:right"><strong>Montant</strong></th>
                                                     </tr>
                                                 </thead>
                                                 <?php
@@ -593,7 +621,7 @@
                                                     $VOLUMET9 = $VOLUMET9 + $rowT9['VOL'] * $rowT9['QTE_CO'];
                                                     $LONGUEURT9 = $LONGUEURT9 + $rowT9['LONGUEUR'] * $rowT9['QTE_CO'];
                                                 }
-                                                $sqlquery3T9 = "SELECT  A.UNITE, A.ID_FAMILLE ,  sum((L.QTE_CO*A.QTE)*A.PV_HT) as 'THT', sum((L.QTE_CO*A.QTE)*A.PV_HT*(1+0.20)) as 'TTC', sum(A.VOL*L.QTE_CO) as 'VOLCO'
+                                                $sqlquery3T9 = "SELECT  A.UNITE, A.ID_FAMILLE ,  sum((L.QTE_CO*A.QTE)*A.PV_HT) as 'THT', sum((L.QTE_CO*A.QTE)*A.PV_HT*(1+0.20)) as 'TTC', sum(A.VOL*L.QTE_CO) as 'VOLDV'
                from CONTENIR_CO L, ARTICLE A
                where L.ID_CO='$ID_CO' AND A.ID_A=L.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$typeML9' AND A.ID_FAMILLE='$i'";
                                                 if ($result3T9 = mysqli_query($link, $sqlquery3T9)) {
@@ -618,7 +646,7 @@
                                     for ($i = 32; $i <= 34; $i++) {
                                         $reqBR = "SELECT A.UNITE, A.QTE, A.VOL, A.ID_A, A.ID_FAMILLE, A.DESIGNATION, A.LONGUEUR, A.LARGEUR, A.UNITE, A.EPAISSEUR, A.DIAMETRE, A.PV_HT, A.FAMILLE, A.TYPE, C.ID_CO, C.ID_CO_LIGNE, C.QTE_CO, (C.QTE_CO*A.QTE)*A.PV_HT as 'MONTANT'
       FROM  ARTICLE A, CONTENIR_CO C
-      WHERE  C.ID_CO='$ID_CO' AND A.ID_A=C.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$type7' AND A.ID_FAMILLE='$i' order by A.LONGUEUR DESC, A.DIAMETRE DESC";
+      WHERE  C.ID_CO='$ID_CO' AND A.ID_A=C.ID_A AND A.UNITE='$unite' AND A.ID_TYPE='$type7' AND A.ID_FAMILLE='$i' order by A.LONGUEUR DESC,A.DIAMETRE DESC";
 
                                         $resBR = mysqli_query($link, $reqBR);
                                         $nombreBR = mysqli_num_rows($resBR);
@@ -628,15 +656,15 @@
                                             <table class="info saut" border="1">
                                                 <thead>  
                                                     <tr class="info">
-                                                        <th width="25%"><strong>Produit</strong></th>
-                                                        <th width="6%"><strong>Quantité</strong></th>
-                                                        <th width="7%"><strong>Longueur</strong></th>
-                                                        <th width="7%"><strong>Diametre</strong></th>
-                                                        <th width="7%"><strong></strong></th>
-                                                        <th width="7%"><strong>ML</strong></th>
-                                                        <th width="7%"><strong>M3</strong></th>
-                                                        <th width="15%"><strong>Prix unitaire</strong></th>
-                                                        <th width="15%"><strong>Montant</strong></th>
+                                                        <th width="22%"><strong>Produit</strong></th>
+                                                        <th width="7%"><strong>Quantité</strong></th>
+                                                        <th width="8%"><strong>Longueur</strong></th>
+                                                        <th width="8%"><strong>Diametre</strong></th>
+                                                        <th width="8%"><strong></strong></th>
+                                                        <th width="7%" style="text-align:right"><strong>ML</strong></th>
+                                                        <th width="7%" style="text-align:right"><strong>M3</strong></th>
+                                                        <th width="14%" style="text-align:right"><strong>Prix unitaire</strong></th>
+                                                        <th width="15%" style="text-align:right"><strong>Montant</strong></th>
                                                     </tr>
                                                 </thead>
                                                 <?php
@@ -686,38 +714,39 @@
                                     break;
                             }
                         }
-$montHT=$row2['THT']-$remise;
-$montTVA=($row2['THT']-$remise)*0.2;
-$montTTC=$montHT+$montTVA;
+$montHT=$row2['THT']+$supprabotNLC+$suppsecNLC;
+$montHTAR=$montHT-$remise;
+$montTVA=($montHTAR)*0.2;
+$montTTC=$montHTAR+$montTVA;
                         ?>
                         <table class="info saut" border="1" >
                        <!--  <tr><td colspan="9">&nbsp;</td></tr>-->
                             <tr>
-                                <td style="width:60%" class="success"><strong>TOTAL</strong></td>
+                                <td style="width:63%" class="success"><strong>TOTAL</strong></td>
                                 <td style="text-align:right ;width:7%"><strong><?php echo $row2['VOLCO'] ?></strong></td>
                                 <td  style="width:15%"></td>
-                                <td  style="text-align:right; width:15%"><strong><?php echo number_format($row2['THT'], 0, ',', ' ') . " Ar" ?></strong></td>
+                                <td  style="text-align:right; width:15%"><strong><?php echo number_format($montHT, 0, ',', ' ') . " Ar" ?></strong></td>
                             </tr>
                             <tr>
-                                <td style="width:60%" class="success noborder" style="border-right: none;"><strong>Remise <?=$txremise?>% </strong></td>
+                                <td style="width:63%" class="success noborder" style="border-right: none;"><strong>Remise <?=$txremise?>% </strong></td>
                                 <td  style="width:7%" class="noborder"></td>
                                 <td  style="width:15%" class="noborder"></td>
                                 <td style="width:15%; text-align:right"><strong><?php echo number_format($remise, 0, ',', ' ') . " Ar" ?></strong></td>
                             </tr>
                             <tr>
-                                <td style="width:60%" class="success noborder" style="border-right: none;"><strong>Total après Remise</strong></td>
+                                <td style="width:63%" class="success noborder" style="border-right: none;"><strong>Total après Remise</strong></td>
                                 <td  style="width:7%" class="noborder"></td>
                                 <td  style="width:15%" class="noborder"></td>
-                                <td style="width:15%; text-align:right"><strong><?php echo number_format($montHT, 0, ',', ' ') . " Ar" ?></strong></td>
+                                <td style="width:15%; text-align:right"><strong><?php echo number_format($montHTAR, 0, ',', ' ') . " Ar" ?></strong></td>
                             </tr>
                             <tr>
-                                <td style="width:60%" class="success noborder" style="border-right: none;"><strong>TVA 20%</strong></td>
+                                <td style="width:63%" class="success noborder" style="border-right: none;"><strong>TVA 20%</strong></td>
                                 <td  style="width:7%" class="noborder"></td>
                                 <td  style="width:15%" class="noborder"></td>
                                 <td style="width:15%; text-align:right"><strong><?php echo number_format($montTVA, 0, ',', ' ') . " Ar" ?></strong></td>
                             </tr>
                             <tr>
-                                <td style="width:60%" class="success noborder"><strong>TOTAL TTC</strong></td>
+                                <td style="width:63%" class="success noborder"><strong>TOTAL TTC</strong></td>
                                 <td  style="width:7%"  class="noborder"></td>
                                 <td  style="width:15%"  class="noborder"></td>
                                 <td style="width:15%; text-align:right"><strong><?php echo number_format($montTTC, 0, ',', ' ') . " Ar" ?></strong></td>
@@ -725,10 +754,10 @@ $montTTC=$montHT+$montTVA;
 
                         </table>
                     </div>
-              </div>
                     <div class="row saut">
-                        <div class="montant">Le montant de la présente facture est arreté à la somme de : <h5><?= $lettres ?> (<?php echo number_format($montTTC, 0, ',', ' ') . " Ar" ?>)</h5></div>
+                        <div class="montant">Le montant de la  présente facture est arreté a la somme de : <h5><?= $lettres ?> (<?php echo number_format($montTTC, 0, ',', ' ') . " Ar" ?>)</h5></div>
                         <div class="montant">
+                           
                             <div> Conditions de paiement : <?= $comment3 ?></div> 
                         </div>
                         <div class="signature col-xs-12">
@@ -741,15 +770,13 @@ $montTTC=$montHT+$montTVA;
                             </div>
                         </div>
                     </div>
-                    <div class="row saut">
                 <div class="foot">
                     <?php include('../modeles/pied-imp.php'); ?>
                 </div>
-        <script> $(document).ready(function () {
-                $('.selectpicker').selectpicker();
-            });
-        </script>
-    </div>
-        </div>
-</body>
-</html>
+                    <script> $(document).ready(function () {
+                            $('.selectpicker').selectpicker();
+                        });
+                    </script>
+            </div>
+        </body>
+    </html>
